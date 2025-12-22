@@ -1,0 +1,1 @@
+export const isCloudinary = (url: string): boolean => url.includes("res.cloudinary.com")
