@@ -1,44 +1,21 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-
 import { Icons } from "@/components/common/icons";
-import Logo from "@/components/common/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { authClient } from "@/lib/auth-client";
 import { platformName } from "@/lib/constants";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Img } from "react-image";
 
-export const Route = createFileRoute("/onboard")({
-  ssr: false,
+export const Route = createFileRoute("/onboard/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   return (
-    <>
-      <OnBoardHeader />
-
-      <OnboardMain />
-    </>
-  );
-}
-
-const OnBoardHeader = () => {
-  return (
-    <header className="border-b border-border shadow-sm">
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-center">
-        <Logo />
-      </nav>
-    </header>
-  );
-};
-
-const OnboardMain = () => {
-  return (
     <main className="w-full bg-slate-50 font-inter">
-      <section className="container mx-auto min-h-[calc(100vh-65px)] px-12 py-12">
+      <section className="max-w-385 mx-auto min-h-[calc(100vh-65px)] px-12 py-12">
         <div className="flex gap-16 items-center pt-28 flex-1">
           <section className="flex-1 flex flex-col items-start justify-center">
             <div className="space-y-4">
@@ -207,4 +184,4 @@ const OnboardMain = () => {
       </section>
     </main>
   );
-};
+}

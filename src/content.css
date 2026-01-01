@@ -1,0 +1,351 @@
+/* Blog Content Container */
+.blog-content {
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif; */
+  line-height: 1.8;
+  color: #1a1a1a;
+  font-size: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Dark mode support */
+.blog-content.dark {
+  color: #e5e5e5;
+  background-color: #121212;
+}
+
+/* Headings - Professional hierarchy */
+.blog-content h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 2rem 0 1rem;
+  color: #0d0d0d;
+  letter-spacing: -0.5px;
+}
+
+.blog-content.dark h1 {
+  color: #ffffff;
+}
+
+.blog-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 2.5rem 0 1rem;
+  color: #1a1a1a;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.75rem;
+}
+
+.blog-content.dark h2 {
+  color: #f5f5f5;
+  border-bottom-color: #2a2a2a;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  color: #0d0d0d;
+}
+
+.blog-content.dark h3 {
+  color: #ffffff;
+}
+
+.blog-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+  color: #2a2a2a;
+}
+
+.blog-content.dark h4 {
+  color: #e5e5e5;
+}
+
+.blog-content h5,
+.blog-content h6 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+  color: #2a2a2a;
+}
+
+.blog-content.dark h5,
+.blog-content.dark h6 {
+  color: #d5d5d5;
+}
+
+/* Paragraphs */
+.blog-content p {
+  margin: 1.25rem 0;
+  line-height: 1.85;
+  color: #3a3a3a;
+}
+
+.blog-content.dark p {
+  color: #d0d0d0;
+}
+
+/* Emphasis */
+.blog-content strong {
+  font-weight: 700;
+  color: #0d0d0d;
+}
+
+.blog-content.dark strong {
+  color: #ffffff;
+}
+
+.blog-content em {
+  font-style: italic;
+  color: #1a1a1a;
+}
+
+.blog-content.dark em {
+  color: #f0f0f0;
+}
+
+/* Links */
+.blog-content a {
+  color: #0066cc;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 102, 204, 0.3);
+  transition: all 0.2s ease;
+}
+
+.blog-content a:hover {
+  color: #0052a3;
+  border-bottom-color: #0052a3;
+  background-color: rgba(0, 102, 204, 0.08);
+}
+
+.blog-content.dark a {
+  color: #4a9eff;
+  border-bottom-color: rgba(74, 158, 255, 0.3);
+}
+
+.blog-content.dark a:hover {
+  color: #7bb5ff;
+  border-bottom-color: #7bb5ff;
+  background-color: rgba(74, 158, 255, 0.1);
+}
+
+/* Lists */
+.blog-content ul,
+.blog-content ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.blog-content li {
+  margin: 0.5rem 0;
+  line-height: 1.8;
+}
+
+.blog-content ul li {
+  list-style-type: disc;
+}
+
+.blog-content ol li {
+  list-style-type: decimal;
+}
+
+.blog-content li > p {
+  margin: 0.5rem 0;
+}
+
+/* Nested lists */
+.blog-content ul ul,
+.blog-content ol ol,
+.blog-content ul ol,
+.blog-content ol ul {
+  margin: 0.5rem 0;
+}
+
+/* Blockquotes */
+.blog-content blockquote {
+  border-left: 4px solid #3b82f6;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background-color: #f8faff;
+  border-radius: 4px;
+  font-style: italic;
+  color: #2a2a2a;
+}
+
+.blog-content.dark blockquote {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #b0b0b0;
+  border-left-color: #60a5fa;
+}
+
+.blog-content blockquote > p:first-child {
+  margin-top: 0;
+}
+
+.blog-content blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Code Inline */
+.blog-content code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  background-color: #f4f4f4;
+  color: #e83e8c;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.blog-content.dark code {
+  background-color: #2a2a2a;
+  color: #ff6b9d;
+}
+
+/* Code Blocks */
+.blog-content pre {
+  background-color: #1e1e1e;
+  color: #e8e8e8;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog-content.dark pre {
+  background-color: #0d0d0d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.blog-content pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* Scrollbar for code blocks */
+.blog-content pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.blog-content pre::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+.blog-content pre::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 4px;
+}
+
+.blog-content pre::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+
+/* Images */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+.blog-content.dark img {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Horizontal Rule */
+.blog-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+  margin: 2.5rem 0;
+}
+
+.blog-content.dark hr {
+  background: linear-gradient(to right, transparent, #3a3a3a, transparent);
+}
+
+/* Tables */
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.blog-content.dark table {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.blog-content th {
+  background-color: #f5f5f5;
+  color: #0d0d0d;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.blog-content.dark th {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-bottom-color: #3a3a3a;
+}
+
+.blog-content td {
+  padding: 1rem;
+  border-bottom: 1px solid #e8e8e8;
+  color: #3a3a3a;
+}
+
+.blog-content.dark td {
+  border-bottom-color: #2a2a2a;
+  color: #d0d0d0;
+}
+
+.blog-content tr:last-child td {
+  border-bottom: none;
+}
+
+.blog-content tr:hover {
+  background-color: #fafafa;
+}
+
+.blog-content.dark tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Spacing utilities */
+.blog-content > *:first-child {
+  margin-top: 0;
+}
+
+.blog-content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Line numbers for code (if using highlight.js or similar) */
+.blog-content .hljs-ln-n {
+  color: #666;
+  padding-right: 1.5rem;
+  user-select: none;
+}
+
+.blog-content.dark .hljs-ln-n {
+  color: #555;
+}

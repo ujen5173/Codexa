@@ -114,3 +114,12 @@ export const data = {
     }
   ]
 }
+
+
+export const SLUG_SETTINGS = {
+  lower: true,
+  replacement: "-",
+  strict: true,
+  trim: true,
+  locale: "en",
+};

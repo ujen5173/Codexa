@@ -363,6 +363,45 @@ export const articleReadings = pgTable(
   ]
 );
 
+export const articleBookmarks = pgTable(
+  "article_bookmarks",
+  {
+    id: text("id").primaryKey(),
+    articleId: text("article_id")
+      .notNull()
+      .references(() => articles.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("article_bookmarks_article_id_idx").on(table.articleId),
+    index("article_bookmarks_user_id_idx").on(table.userId),
+    uniqueIndex("article_bookmarks_article_user_idx").on(
+      table.articleId,
+      table.userId
+    ),
+  ]
+);
+
+export const articleShares = pgTable(
+  "article_shares",
+  {
+    id: text("id").primaryKey(),
+    articleId: text("article_id")
+      .notNull()
+      .references(() => articles.id, { onDelete: "cascade" }),
+    userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
+    platform: varchar("platform", { length: 50 }),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("article_shares_article_id_idx").on(table.articleId),
+    index("article_shares_user_id_idx").on(table.userId),
+  ]
+);
+
 export const userFollows = pgTable(
   "user_follows",
   {
@@ -619,6 +658,8 @@ export const userRelations = relations(user, ({ many }) => ({
   likes: many(articleLikes),
   comments: many(articleComments),
   readings: many(articleReadings),
+  bookmarks: many(articleBookmarks),
+  shares: many(articleShares),
   following: many(userFollows, { relationName: "following" }),
   followers: many(userFollows, { relationName: "followers" }),
   achievements: many(userAchievements),
@@ -654,6 +695,8 @@ export const articlesRelations = relations(articles, ({ many, one }) => ({
   likes: many(articleLikes),
   comments: many(articleComments),
   readings: many(articleReadings),
+  bookmarks: many(articleBookmarks),
+  shares: many(articleShares),
   seriesItems: many(articleSeriesItems),
   collaborators: many(articleCollaborators),
   activity: many(userActivity),
@@ -863,5 +906,30 @@ export const notificationsRelations = relations(notifications, ({ one }) => ({
   relatedComment: one(articleComments, {
     fields: [notifications.relatedCommentId],
     references: [articleComments.id],
+  }),
+}));
+
+export const articleBookmarksRelations = relations(
+  articleBookmarks,
+  ({ one }) => ({
+    article: one(articles, {
+      fields: [articleBookmarks.articleId],
+      references: [articles.id],
+    }),
+    user: one(user, {
+      fields: [articleBookmarks.userId],
+      references: [user.id],
+    }),
+  })
+);
+
+export const articleSharesRelations = relations(articleShares, ({ one }) => ({
+  article: one(articles, {
+    fields: [articleShares.articleId],
+    references: [articles.id],
+  }),
+  user: one(user, {
+    fields: [articleShares.userId],
+    references: [user.id],
   }),
 }));

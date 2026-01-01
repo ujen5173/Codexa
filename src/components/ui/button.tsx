@@ -17,6 +17,8 @@ const buttonVariants = cva(
           "bg-secondary border border-border text-secondary-foreground hover:bg-secondary/80",
         ghost:
           "hover:bg-accent border border-transparent hover:border-primary/70 hover:text-accent-foreground",
+        'ghost-outline':
+          "hover:bg-accent border border-transparent hover:border-border hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         dark: "bg-slate-900 text-white hover:bg-slate-800",
       },
@@ -86,7 +88,7 @@ const Button = React.forwardRef<
       effect,
       size,
       icon: Icon,
-      iconStyle,
+      iconStyle = "size-4",
       iconPlacement = "left",
       asChild = false,
       ...props

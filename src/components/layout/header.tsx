@@ -1,3 +1,4 @@
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import { TextLoop } from "components/motion-primitives/text-loop";
 import {
   Bell,
@@ -23,17 +24,26 @@ const SEARCH_PLACEHOLDERS = [
   "Search wisdom gained from mistakes",
 ];
 
+const DONT_SHOW_HEADER = [""];
+
 const Header = () => {
   const [blur, setBlur] = useState(false);
+  const navigate = useNavigate();
+  const router = useRouter();
+
+  if (DONT_SHOW_HEADER.includes(router.latestLocation.href)) {
+    navigate({ to: "/" });
+    return null;
+  }
 
   return (
     <header className="w-full border-b border-border shadow-sm bg-white">
-      <nav className="flex container mx-auto items-center justify-between gap-4 px-4 py-4">
+      <nav className="flex max-w-385 mx-auto items-center justify-between gap-4 px-4 py-4">
         <div className="flex items-center gap-4">
           <Logo />
           <div className="flex items-center gap-2">
             <Button variant={"outline"}>My Feed</Button>
-            <Button iconPlacement="right" variant={"ghost"} icon={Sparkles}>
+            <Button iconPlacement="right" variant={"link"} icon={Sparkles}>
               Rix
             </Button>
           </div>

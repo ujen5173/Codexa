@@ -9,17 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as OnboardRouteImport } from './routes/onboard'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as NewRouteImport } from './routes/new'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ChangelogRouteImport } from './routes/changelog'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/_app'
+import { Route as OnboardRouteRouteImport } from './routes/onboard/route'
+import { Route as OnboardIndexRouteImport } from './routes/onboard/index'
+import { Route as AppIndexRouteImport } from './routes/_app.index'
 import { Route as TSlugRouteImport } from './routes/t.$slug'
+import { Route as PostSlugRouteImport } from './routes/post.$slug'
+import { Route as AppExploreRouteImport } from './routes/_app.explore'
+import { Route as AppBookmarksRouteImport } from './routes/_app.bookmarks'
 import { Route as ApiTrpcSplatRouteImport } from './routes/api.trpc.$'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as OnboardBlogSetupChar123RedirectChar125RouteImport } from './routes/onboard/blog.setup.{-$redirect}'
 
-const OnboardRoute = OnboardRouteImport.update({
-  id: '/onboard',
-  path: '/onboard',
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewRoute = NewRouteImport.update({
+  id: '/new',
+  path: '/new',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -32,15 +51,44 @@ const ChangelogRoute = ChangelogRouteImport.update({
   path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardRouteRoute = OnboardRouteRouteImport.update({
+  id: '/onboard',
+  path: '/onboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardIndexRoute = OnboardIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => OnboardRouteRoute,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
 } as any)
 const TSlugRoute = TSlugRouteImport.update({
   id: '/t/$slug',
   path: '/t/$slug',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PostSlugRoute = PostSlugRouteImport.update({
+  id: '/post/$slug',
+  path: '/post/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppExploreRoute = AppExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBookmarksRoute = AppBookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => AppRoute,
 } as any)
 const ApiTrpcSplatRoute = ApiTrpcSplatRouteImport.update({
   id: '/api/trpc/$',
@@ -52,70 +100,128 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnboardBlogSetupChar123RedirectChar125Route =
+  OnboardBlogSetupChar123RedirectChar125RouteImport.update({
+    id: '/blog/setup/{-$redirect}',
+    path: '/blog/setup/{-$redirect}',
+    getParentRoute: () => OnboardRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/onboard': typeof OnboardRouteRouteWithChildren
   '/changelog': typeof ChangelogRoute
   '/dashboard': typeof DashboardRoute
-  '/onboard': typeof OnboardRoute
+  '/new': typeof NewRoute
+  '/notifications': typeof NotificationsRoute
+  '/pricing': typeof PricingRoute
+  '/bookmarks': typeof AppBookmarksRoute
+  '/explore': typeof AppExploreRoute
+  '/post/$slug': typeof PostSlugRoute
   '/t/$slug': typeof TSlugRoute
+  '/': typeof AppIndexRoute
+  '/onboard/': typeof OnboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/onboard/blog/setup/{-$redirect}': typeof OnboardBlogSetupChar123RedirectChar125Route
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/changelog': typeof ChangelogRoute
   '/dashboard': typeof DashboardRoute
-  '/onboard': typeof OnboardRoute
+  '/new': typeof NewRoute
+  '/notifications': typeof NotificationsRoute
+  '/pricing': typeof PricingRoute
+  '/bookmarks': typeof AppBookmarksRoute
+  '/explore': typeof AppExploreRoute
+  '/post/$slug': typeof PostSlugRoute
   '/t/$slug': typeof TSlugRoute
+  '/': typeof AppIndexRoute
+  '/onboard': typeof OnboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/onboard/blog/setup/{-$redirect}': typeof OnboardBlogSetupChar123RedirectChar125Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/onboard': typeof OnboardRouteRouteWithChildren
+  '/_app': typeof AppRouteWithChildren
   '/changelog': typeof ChangelogRoute
   '/dashboard': typeof DashboardRoute
-  '/onboard': typeof OnboardRoute
+  '/new': typeof NewRoute
+  '/notifications': typeof NotificationsRoute
+  '/pricing': typeof PricingRoute
+  '/_app/bookmarks': typeof AppBookmarksRoute
+  '/_app/explore': typeof AppExploreRoute
+  '/post/$slug': typeof PostSlugRoute
   '/t/$slug': typeof TSlugRoute
+  '/_app/': typeof AppIndexRoute
+  '/onboard/': typeof OnboardIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/onboard/blog/setup/{-$redirect}': typeof OnboardBlogSetupChar123RedirectChar125Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
+    | '/onboard'
     | '/changelog'
     | '/dashboard'
-    | '/onboard'
+    | '/new'
+    | '/notifications'
+    | '/pricing'
+    | '/bookmarks'
+    | '/explore'
+    | '/post/$slug'
     | '/t/$slug'
+    | '/'
+    | '/onboard/'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/onboard/blog/setup/{-$redirect}'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/changelog'
     | '/dashboard'
-    | '/onboard'
+    | '/new'
+    | '/notifications'
+    | '/pricing'
+    | '/bookmarks'
+    | '/explore'
+    | '/post/$slug'
     | '/t/$slug'
+    | '/'
+    | '/onboard'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/onboard/blog/setup/{-$redirect}'
   id:
     | '__root__'
-    | '/'
+    | '/onboard'
+    | '/_app'
     | '/changelog'
     | '/dashboard'
-    | '/onboard'
+    | '/new'
+    | '/notifications'
+    | '/pricing'
+    | '/_app/bookmarks'
+    | '/_app/explore'
+    | '/post/$slug'
     | '/t/$slug'
+    | '/_app/'
+    | '/onboard/'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/onboard/blog/setup/{-$redirect}'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  OnboardRouteRoute: typeof OnboardRouteRouteWithChildren
+  AppRoute: typeof AppRouteWithChildren
   ChangelogRoute: typeof ChangelogRoute
   DashboardRoute: typeof DashboardRoute
-  OnboardRoute: typeof OnboardRoute
+  NewRoute: typeof NewRoute
+  NotificationsRoute: typeof NotificationsRoute
+  PricingRoute: typeof PricingRoute
+  PostSlugRoute: typeof PostSlugRoute
   TSlugRoute: typeof TSlugRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiTrpcSplatRoute: typeof ApiTrpcSplatRoute
@@ -123,11 +229,25 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/onboard': {
-      id: '/onboard'
-      path: '/onboard'
-      fullPath: '/onboard'
-      preLoaderRoute: typeof OnboardRouteImport
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new': {
+      id: '/new'
+      path: '/new'
+      fullPath: '/new'
+      preLoaderRoute: typeof NewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -144,12 +264,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboard': {
+      id: '/onboard'
+      path: '/onboard'
+      fullPath: '/onboard'
+      preLoaderRoute: typeof OnboardRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboard/': {
+      id: '/onboard/'
+      path: '/'
+      fullPath: '/onboard/'
+      preLoaderRoute: typeof OnboardIndexRouteImport
+      parentRoute: typeof OnboardRouteRoute
+    }
+    '/_app/': {
+      id: '/_app/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
     }
     '/t/$slug': {
       id: '/t/$slug'
@@ -157,6 +298,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/t/$slug'
       preLoaderRoute: typeof TSlugRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/post/$slug': {
+      id: '/post/$slug'
+      path: '/post/$slug'
+      fullPath: '/post/$slug'
+      preLoaderRoute: typeof PostSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/explore': {
+      id: '/_app/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof AppExploreRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/bookmarks': {
+      id: '/_app/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/bookmarks'
+      preLoaderRoute: typeof AppBookmarksRouteImport
+      parentRoute: typeof AppRoute
     }
     '/api/trpc/$': {
       id: '/api/trpc/$'
@@ -172,14 +334,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/onboard/blog/setup/{-$redirect}': {
+      id: '/onboard/blog/setup/{-$redirect}'
+      path: '/blog/setup/{-$redirect}'
+      fullPath: '/onboard/blog/setup/{-$redirect}'
+      preLoaderRoute: typeof OnboardBlogSetupChar123RedirectChar125RouteImport
+      parentRoute: typeof OnboardRouteRoute
+    }
   }
 }
 
+interface OnboardRouteRouteChildren {
+  OnboardIndexRoute: typeof OnboardIndexRoute
+  OnboardBlogSetupChar123RedirectChar125Route: typeof OnboardBlogSetupChar123RedirectChar125Route
+}
+
+const OnboardRouteRouteChildren: OnboardRouteRouteChildren = {
+  OnboardIndexRoute: OnboardIndexRoute,
+  OnboardBlogSetupChar123RedirectChar125Route:
+    OnboardBlogSetupChar123RedirectChar125Route,
+}
+
+const OnboardRouteRouteWithChildren = OnboardRouteRoute._addFileChildren(
+  OnboardRouteRouteChildren,
+)
+
+interface AppRouteChildren {
+  AppBookmarksRoute: typeof AppBookmarksRoute
+  AppExploreRoute: typeof AppExploreRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppBookmarksRoute: AppBookmarksRoute,
+  AppExploreRoute: AppExploreRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  OnboardRouteRoute: OnboardRouteRouteWithChildren,
+  AppRoute: AppRouteWithChildren,
   ChangelogRoute: ChangelogRoute,
   DashboardRoute: DashboardRoute,
-  OnboardRoute: OnboardRoute,
+  NewRoute: NewRoute,
+  NotificationsRoute: NotificationsRoute,
+  PricingRoute: PricingRoute,
+  PostSlugRoute: PostSlugRoute,
   TSlugRoute: TSlugRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiTrpcSplatRoute: ApiTrpcSplatRoute,

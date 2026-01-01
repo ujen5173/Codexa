@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import type { TRPCRouter } from "@/integrations/trpc/router";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import type { QueryClient } from "@tanstack/react-query";
@@ -10,6 +11,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 import appCss from "../styles.css?url";
+import Header from "@/components/layout/header";
 
 interface MyRouterContext {
   queryClient: QueryClient;
@@ -64,6 +66,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <Header />
+        <Toaster />
         {children}
         <TanStackDevtools
           config={{
