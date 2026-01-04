@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   CursorInWindowIcon,
   NoteAddIcon,
@@ -45,35 +45,41 @@ function RouteComponent() {
         </div>
         <Separator />
         <div className="gap-4 grid grid-cols-2 py-6">
-          <div className="bg-white dark:bg-slate-900 shadow-sm p-4 border border-border rounded-xl">
-            <div className="flex justify-between items-center pb-8">
-              <div>
-                <h4 className="font-semibold text-slate-800 dark:text-slate-50 text-base">
-                  Ujen Basi
-                </h4>
-                <h4 className="text-slate-700 dark:text-slate-200 text-sm">
-                  ujen5173.codexa.dev
-                </h4>
+          <Link to="/dashboard/123">
+            <div className="bg-white dark:bg-slate-900 dark:hover:bg-slate-900/70 shadow-sm p-4 border border-border hover:border-primary/60 rounded-xl transition">
+              <div className="flex justify-between items-center pb-8">
+                <div>
+                  <h4 className="font-semibold text-slate-800 dark:text-slate-50 text-base">
+                    Ujen Basi
+                  </h4>
+                  <h4 className="text-slate-700 dark:text-slate-200 text-sm">
+                    ujen5173.codexa.dev
+                  </h4>
+                </div>
+                <div className="bg-white dark:bg-slate-800 p-3 border border-slate-300 dark:border-slate-600 rounded-md">
+                  <CursorInWindowIcon className="text-slate-700 dark:text-slate-300" />
+                </div>
               </div>
-              <div className="bg-white dark:bg-slate-800 p-3 border border-slate-300 dark:border-slate-600 rounded-md">
-                <CursorInWindowIcon className="text-slate-700 dark:text-slate-300" />
+              <Separator />
+              <div className="flex justify-between items-center gap-4 pt-3">
+                <div className="flex items-center gap-2">
+                  <Button size="sm" variant={"outline"} icon={PropertyEditIcon}>
+                    Editor
+                  </Button>
+                  <Button size="sm" variant={"ghost"} icon={Settings01Icon}>
+                    Dashboard
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    size="icon"
+                    variant={"link"}
+                    icon={ExternalLinkIcon}
+                  />
+                </div>
               </div>
             </div>
-            <Separator />
-            <div className="flex justify-between items-center gap-4 pt-3">
-              <div className="flex items-center gap-2">
-                <Button size="sm" variant={"outline"} icon={PropertyEditIcon}>
-                  Editor
-                </Button>
-                <Button size="sm" variant={"ghost"} icon={Settings01Icon}>
-                  Dashboard
-                </Button>
-              </div>
-              <div>
-                <Button size="icon" variant={"link"} icon={ExternalLinkIcon} />
-              </div>
-            </div>
-          </div>
+          </Link>
         </div>
       </div>
     </main>

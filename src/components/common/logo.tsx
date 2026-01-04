@@ -23,6 +23,7 @@ type PROPS = {
   withDot?: boolean;
   onlyIcon?: boolean;
   color?: string;
+  iconStyle?: string;
 };
 
 const Logo = ({
@@ -30,13 +31,14 @@ const Logo = ({
   withDot = false,
   onlyIcon = false,
   color,
+  iconStyle = "fill-primary",
 }: PROPS) => {
   return (
     <div>
       <Link to="/" className="outline-none">
         <div className="flex items-center gap-2 select-none">
           <Img
-            className="object-cover select-none"
+            className={cn("object-cover select-none", iconStyle)}
             src="/logo.svg"
             alt="Codexa logo"
             draggable={false}

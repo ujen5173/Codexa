@@ -1,3 +1,4 @@
+import { UserSettingsSidebar } from "@/components/layout/settings-sidebar/user-settings-sidebar";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/settings/_base")({
@@ -6,11 +7,11 @@ export const Route = createFileRoute("/settings/_base")({
 
 function RouteComponent() {
   return (
-    <section className="w-full">
-      <main>
-        Base layout
+    <div className="flex bg-white dark:bg-slate-950">
+      <UserSettingsSidebar />
+      <main className="flex-1 w-full overflow-y-auto">
         <Outlet />
       </main>
-    </section>
+    </div>
   );
 }

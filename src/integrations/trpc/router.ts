@@ -1,11 +1,11 @@
 import { db } from '@/db'
 import {
-    articleBookmarks,
-    articleComments,
-    articleLikes,
-    articles,
-    articleShares,
-    articleTags, user
+  articleBookmarks,
+  articleComments,
+  articleLikes,
+  articles,
+  articleShares,
+  articleTags, user
 } from '@/db/schema'
 import { and, desc, eq, inArray, ne, sql } from 'drizzle-orm'
 import { nanoid } from 'nanoid'

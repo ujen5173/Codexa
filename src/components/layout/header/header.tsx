@@ -1,15 +1,15 @@
 import { TextLoop } from "@/components/motion-primitives/text-loop";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Moon02Icon, PencilEdit01Icon, Sun03Icon } from "hugeicons-react";
 import { Bell, GitBranch, Search, Sparkles } from "lucide-react";
 import { useState } from "react";
-import Logo from "../common/logo";
-import UserDropDown from "../common/user-drop-down";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Kbd } from "../ui/kbd";
-import { useTheme } from "./theme-provider";
+import Logo from "../../common/logo";
+import UserDropDown from "../../common/user-drop-down";
+import { Button } from "../../ui/button";
+import { Input } from "../../ui/input";
+import { Kbd } from "../../ui/kbd";
+import { useTheme } from "../theme-provider";
 
 const SEARCH_PLACEHOLDERS = [
   "Search bugs, blogs, and battle scars",
@@ -23,12 +23,14 @@ const SEARCH_PLACEHOLDERS = [
 const DONT_SHOW_HEADER = [
   /^\/u\/@[a-zA-Z0-9]+\/[a-zA-Z0-9]+$/, // blog article page
   /^\/onboard$/, // onboard page
-  /^\/dashboard\/[a-zA-Z0-9_-]+$/, // dashboard/[slug]
+  /^\/dashboard\/[a-zA-Z0-9_-]+(\/.*)?$/,
 ];
 
 const Header = () => {
   const [blur, setBlur] = useState(false);
   const router = useRouter();
+  const [q, setQ] = useState("");
+  const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
 
   const pathname = router.latestLocation.pathname;
@@ -36,6 +38,13 @@ const Header = () => {
   if (DONT_SHOW_HEADER.some((regex) => regex.test(pathname))) {
     return null;
   }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate({
+      to: `/search?query=${encodeURIComponent(q)}`,
+    });
+  };
 
   return (
     <header className="relative bg-white dark:bg-slate-900 shadow-sm border-border border-b w-full">
@@ -51,17 +60,20 @@ const Header = () => {
         </div>
         <div className="flex flex-1 items-center gap-2">
           <div className="relative flex-1">
-            <Input
-              icon={Search}
-              onChange={(e) => {
-                const txt = e.target.value;
-                if (txt !== "") setBlur(true);
-                if (txt === "") setBlur(false);
-              }}
-              iconPlacement="left"
-              className="z-5 relative"
-              iconStyle="size-4 text-muted-foreground"
-            />
+            <form onSubmit={handleSubmit}>
+              <Input
+                icon={Search}
+                onChange={(e) => {
+                  const txt = e.target.value;
+                  setQ(txt);
+                  if (txt !== "") setBlur(true);
+                  if (txt === "") setBlur(false);
+                }}
+                iconPlacement="left"
+                className="z-5 relative"
+                iconStyle="size-4 text-muted-foreground"
+              />
+            </form>
             {!blur && (
               <div className="top-2.5 left-[2.55rem] z-0 absolute text-slate-500 dark:text-white text-sm">
                 <div className="inline-flex text-sm whitespace-pre-wrap">
@@ -112,7 +124,9 @@ const Header = () => {
               </Kbd>
             </div>
           </div>
-          <Button icon={PencilEdit01Icon}>Write</Button>
+          <Link to="/new">
+            <Button icon={PencilEdit01Icon}>Write</Button>
+          </Link>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center">

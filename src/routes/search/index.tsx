@@ -66,13 +66,13 @@ function RouteComponent() {
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-2">
                         {article.tags.map((tag) => (
-                          <Link to={`/t/${tag}`}>
+                          <Link to={`/t/${tag.slug}`}>
                             <Badge
-                              key={tag}
+                              key={tag.slug}
                               className="bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 px-2.5 py-1 border-transparent text-slate-700 dark:text-slate-300"
                               variant={"outline"}
                             >
-                              {tag}
+                              {tag.title}
                             </Badge>
                           </Link>
                         ))}

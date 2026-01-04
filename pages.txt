@@ -6,13 +6,26 @@
 ✅ u/[username]/index.tsx - Public user profile page
 ✅ 404.tsx - Custom 404 Page Not Founds
 ✅ dashboard - Landing page for all publications created
+✅ settings - User account and preferences settings
 u/[username]/[slug]/index.tsx - Single article public view
 u/[username]/followers.tsx - List of a user's followers
 u/[username]/following.tsx - List of users a person is following
 onboard/blog/setup.tsx - Initial blog setup and configuration
 explore/[[...slug]].tsx - Explore page for browsing topics and articles
 article/[[...params]].tsx - Editor for creating and editing articles
-settings/[[...tab]].tsx - User account and preferences settings
 dev/[username]/index.tsx - User's personal blog homepage (Author Blog)
 dev/[username]/series/[slug].tsx - View for a specific article series on a blog
 [id]/dashboard/[[...dashboard]].tsx - Blog analytics and management dashboard
+
+---
+
+-- Log Sheet --
+1. Project Preliminary 
+2. wireframe and schema design completed
+3. login notification article module completed
+4. project report and demo mid defense
+5. update project report and demo as per discussion
+6. update project UI and database schema for efficiency and structure
+7. overall CRUD operations through out pages
+8. AI touchups and moderations
+9. Analytics and dashboard modules

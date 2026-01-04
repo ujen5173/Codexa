@@ -1,4 +1,4 @@
-import Header from "@/components/layout/header";
+import Header from "@/components/layout/header/header";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import type { TRPCRouter } from "@/integrations/trpc/router";

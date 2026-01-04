@@ -38,7 +38,7 @@ function RouteComponent() {
           Learn more about your new dashboard and get started
         </p>
       </div>
-      <Separator className="dark:bg-slate-700/50 bg-border" />
+      <Separator />
       <section className="py-6">
         <div className="flex justify-between items-center gap-4 mb-3">
           <p className="font-semibold text-slate-800 dark:text-slate-100">

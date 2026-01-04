@@ -130,9 +130,9 @@ function RouteComponent() {
   });
 
   return (
-    <main className="px-4 py-16 w-full">
+    <main className="py-16 w-full">
       <div className="mx-auto max-w-[900px] font-inter">
-        <div className="flex justify-between items-center gap-4 mb-6">
+        <div className="flex justify-between items-center gap-4 mb-6 px-4">
           <h1 className="font-semibold text-4xl">Notifications</h1>
           <Button icon={CircleCheckBig} variant={"ghost"}>
             Mark all as read
@@ -207,7 +207,7 @@ function RouteComponent() {
             };
 
             return (
-              <div className="flex gap-4 hover:bg-slate-50/50 dark:hover:bg-slate-800/40 py-6 border-slate-100 dark:border-slate-600/60 last:border-0 border-b transition-colors">
+              <div className="flex gap-4 hover:bg-slate-300/50 dark:hover:bg-slate-800/40 px-4 py-6 border-border dark:border-slate-600/60 last:border-0 border-b transition-colors">
                 <div className="mt-1 shrink-0">{getContent("ICON")}</div>
                 <div className="flex flex-col gap-2">
                   <div className="space-y-2">

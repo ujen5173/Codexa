@@ -13,12 +13,8 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
-// ============================================================================
-// ENUMS
-// ============================================================================
 
-export const userRoleEnum = pgEnum("user_role", ["admin", "user", "moderator"]);
-export const articleStatusEnum = pgEnum("article_status", [
+ export const articleStatusEnum = pgEnum("article_status", [
   "draft",
   "published",
   "scheduled",
@@ -35,43 +31,27 @@ export const subscriptionStatusEnum = pgEnum("subscription_status", [
   "expired",
   "pending",
 ]);
-export const reportStatusEnum = pgEnum("report_status", [
-  "pending",
-  "reviewed",
-  "resolved",
-  "dismissed",
-]);
-export const reportTypeEnum = pgEnum("report_type", [
-  "spam",
-  "inappropriate",
-  "plagiarism",
-  "misinformation",
-  "other",
-]);
 export const notificationTypeEnum = pgEnum("notification_type", [
   "comment_reply",
-  "article_liked",
+  "liked",
   "user_followed",
   "new_follower_article",
   "comment_liked",
   "collaboration_invite",
 ]);
 
-// ============================================================================
-// AUTHENTICATION (Better Auth)
-// ============================================================================
 
 export const user = pgTable(
   "user",
   {
     id: text("id").primaryKey(),
     name: text("name").notNull(),
+    username: text("username").unique(),
     email: text("email").notNull().unique(),
     emailVerified: boolean("email_verified").default(false).notNull(),
     image: text("image"),
     bio: text("bio"),
     website: text("website"),
-    role: userRoleEnum("role").default("user"),
     isActive: boolean("is_active").default(true),
     totalArticles: integer("total_articles").default(0),
     totalViews: integer("total_views").default(0),
@@ -153,9 +133,55 @@ export const verification = pgTable(
   (table) => [index("verification_identifier_idx").on(table.identifier)]
 );
 
-// ============================================================================
-// ARTICLES & CONTENT
-// ============================================================================
+
+export const publications = pgTable(
+  "publications",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    description: text("description"),
+    slug: text("slug").notNull().unique(),
+    logo: text("logo"),
+    socialProfiles: jsonb("social_profiles").$type<{
+      github?: string;
+      twitter?: string;
+      linkedin?: string;
+      devto?: string;
+      website?: string;
+    }>(),
+    appearance: jsonb("appearance").$type<{
+      layout?: string;
+      logoLight?: string;
+      logoDark?: string;
+      favicon?: string;
+      headerColor?: string;
+      showReadTime?: boolean;
+      useDefaultBlogTheme?: boolean;
+      showArticleViews?: boolean;
+      enableSubscribePrompt?: boolean;
+      enableFollowPrompt?: boolean;
+    }>(),
+    navbar: jsonb("navbar").$type<
+      {
+        label: string;
+        type: "link";
+        value: string;
+      }[]
+    >(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [
+    index("publications_user_id_idx").on(table.userId),
+    index("publications_slug_idx").on(table.slug),
+  ]
+);
 
 export const articles = pgTable(
   "articles",
@@ -164,6 +190,9 @@ export const articles = pgTable(
     authorId: text("author_id")
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
+    publicationId: text("publication_id")
+      .notNull()
+      .references(() => publications.id, { onDelete: "cascade" }),
     title: text("title").notNull(),
     slug: text("slug").notNull().unique(),
     description: text("description"),
@@ -189,6 +218,7 @@ export const articles = pgTable(
   },
   (table) => [
     index("articles_author_id_idx").on(table.authorId),
+    index("articles_publication_id_idx").on(table.publicationId),
     index("articles_slug_idx").on(table.slug),
     index("articles_status_idx").on(table.status),
     index("articles_published_at_idx").on(table.publishedAt),
@@ -198,7 +228,7 @@ export const articles = pgTable(
 );
 
 export const articleSeries = pgTable(
-  "article_series",
+  "series",
   {
     id: text("id").primaryKey(),
     title: text("title").notNull(),
@@ -207,6 +237,9 @@ export const articleSeries = pgTable(
     authorId: text("author_id")
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
+    publicationId: text("publication_id")
+      .notNull()
+      .references(() => publications.id, { onDelete: "cascade" }),
     thumbnail: text("thumbnail"),
     articleCount: integer("article_count").default(0),
     viewCount: integer("view_count").default(0),
@@ -218,12 +251,13 @@ export const articleSeries = pgTable(
   },
   (table) => [
     index("article_series_author_id_idx").on(table.authorId),
+    index("article_series_publication_id_idx").on(table.publicationId),
     index("article_series_slug_idx").on(table.slug),
   ]
 );
 
 export const articleSeriesItems = pgTable(
-  "article_series_items",
+  "series_items",
   {
     id: text("id").primaryKey(),
     seriesId: text("series_id")
@@ -251,9 +285,7 @@ export const tags = pgTable(
     id: text("id").primaryKey(),
     name: text("name").notNull(),
     slug: text("slug").notNull().unique(),
-    description: text("description"),
     articleCount: integer("article_count").default(0),
-    color: varchar("color", { length: 20 }).default("#6B7280"),
     createdAt: timestamp("created_at").defaultNow().notNull(),
   },
   (table) => [
@@ -282,14 +314,10 @@ export const articleTags = pgTable(
       table.tagId
     ),
   ]
-);
-
-// ============================================================================
-// ENGAGEMENT
-// ============================================================================
+); 
 
 export const articleLikes = pgTable(
-  "article_likes",
+  "likes",
   {
     id: text("id").primaryKey(),
     articleId: text("article_id")
@@ -311,7 +339,7 @@ export const articleLikes = pgTable(
 );
 
 export const articleComments = pgTable(
-  "article_likes",
+  "comments",
   {
     id: text("id").primaryKey(),
     articleId: text("article_id")
@@ -340,8 +368,30 @@ export const articleComments = pgTable(
   ]
 );
 
+export const articleCommentLikes = pgTable(
+  "comment_likes",
+  {
+    id: text("id").primaryKey(),
+    commentId: text("comment_id")
+      .notNull()
+      .references(() => articleComments.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("article_comment_likes_comment_id_idx").on(table.commentId),
+    index("article_comment_likes_user_id_idx").on(table.userId),
+    uniqueIndex("article_comment_likes_comment_user_idx").on(
+      table.commentId,
+      table.userId
+    ),
+  ]
+);
+
 export const articleReadings = pgTable(
-  "article_readings",
+  "readings",
   {
     id: text("id").primaryKey(),
     articleId: text("article_id")
@@ -351,6 +401,8 @@ export const articleReadings = pgTable(
     sessionId: text("session_id"),
     scrollDepth: integer("scroll_depth").default(0),
     timeSpent: integer("time_spent").default(0),
+    // Caculated by user activity like: like, comment, share, bookmark, copy paste, etc.
+    engagementScore: integer("engagement_score").default(0),
     isCompleted: boolean("is_completed").default(false),
     userAgent: text("user_agent"),
     ipAddress: text("ip_address"),
@@ -364,7 +416,7 @@ export const articleReadings = pgTable(
 );
 
 export const articleBookmarks = pgTable(
-  "article_bookmarks",
+  "bookmarks",
   {
     id: text("id").primaryKey(),
     articleId: text("article_id")
@@ -386,7 +438,7 @@ export const articleBookmarks = pgTable(
 );
 
 export const articleShares = pgTable(
-  "article_shares",
+  "shares",
   {
     id: text("id").primaryKey(),
     articleId: text("article_id")
@@ -424,10 +476,6 @@ export const userFollows = pgTable(
   ]
 );
 
-// ============================================================================
-// GAMIFICATION & ACHIEVEMENTS
-// ============================================================================
-
 export const achievements = pgTable(
   "achievements",
   {
@@ -436,6 +484,19 @@ export const achievements = pgTable(
     slug: text("slug").notNull().unique(),
     description: text("description"),
     icon: text("icon"),
+    // contidions:
+    // {
+    //   type: "points",
+    //   value: 100,
+    // }
+    // {
+    //   type: "articles",
+    //   value: 10,
+    // }
+    // {
+    //   type: "engagement",
+    //   value: 10,
+    // }    
     condition: jsonb("condition"),
     createdAt: timestamp("created_at").defaultNow().notNull(),
   },
@@ -464,9 +525,6 @@ export const userAchievements = pgTable(
   ]
 );
 
-// ============================================================================
-// PAYMENTS & SUBSCRIPTIONS
-// ============================================================================
 
 export const subscriptions = pgTable(
   "subscriptions",
@@ -524,35 +582,6 @@ export const payments = pgTable(
   ]
 );
 
-// ============================================================================
-// COLLABORATION & ACTIVITY
-// ============================================================================
-
-export const articleCollaborators = pgTable(
-  "article_collaborators",
-  {
-    id: text("id").primaryKey(),
-    articleId: text("article_id")
-      .notNull()
-      .references(() => articles.id, { onDelete: "cascade" }),
-    userId: text("user_id")
-      .notNull()
-      .references(() => user.id, { onDelete: "cascade" }),
-    role: varchar("role", { length: 50 }).default("editor"),
-    invitedAt: timestamp("invited_at").defaultNow().notNull(),
-    acceptedAt: timestamp("accepted_at"),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-  },
-  (table) => [
-    index("article_collaborators_article_id_idx").on(table.articleId),
-    index("article_collaborators_user_id_idx").on(table.userId),
-    uniqueIndex("article_collaborators_article_user_idx").on(
-      table.articleId,
-      table.userId
-    ),
-  ]
-);
-
 export const userActivity = pgTable(
   "user_activity",
   {
@@ -573,48 +602,6 @@ export const userActivity = pgTable(
     index("user_activity_created_at_idx").on(table.createdAt),
   ]
 );
-
-// ============================================================================
-// REPORTING & MODERATION
-// ============================================================================
-
-export const reports = pgTable(
-  "reports",
-  {
-    id: text("id").primaryKey(),
-    reportedByUserId: text("reported_by_user_id")
-      .notNull()
-      .references(() => user.id, { onDelete: "cascade" }),
-    reportType: reportTypeEnum("report_type").notNull(),
-    articleId: text("article_id").references(() => articles.id, {
-      onDelete: "cascade",
-    }),
-    commentId: text("comment_id").references(() => articleComments.id, {
-      onDelete: "cascade",
-    }),
-    description: text("description").notNull(),
-    status: reportStatusEnum("status").default("pending"),
-    reviewedByUserId: text("reviewed_by_user_id").references(() => user.id, {
-      onDelete: "set null",
-    }),
-    reviewNotes: text("review_notes"),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-    updatedAt: timestamp("updated_at")
-      .defaultNow()
-      .$onUpdate(() => new Date())
-      .notNull(),
-  },
-  (table) => [
-    index("reports_reported_by_user_id_idx").on(table.reportedByUserId),
-    index("reports_article_id_idx").on(table.articleId),
-    index("reports_comment_id_idx").on(table.commentId),
-    index("reports_status_idx").on(table.status),
-  ]
-);
-
-// ============================================================================
-// NOTIFICATIONS
-// ============================================================================
 
 export const notifications = pgTable(
   "notifications",
@@ -646,13 +633,11 @@ export const notifications = pgTable(
   ]
 );
 
-// ============================================================================
-// RELATIONS
-// ============================================================================
 
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),
+  publications: many(publications),
   articles: many(articles),
   series: many(articleSeries),
   likes: many(articleLikes),
@@ -665,12 +650,9 @@ export const userRelations = relations(user, ({ many }) => ({
   achievements: many(userAchievements),
   subscriptions: many(subscriptions),
   payments: many(payments),
-  collaborations: many(articleCollaborators),
   activity: many(userActivity),
   notifications: many(notifications),
-  reportsCreated: many(reports, { relationName: "reportedByUser" }),
-  reportsReviewed: many(reports, { relationName: "reviewedByUser" }),
-}));
+ }));
 
 export const sessionRelations = relations(session, ({ one }) => ({
   user: one(user, {
@@ -686,10 +668,26 @@ export const accountRelations = relations(account, ({ one }) => ({
   }),
 }));
 
+export const publicationsRelations = relations(
+  publications,
+  ({ one, many }) => ({
+    owner: one(user, {
+      fields: [publications.userId],
+      references: [user.id],
+    }),
+    articles: many(articles),
+    series: many(articleSeries),
+  })
+);
+
 export const articlesRelations = relations(articles, ({ many, one }) => ({
   author: one(user, {
     fields: [articles.authorId],
     references: [user.id],
+  }),
+  publication: one(publications, {
+    fields: [articles.publicationId],
+    references: [publications.id],
   }),
   tags: many(articleTags),
   likes: many(articleLikes),
@@ -698,9 +696,7 @@ export const articlesRelations = relations(articles, ({ many, one }) => ({
   bookmarks: many(articleBookmarks),
   shares: many(articleShares),
   seriesItems: many(articleSeriesItems),
-  collaborators: many(articleCollaborators),
   activity: many(userActivity),
-  reports: many(reports),
   notifications: many(notifications),
 }));
 
@@ -710,6 +706,10 @@ export const articleSeriesRelations = relations(
     author: one(user, {
       fields: [articleSeries.authorId],
       references: [user.id],
+    }),
+    publication: one(publications, {
+      fields: [articleSeries.publicationId],
+      references: [publications.id],
     }),
     items: many(articleSeriesItems),
   })
@@ -772,7 +772,6 @@ export const articleCommentsRelations = relations(
       relationName: "replies",
     }),
     replies: many(articleComments, { relationName: "replies" }),
-    reports: many(reports),
     notifications: many(notifications),
   })
 );
@@ -842,21 +841,7 @@ export const paymentsRelations = relations(payments, ({ one }) => ({
     fields: [payments.userId],
     references: [user.id],
   }),
-}));
-
-export const articleCollaboratorsRelations = relations(
-  articleCollaborators,
-  ({ one }) => ({
-    article: one(articles, {
-      fields: [articleCollaborators.articleId],
-      references: [articles.id],
-    }),
-    user: one(user, {
-      fields: [articleCollaborators.userId],
-      references: [user.id],
-    }),
-  })
-);
+})); 
 
 export const userActivityRelations = relations(userActivity, ({ one }) => ({
   user: one(user, {
@@ -868,28 +853,7 @@ export const userActivityRelations = relations(userActivity, ({ one }) => ({
     references: [articles.id],
   }),
 }));
-
-export const reportsRelations = relations(reports, ({ one, many }) => ({
-  reportedByUser: one(user, {
-    fields: [reports.reportedByUserId],
-    references: [user.id],
-    relationName: "reportedByUser",
-  }),
-  reviewedByUser: one(user, {
-    fields: [reports.reviewedByUserId],
-    references: [user.id],
-    relationName: "reviewedByUser",
-  }),
-  article: one(articles, {
-    fields: [reports.articleId],
-    references: [articles.id],
-  }),
-  comment: one(articleComments, {
-    fields: [reports.commentId],
-    references: [articleComments.id],
-  }),
-}));
-
+ 
 export const notificationsRelations = relations(notifications, ({ one }) => ({
   user: one(user, {
     fields: [notifications.userId],
@@ -933,3 +897,17 @@ export const articleSharesRelations = relations(articleShares, ({ one }) => ({
     references: [user.id],
   }),
 }));
+
+export const articleCommentLikesRelations = relations(
+  articleCommentLikes,
+  ({ one }) => ({
+    comment: one(articleComments, {
+      fields: [articleCommentLikes.commentId],
+      references: [articleComments.id],
+    }),
+    user: one(user, {
+      fields: [articleCommentLikes.userId],
+      references: [user.id],
+    }),
+  })
+); 

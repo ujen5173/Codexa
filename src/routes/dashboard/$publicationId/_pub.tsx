@@ -1,3 +1,4 @@
+import DashboardHeader from "@/components/layout/header/dashboard-header";
 import { SettingsSidebar } from "@/components/layout/settings-sidebar/side-bar";
 import {
   Breadcrumb,
@@ -28,28 +29,32 @@ function RouteComponent() {
     )?.label ?? "Overview";
 
   return (
-    <main className="flex bg-white dark:bg-slate-950 min-h-screen">
-      <SettingsSidebar />
+    <>
+      <DashboardHeader />
 
-      <section className="flex-1 p-4">
-        <div>
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link to="/">Dashboard</Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{pathname}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
+      <main className="flex bg-white dark:bg-slate-950 min-h-screen font-inter">
+        <SettingsSidebar />
 
-        <Outlet />
-      </section>
-    </main>
+        <section className="flex-1 p-4">
+          <div>
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{pathname}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+
+          <Outlet />
+        </section>
+      </main>
+    </>
   );
 }
