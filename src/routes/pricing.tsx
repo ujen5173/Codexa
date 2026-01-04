@@ -141,35 +141,35 @@ const comparisonFeatures = [
 
 function PricingPage() {
   return (
-    <div className="min-h-screen font-inter bg-white">
-      <section className="pt-16 pb-12 sm:px-6 lg:px-8 border-b border-border bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-300 gap-20 px-4 mx-auto flex items-end">
+    <div className="bg-background min-h-screen font-inter">
+      <section className="bg-gradient-to-b from-background to-muted sm:px-6 lg:px-8 pt-16 pb-12 border-border border-b">
+        <div className="flex items-end gap-20 mx-auto px-4 max-w-300">
           <div className="flex flex-5">
-            <div className="max-w-3xl mx-auto mb-8">
+            <div className="mx-auto mb-8 max-w-3xl">
               <div className="flex items-center gap-1 mb-4">
-                <BadgeDollarSign className="size-4 text-slate-600" />
-                <span className="text-sm text-slate-600">Pricing</span>
+                <BadgeDollarSign className="size-4 text-muted-foreground" />
+                <span className="text-muted-foreground text-sm">Pricing</span>
               </div>
-              <h1 className="text-5xl max-w-md font-bold text-slate-900 mb-8">
+              <h1 className="mb-8 max-w-md font-bold text-foreground text-5xl">
                 Find the plan that suits your needs.
               </h1>
               <div className="flex items-center mb-8">
-                <div className="p-1 rounded-full border border-border shadow-sm bg-white">
+                <div className="bg-background shadow-sm p-1 border border-border rounded-full">
                   <div
                     className={cn(
                       buttonVariants({
                         variant: "secondary",
                       }),
-                      "bg-slate-900 cursor-text text-white rounded-full px-6 py-1 h-9 font-medium"
+                      "bg-foreground cursor-text text-background rounded-full px-6 py-1 h-9 font-medium"
                     )}
                   >
                     Blogs by Codexa
                   </div>
                 </div>
               </div>
-              <p className="text-lg font-medium text-slate-600">
+              <p className="font-medium text-muted-foreground text-lg">
                 Choose the perfect plan to build your{" "}
-                <span className="font-semibold text-slate-800">
+                <span className="font-semibold text-foreground">
                   Blogs on Codexa
                 </span>
                 . <br />
@@ -188,9 +188,9 @@ function PricingPage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="px-4 sm:px-6 lg:px-8 py-12">
+        <div className="mx-auto max-w-6xl">
+          <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {pricingTiers.map((tier, idx) => {
               const Icon = tier.icon;
               return (
@@ -200,31 +200,35 @@ function PricingPage() {
                   ${tier.popular && "border-primary/50 shadow-md"}
                   `}
                 >
-                  <div className="relative bg-zinc-100/50 p-6 rounded-2xl mb-6">
+                  <div className="relative bg-muted/50 mb-6 p-6 rounded-2xl">
                     {tier.popular && (
-                      <Badge className="absolute top-2 right-2 bg-primary/10 border border-primary/30 text-primary">
+                      <Badge className="top-2 right-2 absolute bg-primary/10 border border-primary/30 text-primary">
                         Most popular
                       </Badge>
                     )}
                     <div className="mb-6">
                       <div
                         className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
-                          tier.popular ? "bg-purple-100" : "bg-white"
+                          tier.popular
+                            ? "bg-purple-100 dark:bg-purple-950/50"
+                            : "bg-card"
                         }`}
                       >
                         <Icon
                           className={
-                            tier.popular ? "text-purple-600" : "text-slate-600"
+                            tier.popular
+                              ? "text-purple-600 dark:text-purple-400"
+                              : "text-muted-foreground"
                           }
                           size={24}
                         />
                       </div>
                       <h3
-                        className={`text-2xl font-bold mb-2 ${"text-slate-900"}`}
+                        className={`text-2xl font-bold mb-2 ${"text-foreground"}`}
                       >
                         {tier.name}
                       </h3>
-                      <p className={`text-sm ${"text-slate-600"}`}>
+                      <p className={`text-sm ${"text-muted-foreground"}`}>
                         {tier.subtitle}
                       </p>
                     </div>
@@ -232,12 +236,14 @@ function PricingPage() {
                     <div className="mb-6">
                       <div className="flex items-baseline gap-1">
                         <span
-                          className={`text-5xl font-bold ${"text-slate-900"}`}
+                          className={`text-5xl font-bold ${"text-foreground"}`}
                         >
                           {tier.price}
                         </span>
                         {tier.period && (
-                          <span className={`text-lg ${"text-slate-600"}`}>
+                          <span
+                            className={`text-lg ${"text-muted-foreground"}`}
+                          >
                             {tier.period}
                           </span>
                         )}
@@ -253,15 +259,15 @@ function PricingPage() {
                     >
                       {tier.cta}
                       <ArrowRight
-                        className="ml-2 group-hover:translate-x-1 transition-transform"
+                        className="ml-2 transition-transform group-hover:translate-x-1"
                         size={18}
                       />
                     </Button>
                   </div>
 
-                  <div className="px-4 mb-6">
+                  <div className="mb-6 px-4">
                     <h4
-                      className={`text-sm font-semibold mb-4 ${"text-slate-700"}`}
+                      className={`text-sm font-semibold mb-4 ${"text-foreground"}`}
                     >
                       {tier.featuresTitle}
                     </h4>
@@ -269,10 +275,10 @@ function PricingPage() {
                       {tier.features.map((feature, featureIdx) => (
                         <li key={featureIdx} className="flex items-start gap-3">
                           <CheckmarkCircle03Icon
-                            className={`flex-shrink-0 mt-0.5 ${"text-green-600"}`}
+                            className={`flex-shrink-0 mt-0.5 ${"text-success"}`}
                             size={18}
                           />
-                          <span className={`text-sm ${"text-slate-700"}`}>
+                          <span className={`text-sm ${"text-foreground"}`}>
                             {feature}
                           </span>
                         </li>
@@ -286,34 +292,45 @@ function PricingPage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+      <section className="bg-background px-4 sm:px-6 lg:px-8 py-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-bold text-foreground text-3xl sm:text-4xl">
               Compare plans
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-muted-foreground text-lg">
               See what's included in each plan and find the right fit for you.
             </p>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse border border-slate-200 rounded-xl">
+            <table className="border border-border rounded-xl w-full border-collapse">
               <thead>
-                <tr className="border-b border-slate-200">
-                  <th className="text-left py-4 px-6 font-semibold text-slate-900">
+                <tr className="border-border border-b">
+                  <th className="px-6 py-4 font-semibold text-foreground text-left"></th>
+                  <th className="px-6 py-6 text-center">
+                    <div className="mb-1 font-bold text-foreground text-lg">
+                      Free
+                    </div>
+                    <div className="text-muted-foreground text-sm">
+                      For individuals
+                    </div>
                   </th>
-                  <th className="text-center py-6 px-6">
-                    <div className="font-bold text-slate-900 text-lg mb-1">Free</div>
-                    <div className="text-sm text-slate-600">For individuals</div>
+                  <th className="bg-primary/5 px-6 py-6 text-center">
+                    <div className="mb-1 font-bold text-foreground text-lg">
+                      Startup
+                    </div>
+                    <div className="text-muted-foreground text-sm">
+                      $199/month
+                    </div>
                   </th>
-                  <th className="text-center py-6 px-6 bg-blue-50">
-                    <div className="font-bold text-slate-900 text-lg mb-1">Startup</div>
-                    <div className="text-sm text-slate-600">$199/month</div>
-                  </th>
-                  <th className="text-center py-6 px-6">
-                    <div className="font-bold text-slate-900 text-lg mb-1">Enterprise</div>
-                    <div className="text-sm text-slate-600">Custom pricing</div>
+                  <th className="px-6 py-6 text-center">
+                    <div className="mb-1 font-bold text-foreground text-lg">
+                      Enterprise
+                    </div>
+                    <div className="text-muted-foreground text-sm">
+                      Custom pricing
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -323,7 +340,7 @@ function PricingPage() {
                     <tr key={`category-${categoryIdx}`}>
                       <td
                         colSpan={4}
-                        className="py-3 px-6 font-medium text-slate-700 bg-slate-50/50 text-xs"
+                        className="bg-muted/50 px-6 py-3 font-medium text-foreground text-xs"
                       >
                         {category.category}
                       </td>
@@ -331,19 +348,19 @@ function PricingPage() {
                     {category.features.map((feature, featureIdx) => (
                       <tr
                         key={`feature-${categoryIdx}-${featureIdx}`}
-                        className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
+                        className="hover:bg-muted/30 border-border/50 border-b transition-colors"
                       >
-                        <td className="py-4 px-6 text-slate-700">
+                        <td className="px-6 py-4 text-foreground">
                           <div className="flex items-center gap-2">
                             {feature.name}
                             {/* {feature.badge && (
-                              <Badge className="bg-purple-100 text-purple-700 border-purple-200 text-xs">
+                              <Badge className="bg-purple-100 border-purple-200 text-purple-700 text-xs">
                                 {feature.badge}
                               </Badge>
                             )} */}
                           </div>
                         </td>
-                        <td className="py-4 px-6 text-center">
+                        <td className="px-6 py-4 text-center">
                           {typeof feature.free === "boolean" ? (
                             feature.free ? (
                               <Check
@@ -351,15 +368,17 @@ function PricingPage() {
                                 size={20}
                               />
                             ) : (
-                              <span className="inline-block text-slate-400 font-bold">-</span>
+                              <span className="inline-block font-bold text-muted-foreground/50">
+                                -
+                              </span>
                             )
                           ) : (
-                            <span className="text-sm text-slate-700">
+                            <span className="text-foreground text-sm">
                               {feature.free}
                             </span>
                           )}
                         </td>
-                        <td className="py-4 px-6 text-center bg-blue-50">
+                        <td className="bg-primary/5 px-6 py-4 text-center">
                           {typeof feature.startup === "boolean" ? (
                             feature.startup ? (
                               <Check
@@ -367,15 +386,17 @@ function PricingPage() {
                                 size={20}
                               />
                             ) : (
-                              <span className="inline-block text-slate-400 font-bold">-</span>
+                              <span className="inline-block font-bold text-muted-foreground/50">
+                                -
+                              </span>
                             )
                           ) : (
-                            <span className="text-sm text-slate-700">
+                            <span className="text-foreground text-sm">
                               {feature.startup}
                             </span>
                           )}
                         </td>
-                        <td className="py-4 px-6 text-center">
+                        <td className="px-6 py-4 text-center">
                           {typeof feature.enterprise === "boolean" ? (
                             feature.enterprise ? (
                               <Check
@@ -383,10 +404,12 @@ function PricingPage() {
                                 size={20}
                               />
                             ) : (
-                              <span className="inline-block text-slate-400 font-bold">-</span>
+                              <span className="inline-block font-bold text-muted-foreground/50">
+                                -
+                              </span>
                             )
                           ) : (
-                            <span className="text-sm text-slate-700">
+                            <span className="text-foreground text-sm">
                               {feature.enterprise}
                             </span>
                           )}
@@ -401,21 +424,21 @@ function PricingPage() {
         </div>
       </section>
 
-      <footer className="bg-white border-t border-slate-200 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
+      <footer className="bg-background px-4 sm:px-6 lg:px-8 py-12 border-border border-t">
+        <div className="mx-auto max-w-7xl">
+          <div className="gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 mb-12">
             <div className="lg:col-span-2">
               <div className="mb-4">
                 <Logo />
               </div>
-              <p className="text-sm text-slate-600 mb-6 max-w-xs">
+              <p className="mb-6 max-w-xs text-muted-foreground text-sm">
                 Hassle-free blogging platform that developers and teams love.
               </p>
 
               <div className="flex items-center gap-4 mb-4">
                 <a
                   href="#"
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -428,7 +451,7 @@ function PricingPage() {
 
                 <a
                   href="#"
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -440,7 +463,7 @@ function PricingPage() {
                 </a>
                 <a
                   href="#"
-                  className="text-slate-600 hover:text-slate-900 transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -453,9 +476,9 @@ function PricingPage() {
               </div>
 
               <div className="">
-                <div className="flex items-center gap-2 w-fit border border-green-600 px-3 py-1 rounded-md">
-                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  <span className="text-sm text-green-600">
+                <div className="flex items-center gap-2 px-3 py-1 border border-success rounded-md w-fit">
+                  <div className="bg-success rounded-full w-2 h-2"></div>
+                  <span className="text-success text-sm">
                     All services are online
                   </span>
                 </div>
@@ -463,12 +486,12 @@ function PricingPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-900 mb-4">Product</h3>
+              <h3 className="mb-4 font-semibold text-foreground">Product</h3>
               <ul className="space-y-3">
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Blogs by Codexa
                   </a>
@@ -476,7 +499,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Blogs
                   </a>
@@ -484,7 +507,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     AI Markdown Editor
                   </a>
@@ -493,12 +516,12 @@ function PricingPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-900 mb-4">Company</h3>
+              <h3 className="mb-4 font-semibold text-foreground">Company</h3>
               <ul className="space-y-3">
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     About Codexa
                   </a>
@@ -506,7 +529,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Logos and media
                   </a>
@@ -514,7 +537,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Changelog
                   </a>
@@ -522,7 +545,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Feature Requests
                   </a>
@@ -531,12 +554,12 @@ function PricingPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-900 mb-4">Support</h3>
+              <h3 className="mb-4 font-semibold text-foreground">Support</h3>
               <ul className="space-y-3">
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Support docs
                   </a>
@@ -544,7 +567,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Contact
                   </a>
@@ -552,7 +575,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Join discord
                   </a>
@@ -561,12 +584,12 @@ function PricingPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-900 mb-4">Blogs</h3>
+              <h3 className="mb-4 font-semibold text-foreground">Blogs</h3>
               <ul className="space-y-3">
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Official Blog
                   </a>
@@ -574,7 +597,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Engineering Blog
                   </a>
@@ -582,7 +605,7 @@ function PricingPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     Codexa Townhall
                   </a>
@@ -592,26 +615,26 @@ function PricingPage() {
           </div>
 
           <Separator className="mb-8" />
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-slate-600">
+          <div className="flex sm:flex-row flex-col justify-between items-center gap-4">
+            <p className="text-muted-foreground text-sm">
               © Codexa {new Date().getFullYear()}
             </p>
             <div className="flex items-center gap-6">
               <a
                 href="#"
-                className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                className="text-muted-foreground hover:text-foreground text-sm transition-colors"
               >
                 Privacy Policy
               </a>
               <a
                 href="#"
-                className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                className="text-slate-600 hover:text-slate-900 text-sm transition-colors"
               >
                 Terms
               </a>
               <a
                 href="#"
-                className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                className="text-slate-600 hover:text-slate-900 text-sm transition-colors"
               >
                 Code of Conduct
               </a>

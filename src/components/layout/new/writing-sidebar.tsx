@@ -9,9 +9,11 @@ import {
   ArrowLeft,
   FilePlus2,
   Files,
-  FileText, PanelRightOpen, Search,
+  FileText,
+  PanelRightOpen,
+  Search,
   Settings,
-  Trash2
+  Trash2,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -62,12 +64,12 @@ const WritingSidebar = ({
         }`}
       >
         <div className="flex flex-col h-full">
-          <div className="flex items-center justify-between p-4">
+          <div className="flex justify-between items-center p-4">
             <div className="flex items-center gap-3">
               <Logo onlyIcon size="sm" />
               {user?.user && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-slate-800">
+                  <span className="font-medium text-slate-800 text-sm">
                     {user.user.name}
                   </span>
                 </div>
@@ -77,15 +79,14 @@ const WritingSidebar = ({
               variant="ghost"
               size="icon-sm"
               onClick={onClose}
-              className="h-8 w-8"
+              className="w-8 h-8"
               icon={PanelRightOpen}
-              
             />
           </div>
 
-          <div className="p-4 border-b border-slate-200">
+          <div className="p-4 border-slate-200 border-b">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-slate-400" />
+              <Search className="top-1/2 left-3 absolute size-4 text-slate-400 -translate-y-1/2" />
               <Input
                 type="text"
                 placeholder="Search articles or drafts..."
@@ -96,24 +97,23 @@ const WritingSidebar = ({
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="flex-1 p-4 overflow-y-auto">
             <Button
               onClick={onNewArticle}
-              className="w-full mb-4"
+              className="mb-4 w-full"
               variant="ghost"
               icon={FilePlus2}
-              
             >
               New draft
             </Button>
 
             <div className="space-y-1">
               {isLoading ? (
-                <div className="text-sm text-slate-500 text-center py-8">
+                <div className="py-8 text-slate-500 text-sm text-center">
                   Loading...
                 </div>
               ) : filteredArticles.length === 0 ? (
-                <div className="text-sm text-slate-500 text-center py-8">
+                <div className="py-8 text-slate-500 text-sm text-center">
                   {searchQuery ? "No articles found" : "No articles yet"}
                 </div>
               ) : (
@@ -129,10 +129,10 @@ const WritingSidebar = ({
                   >
                     <FileText className="size-4 text-slate-500 shrink-0" />
                     <div className="flex-1 min-w-0">
-                      <div className="text-sm font-medium text-slate-800 truncate">
+                      <div className="font-medium text-slate-800 text-sm truncate">
                         {article.title || "Untitled"}
                       </div>
-                      <div className="text-xs text-slate-500 mt-0.5">
+                      <div className="mt-0.5 text-slate-500 text-xs">
                         {article.status === "draft" ? "Draft" : "Published"} •{" "}
                         {new Date(article.updatedAt).toLocaleDateString()}
                       </div>
@@ -141,7 +141,7 @@ const WritingSidebar = ({
                       variant="ghost"
                       size="icon-sm"
                       onClick={(e) => handleDelete(article.id, e)}
-                      className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="opacity-0 group-hover:opacity-100 w-6 h-6 transition-opacity"
                     >
                       <Trash2 className="size-3 text-red-500" />
                     </Button>
@@ -151,31 +151,28 @@ const WritingSidebar = ({
             </div>
           </div>
 
-          <div className="p-4 border-t border-slate-200">
+          <div className="p-4 border-slate-200 border-t">
             <Button
               variant="ghost"
-              className="w-full justify-start"
+              className="justify-start w-full"
               onClick={() => navigate({ to: "/dashboard" })}
               icon={Files}
-              
             >
               View deleted articles
             </Button>
             <Button
               variant="ghost"
-              className="w-full justify-start"
+              className="justify-start w-full"
               onClick={() => navigate({ to: "/dashboard" })}
               icon={Settings}
-              
             >
               Blog Dashboard
             </Button>
             <Button
               variant="ghost"
-              className="w-full justify-start"
+              className="justify-start w-full"
               onClick={() => navigate({ to: "/" })}
               icon={ArrowLeft}
-              
             >
               Back to Home
             </Button>
@@ -184,7 +181,7 @@ const WritingSidebar = ({
       </div>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/20 z-40 lg:hidden"
+          className="lg:hidden z-40 fixed inset-0 bg-black/20"
           onClick={onClose}
         />
       )}

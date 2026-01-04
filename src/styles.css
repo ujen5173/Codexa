@@ -6,7 +6,7 @@
 
 body {
   @apply m-0;
-  
+
   font-family: "Geom", sans-serif;
   font-optical-sizing: auto;
 }
@@ -52,41 +52,41 @@ code {
   --card-foreground: oklch(0.18 0.008 264);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.008 264);
-  
+
   /* Primary Blue - Hashnode's signature blue (#2563EB / #2962FF range) */
   --primary: oklch(0.535 0.235 264.5);
   --primary-foreground: oklch(0.99 0 0);
-  
+
   /* Secondary - Subtle gray-blue */
   --secondary: oklch(0.96 0.006 264);
   --secondary-foreground: oklch(0.18 0.008 264);
-  
+
   /* Muted - Light gray backgrounds */
   --muted: oklch(0.97 0.004 264);
   --muted-foreground: oklch(0.48 0.015 264);
-  
+
   /* Accent - Vibrant blue for highlights */
   --accent: oklch(0.94 0.012 264);
   --accent-foreground: oklch(0.535 0.235 264.5);
-  
+
   /* Destructive - Error/warning red */
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.99 0 0);
-  
+
   /* Borders & Inputs */
   --border: oklch(0.92 0.006 264);
   --input: oklch(0.92 0.006 264);
   --ring: oklch(0.535 0.235 264.5);
-  
+
   /* Chart colors - Hashnode style */
   --chart-1: oklch(0.535 0.235 264.5);
   --chart-2: oklch(0.68 0.19 192);
   --chart-3: oklch(0.72 0.14 142);
   --chart-4: oklch(0.65 0.20 295);
   --chart-5: oklch(0.62 0.19 45);
-  
+
   --radius: 0.75rem;
-  
+
   /* Sidebar colors */
   --sidebar: oklch(0.99 0 0);
   --sidebar-foreground: oklch(0.18 0.008 264);
@@ -106,39 +106,39 @@ code {
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.18 0.008 264);
   --popover-foreground: oklch(0.98 0 0);
-  
+
   /* Primary Blue - Lighter for dark mode */
   --primary: oklch(0.65 0.22 264.5);
   --primary-foreground: oklch(0.98 0 0);
-  
+
   /* Secondary - Dark gray-blue */
   --secondary: oklch(0.25 0.012 264);
   --secondary-foreground: oklch(0.98 0 0);
-  
+
   /* Muted - Darker backgrounds */
   --muted: oklch(0.25 0.012 264);
   --muted-foreground: oklch(0.65 0.02 264);
-  
+
   /* Accent - Bright blue for dark mode */
   --accent: oklch(0.28 0.015 264);
   --accent-foreground: oklch(0.65 0.22 264.5);
-  
+
   /* Destructive - Adjusted red for dark mode */
   --destructive: oklch(0.45 0.18 25);
   --destructive-foreground: oklch(0.98 0 0);
-  
+
   /* Borders & Inputs */
   --border: oklch(0.28 0.015 264);
   --input: oklch(0.28 0.015 264);
   --ring: oklch(0.65 0.22 264.5);
-  
+
   /* Chart colors - Dark mode adjusted */
   --chart-1: oklch(0.65 0.22 264.5);
   --chart-2: oklch(0.68 0.19 192);
   --chart-3: oklch(0.72 0.14 142);
   --chart-4: oklch(0.70 0.20 295);
   --chart-5: oklch(0.68 0.19 45);
-  
+
   /* Sidebar colors - Dark mode */
   --sidebar: oklch(0.18 0.008 264);
   --sidebar-foreground: oklch(0.98 0 0);
@@ -204,4 +204,37 @@ code {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: white;
+}
+.dark .pro-banner {
+  background: url("/public/onboard-bg.webp");
+  background-position: bottom bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: oklch(12.9% 0.042 264.695);
+}
+
+.activity_date {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  flex-direction: column;
+  display: flex;
+  width: 6rem;
+  --tw-text-opacity: 1;
+  color: rgb(226 232 240 / var(--tw-text-opacity));
+}
+
+.activity_date_dots {
+  margin-top: 0.5rem;
+  width: 1px;
+  -webkit-flex: 1 1 0%;
+  flex: 1 1 0%;
+  border-width: 1px;
+  border-style: dashed;
+  --tw-border-opacity: 1;
+  border-color: rgb(147 197 253 / var(--tw-border-opacity));
 }

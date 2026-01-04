@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const inputVariants = cva(
-  "flex w-full min-w-0 rounded-full border border-input bg-transparent text-sm shadow-xs transition-[color,box-shadow] file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
+  "file:inline-flex flex bg-transparent selection:bg-primary dark:bg-input/30 file:bg-transparent disabled:opacity-50 shadow-xs border border-input aria-invalid:border-destructive file:border-0 rounded-full focus-visible:outline-none aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 w-full min-w-0 file:h-7 file:font-medium selection:text-primary-foreground placeholder:text-muted-foreground file:text-foreground text-sm file:text-sm transition-[color,box-shadow] disabled:cursor-not-allowed disabled:pointer-events-none",
   {
     variants: {
       variant: {
@@ -66,9 +66,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps & InputIconProps>(
     ref
   ) => {
     return (
-      <div className="relative w-full flex items-center">
+      <div className="relative flex items-center w-full">
         {Icon && iconPlacement === "left" && (
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/80 pointer-events-none">
+          <div className="top-1/2 left-3 absolute text-muted-foreground/80 -translate-y-1/2 pointer-events-none">
             <Icon className={cn("size-4", iconStyle)} />
           </div>
         )}
@@ -83,7 +83,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps & InputIconProps>(
           {...props}
         />
         {Icon && iconPlacement === "right" && (
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground/80 pointer-events-none">
+          <div className="top-1/2 right-3 absolute text-muted-foreground/80 -translate-y-1/2 pointer-events-none">
             <Icon className={cn("size-4", iconStyle)} />
           </div>
         )}

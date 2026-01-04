@@ -14,24 +14,24 @@ export const Route = createFileRoute("/onboard/")({
 
 function RouteComponent() {
   return (
-    <main className="w-full bg-slate-50 font-inter">
-      <section className="max-w-385 mx-auto min-h-[calc(100vh-65px)] px-12 py-12">
-        <div className="flex gap-16 items-center pt-28 flex-1">
-          <section className="flex-1 flex flex-col items-start justify-center">
+    <main className="bg-slate-50 dark:bg-slate-950 w-full font-inter">
+      <section className="mx-auto px-12 py-12 max-w-385 min-h-[calc(100vh-65px)]">
+        <div className="flex flex-1 items-center gap-16 pt-28">
+          <section className="flex flex-col flex-1 justify-center items-start">
             <div className="space-y-4">
               <div>
-                <h1 className="text-4xl underline decoration-dotted font-bold text-primary mb-2">
+                <h1 className="mb-2 font-bold text-primary text-4xl decoration-dotted underline">
                   Write. Publish. Discuss.
                 </h1>
-                <p className="text-lg text-slate-700 mb-8">
+                <p className="mb-8 text-slate-700 dark:text-slate-300 text-lg">
                   Create an account or sign in to share ideas, learn from other
                   developers, and join real conversations.
                 </p>
 
-                <div className="grid grid-cols-2 w-full gap-4">
+                <div className="gap-4 grid grid-cols-2 w-full">
                   <div className="relative">
                     <Button
-                      className="rounded-full shadow-sm w-full"
+                      className="shadow-sm rounded-full w-full"
                       size="lg"
                       variant={"outline"}
                       onClick={() => {
@@ -46,21 +46,21 @@ function RouteComponent() {
                   </div>
                   <div className="relative">
                     <Button
-                      className="rounded-full shadow-sm w-full"
+                      className="shadow-sm rounded-full w-full"
                       disabled
                       size="lg"
                       variant={"outline"}
                     >
-                      <Icons.apple />
+                      <Icons.apple className="fill-transparent stroke-slate-700 dark:stroke-slate-200" />
                       Continue with Apple
                     </Button>
-                    <div className="absolute -top-2.5 right-2 opacity-70 bg-red-600/70 font-semibold text-white text-xs px-2 py-1 rounded-sm">
+                    <div className="-top-2.5 right-2 absolute bg-red-600/70 opacity-70 px-2 py-1 rounded-sm font-semibold text-white text-xs">
                       Coming soon
                     </div>
                   </div>
                   <div className="relative">
                     <Button
-                      className="rounded-full shadow-sm w-full"
+                      className="shadow-sm rounded-full w-full"
                       disabled
                       size="lg"
                       variant={"outline"}
@@ -68,21 +68,21 @@ function RouteComponent() {
                       <Icons.microsoft />
                       Continue with Microsoft
                     </Button>
-                    <div className="absolute -top-2.5 right-2 opacity-70 bg-red-600/70 font-semibold text-white text-xs px-2 py-1 rounded-sm">
+                    <div className="-top-2.5 right-2 absolute bg-red-600/70 opacity-70 px-2 py-1 rounded-sm font-semibold text-white text-xs">
                       Coming soon
                     </div>
                   </div>
                   <div className="relative">
                     <Button
-                      className="rounded-full shadow-sm w-full"
+                      className="shadow-sm rounded-full w-full"
                       disabled
                       size="lg"
                       variant={"outline"}
                     >
-                      <Icons.sso />
+                      <Icons.sso className="fill-transparent stroke-slate-700 dark:stroke-slate-200" />
                       Single sign-on (SSO)
                     </Button>
-                    <div className="absolute -top-2.5 right-2 opacity-70 bg-red-600/70 font-semibold text-white text-xs px-2 py-1 rounded-sm">
+                    <div className="-top-2.5 right-2 absolute bg-red-600/70 opacity-70 px-2 py-1 rounded-sm font-semibold text-white text-xs">
                       Coming soon
                     </div>
                   </div>
@@ -91,30 +91,30 @@ function RouteComponent() {
 
               <Separator />
               <div>
-                <div className="mb-2 space-y-1">
-                  <Label className="text-base text-slate-600">
+                <div className="space-y-1 mb-2">
+                  <Label className="text-slate-600 dark:text-slate-300 text-base">
                     Email address
                   </Label>
                   <div className="flex gap-2">
                     <Input
-                      className="rounded-full bg-white text-base"
+                      className="bg-white rounded-full text-base"
                       placeholder={`name@${platformName.toLowerCase()}.com`}
                     />
                     <Button className="rounded-full">Continue</Button>
                   </div>
                 </div>
-                <p className="text-slate-600 text-sm">
+                <p className="text-slate-600 dark:text-slate-300 text-sm">
                   By continuing, you acknowledge that you understand and agree
                   to the{" "}
                   <Link
-                    className="underline visited:underline text-primary"
+                    className="text-primary underline visited:underline"
                     to="/"
                   >
                     Terms & Conditions
                   </Link>{" "}
                   and{" "}
                   <Link
-                    className="underline visited:underline text-primary"
+                    className="text-primary underline visited:underline"
                     to="/"
                   >
                     Privacy Policy
@@ -123,9 +123,9 @@ function RouteComponent() {
               </div>
             </div>
           </section>
-          <section className="flex-1 flex flex-col items-start space-y-12 justify-center">
+          <section className="flex flex-col flex-1 justify-center items-start space-y-12">
             <div>
-              <p className="font-handwritting font-semibold border-l-4 text-slate-800 border-primary/70 text-lg px-3 py-2 mb-4">
+              <p className="mb-4 px-3 py-2 border-primary/70 border-l-4 font-handwritting font-medium text-slate-800 dark:text-slate-300 text-lg">
                 “We built this because writing about tech shouldn’t feel like
                 fighting the platform. You write, you publish, people read and
                 respond. That’s it. No tricks, no noise.”
@@ -136,10 +136,10 @@ function RouteComponent() {
                   alt="Founder"
                   width={100}
                   height={100}
-                  className="rounded-full object-cover size-12"
+                  className="rounded-full size-12 object-cover"
                 />
                 <div className="">
-                  <p className="font-semibold font-handwritting-2 text-lg text-slate-800">
+                  <p className="font-handwritting-2 font-semibold text-slate-800 dark:text-slate-300 text-lg">
                     Ujen Basi
                   </p>
                   <p className="text-slate-500">
@@ -152,7 +152,7 @@ function RouteComponent() {
               </div>
             </div>
             <div>
-              <p className="font-handwritting font-semibold border-l-4 text-slate-800 border-primary/70 text-lg px-3 py-2 mb-4">
+              <p className="mb-4 px-3 py-2 border-primary/70 border-l-4 font-handwritting font-medium text-slate-800 dark:text-slate-300 text-lg">
                 “This is for developers who like explaining things properly, not
                 racing for clicks. If you care about clarity more than
                 attention, you’ll feel at home here.”
@@ -163,10 +163,10 @@ function RouteComponent() {
                   alt="Founder"
                   width={100}
                   height={100}
-                  className="rounded-full object-cover size-12"
+                  className="rounded-full size-12 object-cover"
                 />
                 <div className="">
-                  <p className="font-semibold font-handwritting-2 text-lg text-slate-800">
+                  <p className="font-handwritting-2 font-semibold text-slate-800 dark:text-slate-300 text-lg">
                     Ashwesha Shrestha
                   </p>
                   <p className="text-slate-500">

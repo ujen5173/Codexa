@@ -25,7 +25,7 @@ const BlurImage = ({
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="relative aspect-[1/1.6] h-full w-full">
+    <div className="relative w-full h-full aspect-[1/1.6]">
       {isLoading && <Skeleton className="absolute inset-0 animate-pulse" />}
       {isCloudinary(src) ? (
         <AdvancedImage
@@ -39,7 +39,7 @@ const BlurImage = ({
           {...style}
           preload={!!priority}
           className={cn(
-            "w-full h-full object-cover transition-opacity duration-100 rounded-lg",
+            "rounded-lg w-full h-full object-cover transition-opacity duration-100",
             isLoading ? "opacity-0" : "opacity-100",
             className
           )}
@@ -50,7 +50,7 @@ const BlurImage = ({
           alt={alt}
           sizes={sizes}
           className={cn(
-            "w-full h-full object-cover transition-opacity duration-100 rounded-lg",
+            "rounded-lg w-full h-full object-cover transition-opacity duration-100",
             isLoading ? "opacity-0" : "opacity-100",
             className
           )}

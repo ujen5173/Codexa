@@ -45,7 +45,7 @@ function RouteComponent() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-white">
+    <div className="flex bg-white h-screen overflow-hidden">
       <WritingSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}

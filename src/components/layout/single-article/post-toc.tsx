@@ -82,17 +82,17 @@ const PostTOC = ({ contentRef, onClose }: PostTOCProps) => {
   if (headings.length === 0) return null;
 
   return (
-    <div className="fixed left-24 top-1/2 -translate-y-1/2 z-50 hidden xl:block">
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl w-64 max-h-[60vh] overflow-y-auto">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-semibold text-slate-800">
+    <div className="hidden xl:block top-1/2 left-24 z-50 fixed -translate-y-1/2">
+      <div className="bg-white shadow-xl p-6 border border-slate-200 rounded-2xl w-64 max-h-[60vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="font-semibold text-slate-800 text-sm">
             Table of Contents
           </h3>
           <Button
             variant="ghost"
             size="icon-sm"
             onClick={onClose}
-            className="h-6 w-6"
+            className="w-6 h-6"
           >
             <X className="size-4" />
           </Button>

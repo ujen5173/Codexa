@@ -131,13 +131,13 @@ const PostFloatingSidebar = ({
             disabled={toggleLike.isPending}
           >
             <Heart className={`size-5 ${isLiked ? "fill-current" : ""}`} />
-            <span className="text-xs font-medium">{likeCount}</span>
+            <span className="font-medium text-xs">{likeCount}</span>
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
-            className="flex flex-col gap-1 h-auto py-3 px-2 text-slate-600"
+            className="flex flex-col gap-1 px-2 py-3 h-auto text-slate-600"
             onClick={() => {
               const commentsSection =
                 document.getElementById("comments-section");
@@ -145,10 +145,10 @@ const PostFloatingSidebar = ({
             }}
           >
             <MessageCircle className="size-5" />
-            <span className="text-xs font-medium">{commentCount}</span>
+            <span className="font-medium text-xs">{commentCount}</span>
           </Button>
 
-          <div className="w-8 h-px bg-slate-200 my-1" />
+          <div className="bg-slate-200 my-1 w-8 h-px" />
 
           <Button
             variant="ghost"
@@ -159,7 +159,7 @@ const PostFloatingSidebar = ({
             }`}
           >
             <List className="size-5" />
-            <span className="text-xs font-medium">TOC</span>
+            <span className="font-medium text-xs">TOC</span>
           </Button>
 
           <Button
@@ -174,37 +174,37 @@ const PostFloatingSidebar = ({
             <Bookmark
               className={`size-5 ${isBookmarked ? "fill-current" : ""}`}
             />
-            <span className="text-xs font-medium">Save</span>
+            <span className="font-medium text-xs">Save</span>
           </Button>
 
-          <div className="w-8 h-px bg-slate-200 my-1" />
+          <div className="bg-slate-200 my-1 w-8 h-px" />
 
-          <div className="relative group">
+          <div className="group relative">
             <Button
               variant="ghost"
               size="icon"
-              className="flex flex-col gap-1 h-auto py-3 px-2 text-slate-600"
+              className="flex flex-col gap-1 px-2 py-3 h-auto text-slate-600"
             >
               <Share2 className="size-5" />
-              <span className="text-xs font-medium">Share</span>
+              <span className="font-medium text-xs">Share</span>
             </Button>
-            <div className="absolute left-full ml-2 top-0 bg-white border border-slate-200 rounded-lg shadow-lg p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+            <div className="invisible group-hover:visible top-0 left-full z-50 absolute bg-white opacity-0 group-hover:opacity-100 shadow-lg ml-2 p-2 border border-slate-200 rounded-lg transition-all">
               <div className="flex flex-col gap-1">
                 <button
                   onClick={() => handleShare("twitter")}
-                  className="text-xs px-3 py-1.5 hover:bg-slate-100 rounded text-left whitespace-nowrap"
+                  className="hover:bg-slate-100 px-3 py-1.5 rounded text-xs text-left whitespace-nowrap"
                 >
                   Twitter
                 </button>
                 <button
                   onClick={() => handleShare("linkedin")}
-                  className="text-xs px-3 py-1.5 hover:bg-slate-100 rounded text-left whitespace-nowrap"
+                  className="hover:bg-slate-100 px-3 py-1.5 rounded text-xs text-left whitespace-nowrap"
                 >
                   LinkedIn
                 </button>
                 <button
                   onClick={() => handleShare("copy")}
-                  className="text-xs px-3 py-1.5 hover:bg-slate-100 rounded text-left whitespace-nowrap"
+                  className="hover:bg-slate-100 px-3 py-1.5 rounded text-xs text-left whitespace-nowrap"
                 >
                   Copy Link
                 </button>
@@ -214,8 +214,8 @@ const PostFloatingSidebar = ({
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 lg:hidden z-40 bg-white border-t border-slate-200 shadow-lg">
-        <div className="flex items-center justify-around py-3 px-4">
+      <div className="lg:hidden right-0 bottom-0 left-0 z-40 fixed bg-white shadow-lg border-slate-200 border-t">
+        <div className="flex justify-around items-center px-4 py-3">
           <Button
             variant="ghost"
             size="icon"
@@ -226,13 +226,13 @@ const PostFloatingSidebar = ({
             disabled={toggleLike.isPending}
           >
             <Heart className={`size-5 ${isLiked ? "fill-current" : ""}`} />
-            <span className="text-xs font-medium">{likeCount}</span>
+            <span className="font-medium text-xs">{likeCount}</span>
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
-            className="flex flex-col gap-1 h-auto py-2 px-3 text-slate-600"
+            className="flex flex-col gap-1 px-3 py-2 h-auto text-slate-600"
             onClick={() => {
               const commentsSection =
                 document.getElementById("comments-section");
@@ -240,7 +240,7 @@ const PostFloatingSidebar = ({
             }}
           >
             <MessageCircle className="size-5" />
-            <span className="text-xs font-medium">{commentCount}</span>
+            <span className="font-medium text-xs">{commentCount}</span>
           </Button>
 
           <Button
@@ -252,7 +252,7 @@ const PostFloatingSidebar = ({
             }`}
           >
             <List className="size-5" />
-            <span className="text-xs font-medium">TOC</span>
+            <span className="font-medium text-xs">TOC</span>
           </Button>
 
           <Button
@@ -267,17 +267,17 @@ const PostFloatingSidebar = ({
             <Bookmark
               className={`size-5 ${isBookmarked ? "fill-current" : ""}`}
             />
-            <span className="text-xs font-medium">Save</span>
+            <span className="font-medium text-xs">Save</span>
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
             onClick={() => handleShare()}
-            className="flex flex-col gap-1 h-auto py-2 px-3 text-slate-600"
+            className="flex flex-col gap-1 px-3 py-2 h-auto text-slate-600"
           >
             <Share2 className="size-5" />
-            <span className="text-xs font-medium">Share</span>
+            <span className="font-medium text-xs">Share</span>
           </Button>
         </div>
       </div>

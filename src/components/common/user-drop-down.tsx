@@ -3,22 +3,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { linkItems } from "@/constants/site";
 import { authClient } from "@/lib/auth-client";
 import { Link } from "@tanstack/react-router";
-import {
-  AtSign,
-  ChartNoAxesCombined,
-  Code2,
-  CreditCard,
-  GitBranch,
-  LogOut,
-  MessageCircleQuestionMark,
-  Settings,
-  User,
-} from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Img } from "react-image";
 import { Button } from "../ui/button";
 
@@ -36,12 +26,12 @@ const UserDropDown = () => {
                 alt={data?.user.name}
                 width={38}
                 height={38}
-                className="rounded-full object-cover size-10"
+                className="rounded-full size-10 object-cover"
               />
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="font-inter font-normal text-slate-700"
+            className="font-inter font-normal text-slate-700 dark:text-slate-200"
             align="end"
           >
             <DropdownMenuLabel>
@@ -54,61 +44,51 @@ const UserDropDown = () => {
                     height={32}
                     className="rounded-full object-cover"
                   />
-                  <div className="absolute -bottom-[0.5px] right-0 bg-green-500 size-2 rounded-full" />
+                  <div className="right-0 -bottom-[0.5px] absolute bg-green-500 rounded-full size-2" />
                 </div>
                 <div>
-                  <p className="text-base font-semibold">{data.user.name}</p>
-                  <p className="text-xs text-slate-600 font-normal">
+                  <p className="font-semibold text-base">{data.user.name}</p>
+                  <p className="font-normal text-slate-600 dark:text-slate-300 text-xs">
                     {data.user.email}
                   </p>
                 </div>
               </div>
             </DropdownMenuLabel>
-            <div className="px-2">
-              <DropdownMenuSeparator />
-            </div>
-            <DropdownMenuItem>
-              <Code2 className="text-inherit" /> Publication
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <ChartNoAxesCombined className="text-inherit" /> Analytics
-            </DropdownMenuItem>
-            <div className="px-2">
-              <DropdownMenuSeparator />
-            </div>
-            <DropdownMenuItem>
-              <User className="text-inherit" />
-              Profile
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Settings className="text-inherit" /> Settings
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <CreditCard className="text-inherit" /> Subscription
-            </DropdownMenuItem>
-            <div className="px-2">
-              <DropdownMenuSeparator />
-            </div>
-            <DropdownMenuItem>
-              <GitBranch className="text-inherit" /> Changelog
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <MessageCircleQuestionMark className="text-inherit" /> Support and
-              feedback
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <AtSign className="text-inherit" /> Invite Member
-            </DropdownMenuItem>
-            <div className="px-2">
-              <DropdownMenuSeparator />
-            </div>
+
+            {linkItems.userDropDown.map((ddItem) => {
+              if (ddItem.separator) {
+                return (
+                  <div key={ddItem.id} className="px-2">
+                    {ddItem.icon}
+                  </div>
+                );
+              } else {
+                return (
+                  <Link
+                    to={ddItem.href}
+                    key={ddItem.id}
+                    disabled={ddItem.disabled}
+                  >
+                    <DropdownMenuItem
+                      className="cursor-pointer"
+                      disabled={ddItem.disabled}
+                    >
+                      {ddItem.icon}
+                      <span>{ddItem.label}</span>
+                    </DropdownMenuItem>
+                  </Link>
+                );
+              }
+            })}
+
             <DropdownMenuItem
               variant="destructive"
               onClick={async () =>
                 await authClient.signOut().then(() => window.location.reload())
               }
             >
-              <LogOut className="text-inherit" /> Sign out
+              <LogOut className="text-inherit" />
+              <span>Sign out</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

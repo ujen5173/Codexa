@@ -17,16 +17,16 @@ const PostSimilarArticles = ({ articleId }: PostSimilarArticlesProps) => {
 
   if (isLoading) {
     return (
-      <section className="mt-12 pt-8 border-t border-slate-200">
-        <h3 className="text-xl font-semibold text-slate-800 mb-6">
+      <section className="mt-12 pt-8 border-slate-200 border-t">
+        <h3 className="mb-6 font-semibold text-slate-800 text-xl">
           Similar Articles
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
           {[1, 2, 3].map((i) => (
             <div key={i} className="animate-pulse">
-              <div className="bg-slate-200 rounded-lg h-48 mb-4" />
-              <div className="bg-slate-200 rounded h-4 mb-2" />
-              <div className="bg-slate-200 rounded h-4 w-3/4" />
+              <div className="bg-slate-200 mb-4 rounded-lg h-48" />
+              <div className="bg-slate-200 mb-2 rounded h-4" />
+              <div className="bg-slate-200 rounded w-3/4 h-4" />
             </div>
           ))}
         </div>
@@ -37,11 +37,11 @@ const PostSimilarArticles = ({ articleId }: PostSimilarArticlesProps) => {
   if (!similarArticles || similarArticles.length === 0) return null;
 
   return (
-    <section className="mt-12 pt-8 border-t border-slate-200">
-      <h3 className="text-xl font-semibold text-slate-800 mb-6">
+    <section className="mt-12 pt-8 border-slate-200 border-t">
+      <h3 className="mb-6 font-semibold text-slate-800 text-xl">
         Similar Articles
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
         {similarArticles.map((article) => (
           <Link
             key={article.id}
@@ -49,9 +49,9 @@ const PostSimilarArticles = ({ articleId }: PostSimilarArticlesProps) => {
             params={{ slug: article.slug }}
             className="group"
           >
-            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+            <div className="bg-white hover:shadow-lg border border-slate-200 rounded-xl overflow-hidden transition-shadow">
               {article.thumbnail && (
-                <div className="aspect-video overflow-hidden bg-slate-100">
+                <div className="bg-slate-100 aspect-video overflow-hidden">
                   <Img
                     src={article.thumbnail}
                     alt={article.title}
@@ -60,20 +60,20 @@ const PostSimilarArticles = ({ articleId }: PostSimilarArticlesProps) => {
                 </div>
               )}
               <div className="p-4">
-                <h4 className="font-semibold text-slate-800 mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                <h4 className="mb-2 font-semibold text-slate-800 group-hover:text-primary line-clamp-2 transition-colors">
                   {article.title}
                 </h4>
                 {article.description && (
-                  <p className="text-sm text-slate-600 line-clamp-2 mb-3">
+                  <p className="mb-3 text-slate-600 text-sm line-clamp-2">
                     {article.description}
                   </p>
                 )}
-                <div className="flex items-center gap-4 text-xs text-slate-500">
+                <div className="flex items-center gap-4 text-slate-500 text-xs">
                   <div className="flex items-center gap-1.5">
                     <Img
                       src={article.author.image || "/default_user.avif"}
                       alt={article.author.name}
-                      className="size-5 rounded-full object-cover"
+                      className="rounded-full size-5 object-cover"
                     />
                     <span>{article.author.name}</span>
                   </div>

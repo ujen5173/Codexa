@@ -12,7 +12,7 @@ import { Button } from "../../ui/button";
 const PostHeader = () => {
   return (
     <header className="w-full">
-      <div className="flex itmes-center justify-between max-w-300 mx-auto px-4 py-2">
+      <div className="flex justify-between mx-auto px-4 py-2 max-w-300 itmes-center">
         <div className="flex items-center gap-2">
           <Button
             size="icon"

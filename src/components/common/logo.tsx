@@ -33,10 +33,10 @@ const Logo = ({
 }: PROPS) => {
   return (
     <div>
-      <Link to="/">
+      <Link to="/" className="outline-none">
         <div className="flex items-center gap-2 select-none">
           <Img
-            className="select-none object-cover"
+            className="object-cover select-none"
             src="/logo.svg"
             alt="Codexa logo"
             draggable={false}
@@ -49,7 +49,7 @@ const Logo = ({
               className={cn(
                 "font-logo",
                 SIZES[size].text,
-                color ?? "text-slate-800"
+                color ?? "text-slate-800 dark:text-slate-100"
               )}
             >
               {platformName}

@@ -3,15 +3,16 @@
 ✅ explore - Explore page for browsing topics and articles
 ✅ onboard/index.tsx - User authentication and onboarding flow
 ✅ notifications.tsx - User notifications center
+✅ u/[username]/index.tsx - Public user profile page
+✅ 404.tsx - Custom 404 Page Not Founds
+✅ dashboard - Landing page for all publications created
+u/[username]/[slug]/index.tsx - Single article public view
+u/[username]/followers.tsx - List of a user's followers
+u/[username]/following.tsx - List of users a person is following
 onboard/blog/setup.tsx - Initial blog setup and configuration
 explore/[[...slug]].tsx - Explore page for browsing topics and articles
 article/[[...params]].tsx - Editor for creating and editing articles
 settings/[[...tab]].tsx - User account and preferences settings
-u/[username]/index.tsx - Public user profile page
-u/[username]/followers.tsx - List of a user's followers
-u/[username]/following.tsx - List of users a person is following
-u/[username]/[slug]/index.tsx - Single article public view
 dev/[username]/index.tsx - User's personal blog homepage (Author Blog)
 dev/[username]/series/[slug].tsx - View for a specific article series on a blog
 [id]/dashboard/[[...dashboard]].tsx - Blog analytics and management dashboard
-404.tsx - Custom 404 Page Not Found

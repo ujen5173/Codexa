@@ -61,13 +61,13 @@ function RouteComponent() {
     }
   };
   return (
-    <div className="min-h-[100dvh] w-full bg-white dark:bg-black">
-      <div className="mx-auto max-w-[900px] px-4 py-16">
-        <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-text-secondary">
+    <div className="bg-white dark:bg-black w-full min-h-[100dvh]">
+      <div className="mx-auto px-4 py-16 max-w-[900px]">
+        <h1 className="mb-4 font-semibold text-gray-700 dark:text-text-secondary text-xl">
           Where do you want this blog to be located?
         </h1>
 
-        <div className="mb-6 rounded-md border border-border-light bg-light-bg px-6 py-4 dark:border-border dark:bg-primary">
+        <div className="bg-light-bg dark:bg-primary mb-6 px-6 py-4 border border-border-light dark:border-border rounded-md">
           <div className="mb-4 md:mb-8">
             <Input
               name="name"
@@ -89,7 +89,7 @@ function RouteComponent() {
               style={{
                 bottom: "14px",
               }}
-              className="absolute right-4 cursor-default text-gray-500 dark:text-text-primary"
+              className="right-4 absolute text-gray-500 dark:text-text-primary cursor-default"
             >
               .codexa.app
             </div>
@@ -106,7 +106,7 @@ function RouteComponent() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex justify-between items-center">
           <Link to="/">
             <button className="btn-outline">
               <div className="px-4">

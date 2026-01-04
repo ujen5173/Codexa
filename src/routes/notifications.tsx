@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { createFileRoute } from "@tanstack/react-router";
+import { FavouriteIcon } from "hugeicons-react";
 import {
   AtSign,
   CircleCheckBig,
@@ -76,7 +77,7 @@ const notificationConfig: Record<
   }
 > = {
   like: {
-    icon: <Heart className="w-5 h-5 text-red-500 fill-red-500" />,
+    icon: <Heart className="fill-red-500 w-5 h-5 text-red-500" />,
     title: (user, context) => (
       <span>
         <strong>{user}</strong> liked your article <strong>'{context}'</strong>
@@ -129,21 +130,19 @@ function RouteComponent() {
   });
 
   return (
-    <main className="w-full px-4 py-16">
-      <div className="max-w-[900px] font-inter mx-auto">
-        <div className="mb-6 flex items-center justify-between gap-4">
-          <h1 className="text-4xl font-semibold">Notifications</h1>
+    <main className="px-4 py-16 w-full">
+      <div className="mx-auto max-w-[900px] font-inter">
+        <div className="flex justify-between items-center gap-4 mb-6">
+          <h1 className="font-semibold text-4xl">Notifications</h1>
           <Button icon={CircleCheckBig} variant={"ghost"}>
             Mark all as read
           </Button>
         </div>
 
-        <div className="flex gap-1 mb-8 overflow-x-auto pb-2">
+        <div className="flex gap-1 mb-8 pb-2 overflow-x-auto">
           <Button
             className={`hover:border-transparent ${
-              filter === "all"
-                ? "bg-blue-300/20 text-primary"
-                : ""
+              filter === "all" ? "bg-blue-300/20 text-primary" : ""
             } font-medium`}
             variant={"ghost"}
             onClick={() => setFilter("all")}
@@ -152,21 +151,17 @@ function RouteComponent() {
           </Button>
           <Button
             className={`hover:border-transparent ${
-              filter === "likes"
-                ? "bg-blue-300/20 text-primary"
-                : ""
+              filter === "likes" ? "bg-blue-300/20 text-primary" : ""
             } font-medium`}
             variant={"ghost"}
-            icon={Heart}
+            icon={FavouriteIcon}
             onClick={() => setFilter("likes")}
           >
             Likes
           </Button>
           <Button
             className={`hover:border-transparent ${
-              filter === "comments"
-                ? "bg-blue-300/20 text-primary"
-                : ""
+              filter === "comments" ? "bg-blue-300/20 text-primary" : ""
             } font-medium`}
             variant={"ghost"}
             icon={MessageCircleMore}
@@ -176,9 +171,7 @@ function RouteComponent() {
           </Button>
           <Button
             className={`hover:border-transparent ${
-              filter === "mentions"
-                ? "bg-blue-300/20 text-primary"
-                : ""
+              filter === "mentions" ? "bg-blue-300/20 text-primary" : ""
             } font-medium`}
             variant={"ghost"}
             icon={AtSign}
@@ -214,29 +207,29 @@ function RouteComponent() {
             };
 
             return (
-              <div className="flex gap-4 py-6 border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors">
+              <div className="flex gap-4 hover:bg-slate-50/50 dark:hover:bg-slate-800/40 py-6 border-slate-100 dark:border-slate-600/60 last:border-0 border-b transition-colors">
                 <div className="mt-1 shrink-0">{getContent("ICON")}</div>
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10 bg-purple-600 border border-slate-100">
+                  <div className="space-y-2">
+                    <Avatar className="bg-purple-600 border border-slate-100 dark:border-slate-600/60 w-10 h-10">
                       <AvatarImage
                         src={notification.user.avatarUrl}
                         alt={notification.user.name}
                       />
-                      <AvatarFallback className="bg-purple-600 text-white font-medium">
+                      <AvatarFallback className="bg-purple-600 font-medium text-white dark:text-slate-800">
                         {notification.user.name.charAt(0).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="text-[15px] text-slate-700">
+                    <div className="text-[15px] text-slate-700 dark:text-slate-200">
                       {getContent("TITLE")}
                     </div>
                   </div>
                   {notification.type === "comment" && (
-                    <div className="p-4 bg-slate-100 border border-slate-200 rounded-lg text-slate-600 text-[15px]">
+                    <div className="bg-slate-100 dark:bg-slate-900 p-4 border border-slate-200 dark:border-slate-600/60 rounded-lg text-[15px] text-slate-600 dark:text-slate-200">
                       {getContent("CONTENT")}
                     </div>
                   )}
-                  <span className="text-[13px] text-slate-500">
+                  <span className="text-[13px] text-slate-500 dark:text-slate-300">
                     {notification.date}
                   </span>
                 </div>
@@ -245,7 +238,7 @@ function RouteComponent() {
           })}
 
           {filteredNotifications.length === 0 && (
-            <div className="py-12 text-center text-slate-500">
+            <div className="py-12 text-slate-500 text-center">
               No notifications found.
             </div>
           )}

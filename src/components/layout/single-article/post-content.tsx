@@ -23,12 +23,12 @@ const PostContent = () => {
   if (isLoading) {
     return (
       <main className="w-full">
-        <div className="pb-12 max-w-236 mx-auto px-4">
-          <div className="animate-pulse space-y-8">
-            <div className="h-96 bg-slate-200 rounded-lg" />
+        <div className="mx-auto px-4 pb-12 max-w-236">
+          <div className="space-y-8 animate-pulse">
+            <div className="bg-slate-200 rounded-lg h-96" />
             <div className="space-y-4">
-              <div className="h-8 bg-slate-200 rounded w-3/4 mx-auto" />
-              <div className="h-6 bg-slate-200 rounded w-1/2 mx-auto" />
+              <div className="bg-slate-200 mx-auto rounded w-3/4 h-8" />
+              <div className="bg-slate-200 mx-auto rounded w-1/2 h-6" />
             </div>
           </div>
         </div>
@@ -39,9 +39,9 @@ const PostContent = () => {
   if (!article) {
     return (
       <main className="w-full">
-        <div className="pb-12 max-w-236 mx-auto px-4">
-          <div className="text-center py-12">
-            <h1 className="text-2xl font-semibold text-slate-800 mb-2">
+        <div className="mx-auto px-4 pb-12 max-w-236">
+          <div className="py-12 text-center">
+            <h1 className="mb-2 font-semibold text-slate-800 text-2xl">
               Article not found
             </h1>
             <p className="text-slate-600">
@@ -56,10 +56,10 @@ const PostContent = () => {
   const tags = article.tags?.map((at) => at.tag) || [];
 
   return (
-    <main className="w-full relative">
-      <div className="pb-12 max-w-236 mx-auto px-4 lg:px-8">
+    <main className="relative w-full">
+      <div className="mx-auto px-4 lg:px-8 pb-12 max-w-236">
         {article.thumbnail && (
-          <div className="h-64 md:h-96 lg:h-[32rem] mb-8 -mx-4 md:-mx-8 lg:mx-0 rounded-lg overflow-hidden">
+          <div className="-mx-4 md:-mx-8 lg:mx-0 mb-8 rounded-lg h-64 md:h-96 lg:h-[32rem] overflow-hidden">
             <Img
               src={article.thumbnail}
               alt={article.title}
@@ -71,13 +71,13 @@ const PostContent = () => {
         )}
 
         <section className="relative">
-          <div className="flex flex-col lg:flex-row gap-8">
+          <div className="flex lg:flex-row flex-col gap-8">
             <div className="flex-1">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 md:mb-6 text-slate-800 text-center lg:text-left">
+              <h1 className="mb-4 md:mb-6 font-semibold text-slate-800 text-3xl md:text-4xl lg:text-5xl lg:text-left text-center">
                 {article.title}
               </h1>
               {article.description && (
-                <h5 className="text-xl md:text-2xl font-medium mb-6 md:mb-8 text-slate-600 text-center lg:text-left">
+                <h5 className="mb-6 md:mb-8 font-medium text-slate-600 text-xl md:text-2xl lg:text-left text-center">
                   {article.description}
                 </h5>
               )}
@@ -88,7 +88,7 @@ const PostContent = () => {
                     alt={article.author.name}
                     width={40}
                     height={40}
-                    className="rounded-full object-cover size-10 md:size-12"
+                    className="rounded-full size-10 md:size-12 object-cover"
                   />
                   <span className="font-medium text-slate-800">
                     {article.author.name}

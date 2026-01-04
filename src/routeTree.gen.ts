@@ -8,24 +8,43 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as NewRouteImport } from './routes/new'
-import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as OnboardRouteRouteImport } from './routes/onboard/route'
+import { Route as SearchIndexRouteImport } from './routes/search/index'
 import { Route as OnboardIndexRouteImport } from './routes/onboard/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as AppIndexRouteImport } from './routes/_app.index'
 import { Route as TSlugRouteImport } from './routes/t.$slug'
-import { Route as PostSlugRouteImport } from './routes/post.$slug'
+import { Route as SettingsBaseRouteImport } from './routes/settings/_base'
 import { Route as AppExploreRouteImport } from './routes/_app.explore'
 import { Route as AppBookmarksRouteImport } from './routes/_app.bookmarks'
+import { Route as UAtChar123usernameChar125IndexRouteImport } from './routes/u/@{$username}/index'
+import { Route as SettingsBaseIndexRouteImport } from './routes/settings/_base.index'
+import { Route as UAtChar123usernameChar125SlugRouteImport } from './routes/u/@{$username}/$slug'
+import { Route as DashboardPublicationIdPubRouteImport } from './routes/dashboard/$publicationId/_pub'
 import { Route as ApiTrpcSplatRouteImport } from './routes/api.trpc.$'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as DashboardPublicationIdPubIndexRouteImport } from './routes/dashboard/$publicationId/_pub.index'
 import { Route as OnboardBlogSetupChar123RedirectChar125RouteImport } from './routes/onboard/blog.setup.{-$redirect}'
+import { Route as DashboardPublicationIdPubPostsRouteImport } from './routes/dashboard/$publicationId/_pub.posts'
 
+const SettingsRouteImport = createFileRoute('/settings')()
+const DashboardPublicationIdRouteImport = createFileRoute(
+  '/dashboard/$publicationId',
+)()
+
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
@@ -39,11 +58,6 @@ const NotificationsRoute = NotificationsRouteImport.update({
 const NewRoute = NewRouteImport.update({
   id: '/new',
   path: '/new',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChangelogRoute = ChangelogRouteImport.update({
@@ -60,10 +74,25 @@ const OnboardRouteRoute = OnboardRouteRouteImport.update({
   path: '/onboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardPublicationIdRoute = DashboardPublicationIdRouteImport.update({
+  id: '/dashboard/$publicationId',
+  path: '/dashboard/$publicationId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchIndexRoute = SearchIndexRouteImport.update({
+  id: '/search/',
+  path: '/search/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardIndexRoute = OnboardIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => OnboardRouteRoute,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
@@ -75,10 +104,9 @@ const TSlugRoute = TSlugRouteImport.update({
   path: '/t/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PostSlugRoute = PostSlugRouteImport.update({
-  id: '/post/$slug',
-  path: '/post/$slug',
-  getParentRoute: () => rootRouteImport,
+const SettingsBaseRoute = SettingsBaseRouteImport.update({
+  id: '/_base',
+  getParentRoute: () => SettingsRoute,
 } as any)
 const AppExploreRoute = AppExploreRouteImport.update({
   id: '/explore',
@@ -90,6 +118,28 @@ const AppBookmarksRoute = AppBookmarksRouteImport.update({
   path: '/bookmarks',
   getParentRoute: () => AppRoute,
 } as any)
+const UAtChar123usernameChar125IndexRoute =
+  UAtChar123usernameChar125IndexRouteImport.update({
+    id: '/u/@{$username}/',
+    path: '/u/@{$username}/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SettingsBaseIndexRoute = SettingsBaseIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SettingsBaseRoute,
+} as any)
+const UAtChar123usernameChar125SlugRoute =
+  UAtChar123usernameChar125SlugRouteImport.update({
+    id: '/u/@{$username}/$slug',
+    path: '/u/@{$username}/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DashboardPublicationIdPubRoute =
+  DashboardPublicationIdPubRouteImport.update({
+    id: '/_pub',
+    getParentRoute: () => DashboardPublicationIdRoute,
+  } as any)
 const ApiTrpcSplatRoute = ApiTrpcSplatRouteImport.update({
   id: '/api/trpc/$',
   path: '/api/trpc/$',
@@ -100,44 +150,68 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardPublicationIdPubIndexRoute =
+  DashboardPublicationIdPubIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => DashboardPublicationIdPubRoute,
+  } as any)
 const OnboardBlogSetupChar123RedirectChar125Route =
   OnboardBlogSetupChar123RedirectChar125RouteImport.update({
     id: '/blog/setup/{-$redirect}',
     path: '/blog/setup/{-$redirect}',
     getParentRoute: () => OnboardRouteRoute,
   } as any)
+const DashboardPublicationIdPubPostsRoute =
+  DashboardPublicationIdPubPostsRouteImport.update({
+    id: '/posts',
+    path: '/posts',
+    getParentRoute: () => DashboardPublicationIdPubRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/onboard': typeof OnboardRouteRouteWithChildren
   '/changelog': typeof ChangelogRoute
-  '/dashboard': typeof DashboardRoute
   '/new': typeof NewRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/bookmarks': typeof AppBookmarksRoute
   '/explore': typeof AppExploreRoute
-  '/post/$slug': typeof PostSlugRoute
+  '/settings': typeof SettingsBaseRouteWithChildren
   '/t/$slug': typeof TSlugRoute
   '/': typeof AppIndexRoute
+  '/dashboard': typeof DashboardIndexRoute
   '/onboard/': typeof OnboardIndexRoute
+  '/search': typeof SearchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/dashboard/$publicationId': typeof DashboardPublicationIdPubRouteWithChildren
+  '/u/@{$username}/$slug': typeof UAtChar123usernameChar125SlugRoute
+  '/settings/': typeof SettingsBaseIndexRoute
+  '/u/@{$username}': typeof UAtChar123usernameChar125IndexRoute
+  '/dashboard/$publicationId/posts': typeof DashboardPublicationIdPubPostsRoute
   '/onboard/blog/setup/{-$redirect}': typeof OnboardBlogSetupChar123RedirectChar125Route
+  '/dashboard/$publicationId/': typeof DashboardPublicationIdPubIndexRoute
 }
 export interface FileRoutesByTo {
   '/changelog': typeof ChangelogRoute
-  '/dashboard': typeof DashboardRoute
   '/new': typeof NewRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/bookmarks': typeof AppBookmarksRoute
   '/explore': typeof AppExploreRoute
-  '/post/$slug': typeof PostSlugRoute
+  '/settings': typeof SettingsBaseIndexRoute
   '/t/$slug': typeof TSlugRoute
   '/': typeof AppIndexRoute
+  '/dashboard': typeof DashboardIndexRoute
   '/onboard': typeof OnboardIndexRoute
+  '/search': typeof SearchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/dashboard/$publicationId': typeof DashboardPublicationIdPubIndexRoute
+  '/u/@{$username}/$slug': typeof UAtChar123usernameChar125SlugRoute
+  '/u/@{$username}': typeof UAtChar123usernameChar125IndexRoute
+  '/dashboard/$publicationId/posts': typeof DashboardPublicationIdPubPostsRoute
   '/onboard/blog/setup/{-$redirect}': typeof OnboardBlogSetupChar123RedirectChar125Route
 }
 export interface FileRoutesById {
@@ -145,90 +219,131 @@ export interface FileRoutesById {
   '/onboard': typeof OnboardRouteRouteWithChildren
   '/_app': typeof AppRouteWithChildren
   '/changelog': typeof ChangelogRoute
-  '/dashboard': typeof DashboardRoute
   '/new': typeof NewRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/_app/bookmarks': typeof AppBookmarksRoute
   '/_app/explore': typeof AppExploreRoute
-  '/post/$slug': typeof PostSlugRoute
+  '/settings': typeof SettingsRouteWithChildren
+  '/settings/_base': typeof SettingsBaseRouteWithChildren
   '/t/$slug': typeof TSlugRoute
   '/_app/': typeof AppIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/onboard/': typeof OnboardIndexRoute
+  '/search/': typeof SearchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/trpc/$': typeof ApiTrpcSplatRoute
+  '/dashboard/$publicationId': typeof DashboardPublicationIdRouteWithChildren
+  '/dashboard/$publicationId/_pub': typeof DashboardPublicationIdPubRouteWithChildren
+  '/u/@{$username}/$slug': typeof UAtChar123usernameChar125SlugRoute
+  '/settings/_base/': typeof SettingsBaseIndexRoute
+  '/u/@{$username}/': typeof UAtChar123usernameChar125IndexRoute
+  '/dashboard/$publicationId/_pub/posts': typeof DashboardPublicationIdPubPostsRoute
   '/onboard/blog/setup/{-$redirect}': typeof OnboardBlogSetupChar123RedirectChar125Route
+  '/dashboard/$publicationId/_pub/': typeof DashboardPublicationIdPubIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/onboard'
     | '/changelog'
-    | '/dashboard'
     | '/new'
     | '/notifications'
     | '/pricing'
     | '/bookmarks'
     | '/explore'
-    | '/post/$slug'
+    | '/settings'
     | '/t/$slug'
     | '/'
+    | '/dashboard'
     | '/onboard/'
+    | '/search'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/dashboard/$publicationId'
+    | '/u/@{$username}/$slug'
+    | '/settings/'
+    | '/u/@{$username}'
+    | '/dashboard/$publicationId/posts'
     | '/onboard/blog/setup/{-$redirect}'
+    | '/dashboard/$publicationId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/changelog'
-    | '/dashboard'
     | '/new'
     | '/notifications'
     | '/pricing'
     | '/bookmarks'
     | '/explore'
-    | '/post/$slug'
+    | '/settings'
     | '/t/$slug'
     | '/'
+    | '/dashboard'
     | '/onboard'
+    | '/search'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/dashboard/$publicationId'
+    | '/u/@{$username}/$slug'
+    | '/u/@{$username}'
+    | '/dashboard/$publicationId/posts'
     | '/onboard/blog/setup/{-$redirect}'
   id:
     | '__root__'
     | '/onboard'
     | '/_app'
     | '/changelog'
-    | '/dashboard'
     | '/new'
     | '/notifications'
     | '/pricing'
     | '/_app/bookmarks'
     | '/_app/explore'
-    | '/post/$slug'
+    | '/settings'
+    | '/settings/_base'
     | '/t/$slug'
     | '/_app/'
+    | '/dashboard/'
     | '/onboard/'
+    | '/search/'
     | '/api/auth/$'
     | '/api/trpc/$'
+    | '/dashboard/$publicationId'
+    | '/dashboard/$publicationId/_pub'
+    | '/u/@{$username}/$slug'
+    | '/settings/_base/'
+    | '/u/@{$username}/'
+    | '/dashboard/$publicationId/_pub/posts'
     | '/onboard/blog/setup/{-$redirect}'
+    | '/dashboard/$publicationId/_pub/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   OnboardRouteRoute: typeof OnboardRouteRouteWithChildren
   AppRoute: typeof AppRouteWithChildren
   ChangelogRoute: typeof ChangelogRoute
-  DashboardRoute: typeof DashboardRoute
   NewRoute: typeof NewRoute
   NotificationsRoute: typeof NotificationsRoute
   PricingRoute: typeof PricingRoute
-  PostSlugRoute: typeof PostSlugRoute
+  SettingsRoute: typeof SettingsRouteWithChildren
   TSlugRoute: typeof TSlugRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  SearchIndexRoute: typeof SearchIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiTrpcSplatRoute: typeof ApiTrpcSplatRoute
+  DashboardPublicationIdRoute: typeof DashboardPublicationIdRouteWithChildren
+  UAtChar123usernameChar125SlugRoute: typeof UAtChar123usernameChar125SlugRoute
+  UAtChar123usernameChar125IndexRoute: typeof UAtChar123usernameChar125IndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -248,13 +363,6 @@ declare module '@tanstack/react-router' {
       path: '/new'
       fullPath: '/new'
       preLoaderRoute: typeof NewRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/changelog': {
@@ -278,12 +386,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/$publicationId': {
+      id: '/dashboard/$publicationId'
+      path: '/dashboard/$publicationId'
+      fullPath: '/dashboard/$publicationId'
+      preLoaderRoute: typeof DashboardPublicationIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search/': {
+      id: '/search/'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboard/': {
       id: '/onboard/'
       path: '/'
       fullPath: '/onboard/'
       preLoaderRoute: typeof OnboardIndexRouteImport
       parentRoute: typeof OnboardRouteRoute
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_app/': {
       id: '/_app/'
@@ -299,12 +428,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/post/$slug': {
-      id: '/post/$slug'
-      path: '/post/$slug'
-      fullPath: '/post/$slug'
-      preLoaderRoute: typeof PostSlugRouteImport
-      parentRoute: typeof rootRouteImport
+    '/settings/_base': {
+      id: '/settings/_base'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsBaseRouteImport
+      parentRoute: typeof SettingsRoute
     }
     '/_app/explore': {
       id: '/_app/explore'
@@ -320,6 +449,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppBookmarksRouteImport
       parentRoute: typeof AppRoute
     }
+    '/u/@{$username}/': {
+      id: '/u/@{$username}/'
+      path: '/u/@{$username}'
+      fullPath: '/u/@{$username}'
+      preLoaderRoute: typeof UAtChar123usernameChar125IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/_base/': {
+      id: '/settings/_base/'
+      path: '/'
+      fullPath: '/settings/'
+      preLoaderRoute: typeof SettingsBaseIndexRouteImport
+      parentRoute: typeof SettingsBaseRoute
+    }
+    '/u/@{$username}/$slug': {
+      id: '/u/@{$username}/$slug'
+      path: '/u/@{$username}/$slug'
+      fullPath: '/u/@{$username}/$slug'
+      preLoaderRoute: typeof UAtChar123usernameChar125SlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/$publicationId/_pub': {
+      id: '/dashboard/$publicationId/_pub'
+      path: '/dashboard/$publicationId'
+      fullPath: '/dashboard/$publicationId'
+      preLoaderRoute: typeof DashboardPublicationIdPubRouteImport
+      parentRoute: typeof DashboardPublicationIdRoute
+    }
     '/api/trpc/$': {
       id: '/api/trpc/$'
       path: '/api/trpc/$'
@@ -334,12 +491,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/$publicationId/_pub/': {
+      id: '/dashboard/$publicationId/_pub/'
+      path: '/'
+      fullPath: '/dashboard/$publicationId/'
+      preLoaderRoute: typeof DashboardPublicationIdPubIndexRouteImport
+      parentRoute: typeof DashboardPublicationIdPubRoute
+    }
     '/onboard/blog/setup/{-$redirect}': {
       id: '/onboard/blog/setup/{-$redirect}'
       path: '/blog/setup/{-$redirect}'
       fullPath: '/onboard/blog/setup/{-$redirect}'
       preLoaderRoute: typeof OnboardBlogSetupChar123RedirectChar125RouteImport
       parentRoute: typeof OnboardRouteRoute
+    }
+    '/dashboard/$publicationId/_pub/posts': {
+      id: '/dashboard/$publicationId/_pub/posts'
+      path: '/posts'
+      fullPath: '/dashboard/$publicationId/posts'
+      preLoaderRoute: typeof DashboardPublicationIdPubPostsRouteImport
+      parentRoute: typeof DashboardPublicationIdPubRoute
     }
   }
 }
@@ -373,18 +544,76 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface SettingsBaseRouteChildren {
+  SettingsBaseIndexRoute: typeof SettingsBaseIndexRoute
+}
+
+const SettingsBaseRouteChildren: SettingsBaseRouteChildren = {
+  SettingsBaseIndexRoute: SettingsBaseIndexRoute,
+}
+
+const SettingsBaseRouteWithChildren = SettingsBaseRoute._addFileChildren(
+  SettingsBaseRouteChildren,
+)
+
+interface SettingsRouteChildren {
+  SettingsBaseRoute: typeof SettingsBaseRouteWithChildren
+}
+
+const SettingsRouteChildren: SettingsRouteChildren = {
+  SettingsBaseRoute: SettingsBaseRouteWithChildren,
+}
+
+const SettingsRouteWithChildren = SettingsRoute._addFileChildren(
+  SettingsRouteChildren,
+)
+
+interface DashboardPublicationIdPubRouteChildren {
+  DashboardPublicationIdPubPostsRoute: typeof DashboardPublicationIdPubPostsRoute
+  DashboardPublicationIdPubIndexRoute: typeof DashboardPublicationIdPubIndexRoute
+}
+
+const DashboardPublicationIdPubRouteChildren: DashboardPublicationIdPubRouteChildren =
+  {
+    DashboardPublicationIdPubPostsRoute: DashboardPublicationIdPubPostsRoute,
+    DashboardPublicationIdPubIndexRoute: DashboardPublicationIdPubIndexRoute,
+  }
+
+const DashboardPublicationIdPubRouteWithChildren =
+  DashboardPublicationIdPubRoute._addFileChildren(
+    DashboardPublicationIdPubRouteChildren,
+  )
+
+interface DashboardPublicationIdRouteChildren {
+  DashboardPublicationIdPubRoute: typeof DashboardPublicationIdPubRouteWithChildren
+}
+
+const DashboardPublicationIdRouteChildren: DashboardPublicationIdRouteChildren =
+  {
+    DashboardPublicationIdPubRoute: DashboardPublicationIdPubRouteWithChildren,
+  }
+
+const DashboardPublicationIdRouteWithChildren =
+  DashboardPublicationIdRoute._addFileChildren(
+    DashboardPublicationIdRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   OnboardRouteRoute: OnboardRouteRouteWithChildren,
   AppRoute: AppRouteWithChildren,
   ChangelogRoute: ChangelogRoute,
-  DashboardRoute: DashboardRoute,
   NewRoute: NewRoute,
   NotificationsRoute: NotificationsRoute,
   PricingRoute: PricingRoute,
-  PostSlugRoute: PostSlugRoute,
+  SettingsRoute: SettingsRouteWithChildren,
   TSlugRoute: TSlugRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  SearchIndexRoute: SearchIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiTrpcSplatRoute: ApiTrpcSplatRoute,
+  DashboardPublicationIdRoute: DashboardPublicationIdRouteWithChildren,
+  UAtChar123usernameChar125SlugRoute: UAtChar123usernameChar125SlugRoute,
+  UAtChar123usernameChar125IndexRoute: UAtChar123usernameChar125IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

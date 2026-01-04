@@ -1,33 +1,42 @@
 import { Link } from "@tanstack/react-router";
 import { Img } from "react-image";
+import { Button } from "../ui/button";
 
 const PageNotFound = () => {
   return (
     <>
       <div className="bg-blue-50 dark:bg-black">
-        <div className="container mx-auto flex min-h-[100dvh] flex-col items-center justify-center border-x border-border-light bg-white px-8 py-16 dark:border-border dark:bg-slate-900">
+        <div className="flex flex-col justify-center items-center bg-white dark:bg-slate-900 mx-auto px-8 py-16 border-border-light border-x dark:border-border min-h-[calc(100dvh-75px)] container">
           <Img
-            className="mb-8 max-h-[30rem] w-auto select-none object-cover"
-            src={"/static/pageNotFound.png"}
+            className="mb-8 w-9/12 max-w-120 h-full object-cover select-none"
+            src={"/pageNotFound.png"}
             alt="404"
             width={500}
             draggable={false}
             height={500}
           />
 
-          <h1 className="mb-4 text-6xl font-bold text-slate-900 dark:text-slate-100">
-            404
+          <h1 className="mb-4 font-bold text-slate-900 dark:text-slate-100 text-6xl">
+            404: Page not found
           </h1>
 
-          <h1 className="mb-6 text-2xl font-bold text-slate-500">
+          <h1 className="mb-10 font-medium text-slate-500 text-2xl">
             We can&apos;t find the page you&apos;re looking for.
           </h1>
 
-          <Link to="/">
-            <button className="rounded-full border border-secondary px-4 py-2 text-base font-medium text-secondary shadow-lg outline-none hover:bg-gray-100">
-              Take me home
-            </button>
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link to="/">
+              <Button className="hover:bg-gray-100 shadow-lg px-4 py-2 border border-secondary rounded-full outline-none font-medium text-secondary text-base">
+                Take me home
+              </Button>
+            </Link>
+            <Button
+              variant={"outline"}
+              className="shadow-lg px-4 py-2 rounded-full outline-none font-medium text-base"
+            >
+              Report
+            </Button>
+          </div>
         </div>
       </div>
     </>

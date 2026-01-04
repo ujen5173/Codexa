@@ -1,16 +1,15 @@
-import PostContent from "@/components/layout/single-article/post-content";
 import PostHeader from "@/components/layout/single-article/post-header";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/post/$slug")({
+export const Route = createFileRoute("/u/@{$username}/$slug")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white min-h-screen">
       <PostHeader />
-      <PostContent />
+      {/* <PostContent /> */}
     </div>
   );
 }

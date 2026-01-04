@@ -102,7 +102,7 @@ const WritingEditor = ({
 
   if (isLoading && articleId) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex justify-center items-center h-screen">
         <div className="text-slate-500">Loading...</div>
       </div>
     );
@@ -110,14 +110,14 @@ const WritingEditor = ({
 
   return (
     <div className={`flex flex-col h-screen ${focusMode ? "bg-slate-50" : ""}`}>
-      <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-white">
+      <div className="flex justify-between items-center bg-white p-4 border-slate-200 border-b">
         <div className="flex items-center gap-2">
           {!isSidebarOpen && (
             <Button
               variant="ghost"
               size="icon-sm"
               onClick={onSidebarToggle}
-              className="h-8 w-8"
+              className="w-8 h-8"
             >
               <Menu className="size-4" />
             </Button>
@@ -155,19 +155,19 @@ const WritingEditor = ({
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        <div className="max-w-4xl mx-auto px-6 py-8">
+        <div className="mx-auto px-6 py-8 max-w-4xl">
           <div className="space-y-6">
             {thumbnail && (
-              <div className="relative group">
+              <div className="group relative">
                 <img
                   src={thumbnail}
                   alt="Cover"
-                  className="w-full h-64 object-cover rounded-lg"
+                  className="rounded-lg w-full h-64 object-cover"
                 />
                 <Button
                   variant="ghost"
                   size="icon-sm"
-                  className="absolute top-2 right-2 opacity-0 group-hover:opacity-100"
+                  className="top-2 right-2 absolute opacity-0 group-hover:opacity-100"
                   onClick={() => setThumbnail("")}
                 >
                   <X className="size-4" />
@@ -209,7 +209,7 @@ const WritingEditor = ({
               variant={"ghost-outline"}
               onChange={(e) => setTitle(e.target.value)}
               size="lg"
-              className="text-4xl font-bold border-0 focus-visible:ring-0 p-0 h-auto"
+              className="p-0 border-0 focus-visible:ring-0 h-auto font-bold text-4xl"
             />
 
             {showDescription && (
@@ -218,7 +218,7 @@ const WritingEditor = ({
                 placeholder="Article Subtitle"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="text-xl text-slate-600 border-0 focus-visible:ring-0 p-0 h-auto"
+                className="p-0 border-0 focus-visible:ring-0 h-auto text-slate-600 text-xl"
               />
             )}
 
@@ -232,7 +232,7 @@ const WritingEditor = ({
                     setContentJson(json);
                     setContent(html);
                   }}
-                  className="prose prose-slate max-w-none min-h-[500px]"
+                  className="max-w-none min-h-[500px] prose prose-slate"
                 />
               </EditorRoot> */}
             </div>
@@ -241,12 +241,12 @@ const WritingEditor = ({
       </div>
 
       {showPreview && (
-        <div className="fixed inset-0 z-50 bg-white overflow-y-auto">
-          <div className="max-w-4xl mx-auto px-6 py-8">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold">Preview</h2>
+        <div className="z-50 fixed inset-0 bg-white overflow-y-auto">
+          <div className="mx-auto px-6 py-8 max-w-4xl">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="font-semibold text-2xl">Preview</h2>
               <Button variant="ghost" onClick={() => setShowPreview(false)}>
-                <X className="size-4 mr-2" />
+                <X className="mr-2 size-4" />
                 Close
               </Button>
             </div>
@@ -254,15 +254,15 @@ const WritingEditor = ({
               <img
                 src={thumbnail}
                 alt="Cover"
-                className="w-full h-64 object-cover rounded-lg mb-8"
+                className="mb-8 rounded-lg w-full h-64 object-cover"
               />
             )}
-            <h1 className="text-4xl font-bold mb-4">{title || "Untitled"}</h1>
+            <h1 className="mb-4 font-bold text-4xl">{title || "Untitled"}</h1>
             {showDescription && description && (
-              <h2 className="text-xl text-slate-600 mb-8">{description}</h2>
+              <h2 className="mb-8 text-slate-600 text-xl">{description}</h2>
             )}
             <div
-              className="prose prose-slate max-w-none"
+              className="max-w-none prose prose-slate"
               dangerouslySetInnerHTML={{ __html: content }}
             />
           </div>
