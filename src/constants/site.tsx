@@ -142,7 +142,7 @@ export const linkItems = {
       href: "/changelog",
       icon: <GitBranch className="text-inherit" />,
       separator: false,
-      disabled: true,
+      disabled: false,
     },
     {
       id: uuid(),
