@@ -2,6 +2,7 @@ import Logo from "@/components/common/logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { env } from "@/env";
 import { platformName } from "@/lib/constants";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { format } from "date-fns";
@@ -64,7 +65,7 @@ function RouteComponent() {
           {
             headers: {
               "X-GitHub-Api-Version": "2022-11-28",
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${env.GITHUB_TOKEN}`,
               Accept: "application/vnd.github+json",
             },
           }
