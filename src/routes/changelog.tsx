@@ -2,8 +2,9 @@ import Logo from "@/components/common/logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { env } from "@/env";
+import { trpcClient } from "@/integrations/tanstack-query/root-provider";
 import { platformName } from "@/lib/constants";
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { format } from "date-fns";
 import {
@@ -18,7 +19,6 @@ import {
   SparklesIcon,
   TwitterIcon
 } from "hugeicons-react";
-import { useEffect, useState } from "react";
 import { Img } from "react-image";
 
 export const Route = createFileRoute("/changelog")({
@@ -54,31 +54,10 @@ const commitBadgeColors = [
 ];
 
 function RouteComponent() {
-  const [commits, setCommits] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    void (async () => {
-      try {
-        const res = await fetch(
-          `https://api.github.com/repos/ujen5173/-theReadora-/commits?per_page=30`,
-          {
-            headers: {
-              "X-GitHub-Api-Version": "2022-11-28",
-              Authorization: `Bearer ${env.GITHUB_TOKEN}`,
-              Accept: "application/vnd.github+json",
-            },
-          }
-        );
-        const data = await res.json();
-        setCommits(data);
-      } catch (error) {
-        console.error("Failed to fetch commits", error);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
+  const { data: commits, isLoading: loading } = useQuery({
+    queryKey: ["changelog"],
+    queryFn: () => trpcClient.utilsRouter.changelog.query(),
+  });
 
   return (
     <div className="relative bg-slate-50 dark:bg-slate-950 min-h-screen overflow-hidden">
