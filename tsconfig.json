@@ -1,5 +1,5 @@
 {
-  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts", "src/routes/onboard/blog.setup.{-$redirect}.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts", "src/routes/onboard/blog.setup.tsx"],
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",

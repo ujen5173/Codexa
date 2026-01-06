@@ -21,7 +21,7 @@ function RouteComponent() {
   const [profileImageFiles, setProfileImageFiles] = useState<File[]>([]);
 
   return (
-    <div className="relative font-inter">
+    <div className="relative">
       <div className="mx-auto px-4 py-6 w-full max-w-4xl">
         <div className="pb-6">
           <h1 className="font-semibold text-slate-800 dark:text-slate-100 text-3xl">
@@ -119,7 +119,7 @@ function RouteComponent() {
           </div>
         </div>
       </div>
-      <div className="bottom-0 sticky bg-slate-950/50 backdrop-blur-sm p-4 border-t">
+      <div className="bottom-0 sticky bg-slate-50/50 dark:bg-slate-950/50 backdrop-blur-sm p-4 border-t">
         <div className="flex justify-end mx-auto max-w-4xl">
           <Button size="lg" className="rounded-full">
             Update

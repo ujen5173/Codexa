@@ -21,10 +21,12 @@ const SEARCH_PLACEHOLDERS = [
 ];
 
 const DONT_SHOW_HEADER = [
-  /^\/u\/@[a-zA-Z0-9]+\/[a-zA-Z0-9]+$/, // blog article page
-  /^\/onboard$/, // onboard page
-  /^\/dashboard\/[a-zA-Z0-9_-]+(\/.*)?$/,
+  /^(?:\/u\/@[a-zA-Z0-9_]+\/[a-zA-Z0-9-]+|\/p\/.+)$/, // user article page and publication page
+  /^\/onboard$/,                                      // onboard page
+  /^\/dashboard\/[a-zA-Z0-9_-]+(\/.*)?$/,             // dashboard + subroutes
+  /^\/new$/,                                          // new article
 ];
+
 
 const Header = () => {
   const [blur, setBlur] = useState(false);
@@ -47,8 +49,8 @@ const Header = () => {
   };
 
   return (
-    <header className="relative bg-white dark:bg-slate-900 shadow-sm border-border border-b w-full">
-      <nav className="flex justify-between items-center gap-4 mx-auto px-4 py-4 max-w-385">
+    <header className="relative bg-white dark:bg-slate-900 shadow-sm px-4 py-4 border-border border-b w-full">
+      <nav className="flex justify-between items-center gap-4 mx-auto max-w-385">
         <div className="flex items-center gap-4">
           <Logo />
           <div className="flex items-center gap-2">
@@ -118,7 +120,7 @@ const Header = () => {
                 </div>
               </div>
             )}
-            <div className="top-1.5 right-4 absolute font-inter">
+            <div className="top-1.5 right-4 absolute">
               <Kbd className="dark:bg-slate-700 px-2 border border-border h-7 dark:text-slate-200 uppercase">
                 Ctrl + K
               </Kbd>

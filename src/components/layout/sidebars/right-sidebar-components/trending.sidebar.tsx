@@ -30,7 +30,7 @@ const TrendingSidebar = () => {
       </div>
       <div className="space-y-4 mb-4">
         <div className="">
-          <h4 className="font-medium text-slate-700 dark:text-slate-100 text-base">
+          <h4 className="font-title font-medium text-slate-700 dark:text-slate-100 text-base">
             When AI Can Pay, Trust Must Follow
           </h4>
           <div className="flex items-center">
@@ -44,7 +44,7 @@ const TrendingSidebar = () => {
           </div>
         </div>
         <div className="">
-          <h4 className="font-medium text-slate-700 dark:text-slate-100 text-base">
+          <h4 className="font-title font-medium text-slate-700 dark:text-slate-100 text-base">
             Use Case Diagrams: What They Are and Why They Matter
           </h4>
           <div className="flex items-center">
@@ -58,7 +58,7 @@ const TrendingSidebar = () => {
           </div>
         </div>
         <div className="">
-          <h4 className="font-medium text-slate-700 dark:text-slate-100 text-base">
+          <h4 className="font-title font-medium text-slate-700 dark:text-slate-100 text-base">
             AEON: When AI Learns to Pay — Building Trust in the Agentic Economy
           </h4>
           <div className="flex items-center">

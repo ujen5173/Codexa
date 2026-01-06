@@ -10,7 +10,7 @@ const TopContributorSidebar = () => {
           Top Contributor
         </h4>
       </div>
-      <div className="space-y-4 font-inter">
+      <div className="space-y-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Img

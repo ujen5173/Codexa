@@ -42,14 +42,13 @@ function RouteComponent() {
   const [showArticleViews, setShowArticleViews] = useState(true);
   const [enableSubscribePrompt, setEnableSubscribePrompt] = useState(true);
 
-  // File states
   const [logoFiles, setLogoFiles] = useState<File[]>([]);
   const [darkLogoFiles, setDarkLogoFiles] = useState<File[]>([]);
   const [faviconFiles, setFaviconFiles] = useState<File[]>([]);
   const [socialImageFiles, setSocialImageFiles] = useState<File[]>([]);
 
   return (
-    <div className="relative font-inter">
+    <div className="relative">
       <div className="mx-auto px-4 py-10 w-full max-w-4xl min-h-screen">
         <div className="pb-6">
           <h1 className="font-semibold text-slate-800 dark:text-slate-100 text-3xl">
@@ -63,7 +62,6 @@ function RouteComponent() {
         <Separator className="mb-8" />
 
         <div className="space-y-12">
-          {/* Homepage layout */}
           <section className="space-y-6">
             <div>
               <h2 className="font-semibold text-lg">Homepage layout</h2>
@@ -73,7 +71,6 @@ function RouteComponent() {
             </div>
 
             <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
-              {/* Magazine Layout */}
               <div
                 className={cn(
                   "p-4 border-2 hover:border-primary/50 rounded-lg transition-all cursor-pointer",
@@ -93,19 +90,18 @@ function RouteComponent() {
                   />
                 </div>
                 <div className="space-y-2 pointer-events-none select-none">
-                  <div className="bg-muted/50 rounded-md w-full h-24" />
+                  <div className="bg-slate-200 rounded-md w-full h-24" />
                   <div className="gap-2 grid grid-cols-2">
-                    <div className="bg-muted/50 rounded-md h-16" />
-                    <div className="bg-muted/50 rounded-md h-16" />
+                    <div className="bg-slate-200 rounded-md h-16" />
+                    <div className="bg-slate-200 rounded-md h-16" />
                   </div>
                   <div className="space-y-1">
-                    <div className="bg-muted/50 rounded w-3/4 h-3" />
-                    <div className="bg-muted/50 rounded w-1/2 h-3" />
+                    <div className="bg-slate-200 rounded w-3/4 h-3" />
+                    <div className="bg-slate-200 rounded w-1/2 h-3" />
                   </div>
                 </div>
               </div>
 
-              {/* Stacked Layout */}
               <div
                 className={cn(
                   "p-4 border-2 hover:border-primary/50 rounded-lg transition-all cursor-pointer",
@@ -126,23 +122,22 @@ function RouteComponent() {
                 </div>
                 <div className="space-y-3 pointer-events-none select-none">
                   <div className="space-y-2">
-                    <div className="bg-muted/50 rounded-md w-full h-12" />
+                    <div className="bg-slate-200 rounded-md w-full h-12" />
                     <div className="space-y-1">
-                      <div className="bg-muted/50 rounded w-full h-2" />
-                      <div className="bg-muted/50 rounded w-2/3 h-2" />
+                      <div className="bg-slate-200 rounded w-full h-2" />
+                      <div className="bg-slate-200 rounded w-2/3 h-2" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <div className="bg-muted/50 rounded-md w-full h-12" />
+                    <div className="bg-slate-200 rounded-md w-full h-12" />
                     <div className="space-y-1">
-                      <div className="bg-muted/50 rounded w-full h-2" />
-                      <div className="bg-muted/50 rounded w-2/3 h-2" />
+                      <div className="bg-slate-200 rounded w-full h-2" />
+                      <div className="bg-slate-200 rounded w-2/3 h-2" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Grid Layout */}
               <div
                 className={cn(
                   "p-4 border-2 hover:border-primary/50 rounded-lg transition-all cursor-pointer",
@@ -163,20 +158,20 @@ function RouteComponent() {
                 </div>
                 <div className="gap-2 grid grid-cols-2 pointer-events-none select-none">
                   <div className="space-y-1">
-                    <div className="bg-muted/50 rounded-md h-12" />
-                    <div className="bg-muted/50 rounded w-full h-2" />
+                    <div className="bg-slate-200 rounded-md h-12" />
+                    <div className="bg-slate-200 rounded w-full h-2" />
                   </div>
                   <div className="space-y-1">
-                    <div className="bg-muted/50 rounded-md h-12" />
-                    <div className="bg-muted/50 rounded w-full h-2" />
+                    <div className="bg-slate-200 rounded-md h-12" />
+                    <div className="bg-slate-200 rounded w-full h-2" />
                   </div>
                   <div className="space-y-1">
-                    <div className="bg-muted/50 rounded-md h-12" />
-                    <div className="bg-muted/50 rounded w-full h-2" />
+                    <div className="bg-slate-200 rounded-md h-12" />
+                    <div className="bg-slate-200 rounded w-full h-2" />
                   </div>
                   <div className="space-y-1">
-                    <div className="bg-muted/50 rounded-md h-12" />
-                    <div className="bg-muted/50 rounded w-full h-2" />
+                    <div className="bg-slate-200 rounded-md h-12" />
+                    <div className="bg-slate-200 rounded w-full h-2" />
                   </div>
                 </div>
               </div>
@@ -185,7 +180,6 @@ function RouteComponent() {
 
           <Separator />
 
-          {/* Logo and Favicon */}
           <section className="space-y-8">
             <h2 className="font-semibold text-lg">Logo and favicon</h2>
 
@@ -301,7 +295,6 @@ function RouteComponent() {
 
           <Separator />
 
-          {/* More customization */}
           <section className="space-y-8">
             <h2 className="font-semibold text-lg">More customization</h2>
 
@@ -438,7 +431,7 @@ function RouteComponent() {
         </div>
       </div>
 
-      <div className="bottom-0 sticky bg-slate-950/50 backdrop-blur-sm p-4 border-t">
+      <div className="bottom-0 sticky bg-slate-50/50 dark:bg-slate-950/50 backdrop-blur-sm p-4 border-t">
         <div className="flex justify-end mx-auto max-w-4xl">
           <Button size="lg" className="rounded-full">
             Update

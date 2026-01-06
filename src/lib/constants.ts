@@ -6,7 +6,7 @@ export const data = {
       id: "art-001",
       title: "The Rise of Personal LLMs: Running Models Locally in 2026",
       excerpt:
-        "Why the shift from cloud-based AI to local-first privacy is the biggest dev trend of the year.",
+        "Why the shift from cloud-based AI to local-first privacy is the biggest dev trend of the year. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 1240,
       reads: 5400,
       discussion: 89,
@@ -15,7 +15,7 @@ export const data = {
       author: {
         pro: true,
         name: "Alex Rivera",
-        blog: "The Local Node",
+        blog: "thelocalnode.codexa.dev",
         image: "https://api.dicebear.com/9.x/bottts/svg?seed=Rivera&flip=false",
         username: "arivera_dev",
       },
@@ -30,7 +30,7 @@ export const data = {
       id: "art-002",
       title: "TypeScript 6.0: Features You Should Start Using Today",
       excerpt:
-        "A deep dive into the new decorator metadata and structural performance improvements.",
+        "A deep dive into the new decorator metadata and structural performance improvements. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 850,
       reads: 3200,
       discussion: 45,
@@ -39,7 +39,7 @@ export const data = {
       author: {
         pro: false,
         name: "Sarah Chen",
-        blog: "Typed Insights",
+        blog: "typedinsights.dev",
         image:
           "https://api.dicebear.com/9.x/big-smile/svg?seed=Chen&flip=false",
         username: "schen_codes",
@@ -55,7 +55,7 @@ export const data = {
       id: "art-003",
       title: "Sustainable Coding: Reducing Carbon Footprint in Your CI/CD",
       excerpt:
-        "How leading tech firms are optimizing their build pipelines to meet new 2026 green standards.",
+        "How leading tech firms are optimizing their build pipelines to meet new 2026 green standards. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 620,
       reads: 2100,
       discussion: 22,
@@ -64,7 +64,7 @@ export const data = {
       author: {
         pro: true,
         name: "Jordan Smith",
-        blog: "Green Tech",
+        blog: "greentech.codexa.dev",
         image:
           "https://api.dicebear.com/9.x/croodles/svg?seed=Smith&flip=false",
         username: "jsmith_green",
@@ -80,7 +80,7 @@ export const data = {
       id: "art-004",
       title: "Is the 'Dead Internet Theory' Actually Coming True?",
       excerpt:
-        "Analyzing the ratio of synthetic vs. human content on social platforms in early 2026.",
+        "Analyzing the ratio of synthetic vs. human content on social platforms in early 2026. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 2100,
       reads: 8900,
       discussion: 312,
@@ -105,7 +105,7 @@ export const data = {
       id: "art-005",
       title: "Quantum-Safe Encryption for Frontend Developers",
       excerpt:
-        "Preparing your web applications for the post-quantum era with new browser APIs.",
+        "Preparing your web applications for the post-quantum era with new browser APIs. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 430,
       reads: 1800,
       discussion: 15,
@@ -130,7 +130,7 @@ export const data = {
       id: "art-006",
       title: "The Return of the Monolith: Why Microservices are Fading",
       excerpt:
-        "Why 'Modular Monoliths' became the preferred architecture for startups in late 2025.",
+        "Why 'Modular Monoliths' became the preferred architecture for startups in late 2025. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 1560,
       reads: 6700,
       discussion: 198,
@@ -155,7 +155,7 @@ export const data = {
       id: "art-007",
       title: "Augmented Reality in the Workspace: 1 Year Post-Vision Pro 2",
       excerpt:
-        "How spatial computing has changed the daily routine of remote software engineers.",
+        "How spatial computing has changed the daily routine of remote software engineers. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 980,
       reads: 4500,
       discussion: 67,
@@ -180,7 +180,7 @@ export const data = {
       id: "art-008",
       title: "Rust for Javascript Developers: A 2026 Perspective",
       excerpt:
-        "Transitioning to systems programming as JS tooling continues to migrate to Rust.",
+        "Transitioning to systems programming as JS tooling continues to migrate to Rust. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 1100,
       reads: 3900,
       discussion: 82,
@@ -205,7 +205,7 @@ export const data = {
       id: "art-009",
       title: "Designing for Foldables and Multi-Screen Devices",
       excerpt:
-        "Practical UI patterns for the diverse hardware landscape of 2026.",
+        "Practical UI patterns for the diverse hardware landscape of 2026. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 310,
       reads: 1200,
       discussion: 12,
@@ -230,7 +230,7 @@ export const data = {
       id: "art-010",
       title: "The Ethics of AI-Generated Code in Open Source",
       excerpt:
-        "Who owns the PR? Debating the legalities of AI contributions in the OSS community.",
+        "Who owns the PR? Debating the legalities of AI contributions in the OSS community. A: Please send us your requirements, we will recommend our standard products, if it’s not fit, we will do the necessary adjustment& customization.",
       likes: 2450,
       reads: 11200,
       discussion: 540,

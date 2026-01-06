@@ -130,8 +130,8 @@ function RouteComponent() {
   });
 
   return (
-    <main className="py-16 w-full">
-      <div className="mx-auto max-w-[900px] font-inter">
+    <main className="bg-white dark:bg-slate-950 py-16 w-full">
+      <div className="mx-auto max-w-[900px]">
         <div className="flex justify-between items-center gap-4 mb-6 px-4">
           <h1 className="font-semibold text-4xl">Notifications</h1>
           <Button icon={CircleCheckBig} variant={"ghost"}>
@@ -141,18 +141,16 @@ function RouteComponent() {
 
         <div className="flex gap-1 mb-8 pb-2 overflow-x-auto">
           <Button
-            className={`hover:border-transparent ${
-              filter === "all" ? "bg-blue-300/20 text-primary" : ""
-            } font-medium`}
+            className={`hover:border-transparent ${filter === "all" ? "bg-blue-300/20 text-primary" : ""
+              } font-medium`}
             variant={"ghost"}
             onClick={() => setFilter("all")}
           >
             All
           </Button>
           <Button
-            className={`hover:border-transparent ${
-              filter === "likes" ? "bg-blue-300/20 text-primary" : ""
-            } font-medium`}
+            className={`hover:border-transparent ${filter === "likes" ? "bg-blue-300/20 text-primary" : ""
+              } font-medium`}
             variant={"ghost"}
             icon={FavouriteIcon}
             onClick={() => setFilter("likes")}
@@ -160,9 +158,8 @@ function RouteComponent() {
             Likes
           </Button>
           <Button
-            className={`hover:border-transparent ${
-              filter === "comments" ? "bg-blue-300/20 text-primary" : ""
-            } font-medium`}
+            className={`hover:border-transparent ${filter === "comments" ? "bg-blue-300/20 text-primary" : ""
+              } font-medium`}
             variant={"ghost"}
             icon={MessageCircleMore}
             onClick={() => setFilter("comments")}
@@ -170,9 +167,8 @@ function RouteComponent() {
             Comments
           </Button>
           <Button
-            className={`hover:border-transparent ${
-              filter === "mentions" ? "bg-blue-300/20 text-primary" : ""
-            } font-medium`}
+            className={`hover:border-transparent ${filter === "mentions" ? "bg-blue-300/20 text-primary" : ""
+              } font-medium`}
             variant={"ghost"}
             icon={AtSign}
             onClick={() => setFilter("mentions")}

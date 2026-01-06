@@ -4,7 +4,7 @@ import { Linkedin, Twitter } from "lucide-react";
 
 export function WelcomeNotification() {
   return (
-    <div className="font-inter text-slate-800 dark:text-slate-100">
+    <div className="text-slate-800 dark:text-slate-100">
       <h2 className="flex items-center gap-2 mb-4 font-semibold text-xl">
         Hi <span className="text-2xl">👋</span>, User
       </h2>

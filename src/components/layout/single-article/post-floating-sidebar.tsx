@@ -1,8 +1,9 @@
 import { useTRPC } from "@/integrations/trpc/react";
+import { useMutation } from "@tanstack/react-query";
 import { Bookmark, Heart, List, MessageCircle, Share2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../../ui/button";
-import PostTOC from "../post-toc";
+import PostTOC from "./post-toc";
 
 interface PostFloatingSidebarProps {
   articleId: string;
@@ -29,9 +30,9 @@ const PostFloatingSidebar = ({
   const sidebarRef = useRef<HTMLDivElement>(null);
 
   const trpc = useTRPC();
-  const toggleLike = trpc.articles.toggleLike.useMutation();
-  const toggleBookmark = trpc.articles.toggleBookmark.useMutation();
-  const shareArticle = trpc.articles.share.useMutation();
+  const toggleLike = useMutation(trpc.articles.toggleLike.mutationOptions());
+  const toggleBookmark = useMutation(trpc.articles.toggleBookmark.mutationOptions());
+  const shareArticle = useMutation(trpc.articles.share.mutationOptions());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,22 +113,19 @@ const PostFloatingSidebar = ({
     <>
       <div
         ref={sidebarRef}
-        className={`fixed left-4 top-1/2 -translate-y-1/2 z-40 transition-all duration-300 ${
-          isSticky ? "bottom-auto" : "top-1/2"
-        } hidden lg:block`}
+        className={`fixed left-4 top-1/2 -translate-y-1/2 z-40 transition-all duration-300 ${isSticky ? "bottom-auto" : "top-1/2"
+          } hidden lg:block`}
       >
         <div
-          className={`bg-white border border-slate-200 rounded-2xl p-4 shadow-lg flex flex-col gap-3 items-center ${
-            isSticky ? "relative" : "sticky top-24"
-          }`}
+          className={`bg-white border border-slate-200 rounded-2xl p-4 shadow-lg flex flex-col gap-3 items-center ${isSticky ? "relative" : "sticky top-24"
+            }`}
         >
           <Button
             variant="ghost"
             size="icon"
             onClick={handleLike}
-            className={`flex flex-col gap-1 h-auto py-3 px-2 ${
-              isLiked ? "text-red-500" : "text-slate-600"
-            }`}
+            className={`flex flex-col gap-1 h-auto py-3 px-2 ${isLiked ? "text-red-500" : "text-slate-600"
+              }`}
             disabled={toggleLike.isPending}
           >
             <Heart className={`size-5 ${isLiked ? "fill-current" : ""}`} />
@@ -154,9 +152,8 @@ const PostFloatingSidebar = ({
             variant="ghost"
             size="icon"
             onClick={() => setShowTOC(!showTOC)}
-            className={`flex flex-col gap-1 h-auto py-3 px-2 ${
-              showTOC ? "text-primary" : "text-slate-600"
-            }`}
+            className={`flex flex-col gap-1 h-auto py-3 px-2 ${showTOC ? "text-primary" : "text-slate-600"
+              }`}
           >
             <List className="size-5" />
             <span className="font-medium text-xs">TOC</span>
@@ -166,9 +163,8 @@ const PostFloatingSidebar = ({
             variant="ghost"
             size="icon"
             onClick={handleBookmark}
-            className={`flex flex-col gap-1 h-auto py-3 px-2 ${
-              isBookmarked ? "text-amber-500" : "text-slate-600"
-            }`}
+            className={`flex flex-col gap-1 h-auto py-3 px-2 ${isBookmarked ? "text-amber-500" : "text-slate-600"
+              }`}
             disabled={toggleBookmark.isPending}
           >
             <Bookmark
@@ -220,9 +216,8 @@ const PostFloatingSidebar = ({
             variant="ghost"
             size="icon"
             onClick={handleLike}
-            className={`flex flex-col gap-1 h-auto py-2 px-3 ${
-              isLiked ? "text-red-500" : "text-slate-600"
-            }`}
+            className={`flex flex-col gap-1 h-auto py-2 px-3 ${isLiked ? "text-red-500" : "text-slate-600"
+              }`}
             disabled={toggleLike.isPending}
           >
             <Heart className={`size-5 ${isLiked ? "fill-current" : ""}`} />
@@ -247,9 +242,8 @@ const PostFloatingSidebar = ({
             variant="ghost"
             size="icon"
             onClick={() => setShowTOC(!showTOC)}
-            className={`flex flex-col gap-1 h-auto py-2 px-3 ${
-              showTOC ? "text-primary" : "text-slate-600"
-            }`}
+            className={`flex flex-col gap-1 h-auto py-2 px-3 ${showTOC ? "text-primary" : "text-slate-600"
+              }`}
           >
             <List className="size-5" />
             <span className="font-medium text-xs">TOC</span>
@@ -259,9 +253,8 @@ const PostFloatingSidebar = ({
             variant="ghost"
             size="icon"
             onClick={handleBookmark}
-            className={`flex flex-col gap-1 h-auto py-2 px-3 ${
-              isBookmarked ? "text-amber-500" : "text-slate-600"
-            }`}
+            className={`flex flex-col gap-1 h-auto py-2 px-3 ${isBookmarked ? "text-amber-500" : "text-slate-600"
+              }`}
             disabled={toggleBookmark.isPending}
           >
             <Bookmark

@@ -13,7 +13,7 @@ import { useState } from "react";
 import slugify from "slugify";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/onboard/blog/setup/{-$redirect}")({
+export const Route = createFileRoute("/onboard/blog/setup")({
   component: RouteComponent,
   ssr: false,
 });
@@ -117,9 +117,8 @@ function RouteComponent() {
 
           <button
             onClick={() => void handleSubdomain()}
-            className={`${
-              isPending ? "cursor-not-allowed opacity-40" : ""
-            } btn-filled`}
+            className={`${isPending ? "cursor-not-allowed opacity-40" : ""
+              } btn-filled`}
             disabled={isPending}
           >
             <div className="px-4">{isPending ? "Submiting..." : "Submit"}</div>

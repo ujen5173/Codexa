@@ -1,5 +1,6 @@
 import ActivityCard from "@/components/layout/user-profile/ActivityCard";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Calendar02Icon,
@@ -125,7 +126,7 @@ const refactoredActivity = [
 
 function RouteComponent() {
   return (
-    <main className="bg-slate-50 dark:bg-slate-950 p-4 w-full font-inter">
+    <main className="bg-slate-50 dark:bg-slate-950 p-4 w-full">
       <div className="bg-white dark:bg-slate-900 mx-auto px-4 py-4 border border-border rounded-xl max-w-5xl">
         <div className="space-y-4">
           <div className="flex items-center gap-8">
@@ -145,18 +146,150 @@ function RouteComponent() {
                   Building Data product powered by Machine learning
                 </p>
                 <div className="flex items-center gap-4 text-slate-700 dark:text-slate-300">
-                  <p>
-                    <span className="font-semibold text-slate-800 dark:text-slate-50">
-                      40
-                    </span>{" "}
-                    Followers
-                  </p>
-                  <p>
-                    <span className="font-semibold text-slate-800 dark:text-slate-50">
-                      4
-                    </span>{" "}
-                    Following
-                  </p>
+                  <Dialog>
+                    <DialogTrigger><p className="hover:underline underline-offset-2 cursor-pointer">
+                      <span className="font-semibold text-slate-800 dark:text-slate-50">
+                        40
+                      </span>{" "}
+                      Followers
+                    </p></DialogTrigger>
+                    <DialogContent className="max-w-2xl">
+                      <DialogHeader className="mb-4">
+                        <DialogTitle>Followers</DialogTitle>
+                      </DialogHeader>
+                      <div className="gap-6 grid grid-cols-2">
+                        <div className="flex">
+                          <div className="flex flex-1 gap-2">
+                            <Img
+                              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
+                              width={100}
+                              height={100}
+                              className="rounded-full size-10 object-cover" />
+                            <div>
+                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-base">Ujen Basi</p>
+                              <p className="text-slate-600 dark:text-slate-300 text-base">Full stack developer</p>
+                            </div>
+                          </div>
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                        </div>
+                        <div className="flex">
+                          <div className="flex flex-1 gap-2">
+                            <Img
+                              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
+                              width={100}
+                              height={100}
+                              className="rounded-full size-10 object-cover" />
+                            <div>
+                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-base">Ujen Basi</p>
+                              <p className="text-slate-600 dark:text-slate-300 text-base">Full stack developer</p>
+                            </div>
+                          </div>
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                        </div>
+                        <div className="flex">
+                          <div className="flex flex-1 gap-2">
+                            <Img
+                              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
+                              width={100}
+                              height={100}
+                              className="rounded-full size-10 object-cover" />
+                            <div>
+                              <p className="text-base">Ujen Basi</p>
+                              <p className="text-base">Full stack developer</p>
+                            </div>
+                          </div>
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                        </div>
+                        <div className="flex">
+                          <div className="flex flex-1 gap-2">
+                            <Img
+                              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
+                              width={100}
+                              height={100}
+                              className="rounded-full size-10 object-cover" />
+                            <div>
+                              <p className="text-base">Ujen Basi</p>
+                              <p className="text-base">Full stack developer</p>
+                            </div>
+                          </div>
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                  <Dialog>
+                    <DialogTrigger>
+                      <p className="hover:underline underline-offset-2 cursor-pointer">
+                        <span className="font-semibold text-slate-800 dark:text-slate-50">
+                          4
+                        </span>{" "}
+                        Following
+                      </p>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl">
+                      <DialogHeader className="mb-4">
+                        <DialogTitle>Following</DialogTitle>
+                      </DialogHeader>
+                      <div className="gap-6 grid grid-cols-2">
+                        <div className="flex">
+                          <div className="flex flex-1 gap-2">
+                            <Img
+                              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
+                              width={100}
+                              height={100}
+                              className="rounded-full size-10 object-cover" />
+                            <div>
+                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-base">Ujen Basi</p>
+                              <p className="text-slate-600 dark:text-slate-300 text-base">Full stack developer</p>
+                            </div>
+                          </div>
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                        </div>
+                        <div className="flex">
+                          <div className="flex flex-1 gap-2">
+                            <Img
+                              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
+                              width={100}
+                              height={100}
+                              className="rounded-full size-10 object-cover" />
+                            <div>
+                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-base">Ujen Basi</p>
+                              <p className="text-slate-600 dark:text-slate-300 text-base">Full stack developer</p>
+                            </div>
+                          </div>
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                        </div>
+                        <div className="flex">
+                          <div className="flex flex-1 gap-2">
+                            <Img
+                              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
+                              width={100}
+                              height={100}
+                              className="rounded-full size-10 object-cover" />
+                            <div>
+                              <p className="text-base">Ujen Basi</p>
+                              <p className="text-base">Full stack developer</p>
+                            </div>
+                          </div>
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                        </div>
+                        <div className="flex">
+                          <div className="flex flex-1 gap-2">
+                            <Img
+                              src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
+                              width={100}
+                              height={100}
+                              className="rounded-full size-10 object-cover" />
+                            <div>
+                              <p className="text-base">Ujen Basi</p>
+                              <p className="text-base">Full stack developer</p>
+                            </div>
+                          </div>
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
             </div>
@@ -285,7 +418,7 @@ function RouteComponent() {
             <div>
               {refactoredActivity?.map((activity, index) => (
                 <div
-                  className="flex gap-2 lg:gap-6 w-full font-inter"
+                  className="flex gap-2 lg:gap-6 w-full"
                   key={index}
                 >
                   <div className="activity_date">

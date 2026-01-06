@@ -24,9 +24,8 @@ const ActivityCard: FC<Props> = ({ index, item, activityLength }) => {
   return (
     <div
       key={uuid()}
-      className={`${
-        index === activityLength - 1 ? "" : "border-b"
-      } w-full border-border-light py-2 dark:border-border`}
+      className={`${index === activityLength - 1 ? "" : "border-b"
+        } w-full border-border-light py-2 dark:border-border`}
     >
       <div className="flex items-center gap-2 mb-2 last:mb-0">
         {item.activity_type === "JOINED" ? (
@@ -36,13 +35,16 @@ const ActivityCard: FC<Props> = ({ index, item, activityLength }) => {
         )}
         <span className="text-gray-700 dark:text-slate-300">
           {item.activity_type === "JOINED"
-            ? "Joined codexa"
+            ? "Joined Codexa"
             : "Wrote an article"}
         </span>
       </div>
 
       {item.activity_type !== "JOINED" && (
-        <Link to={`/u/${user}/${item.slug}`} className="mb-2">
+        <Link to={`/u/@{$username}/$slug`} params={{
+          slug: item.slug,
+          username: "ujen5173"
+        }} className="mb-2">
           <div>
             <span className="font-semibold text-gray-700 hover:text-gray-500 dark:hover:text-slate-100 dark:hover:text-text-primary dark:text-slate-50 dark:text-text-secondary text-lg">
               {item.title}

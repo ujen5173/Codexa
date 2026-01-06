@@ -18,7 +18,7 @@ export const Route = createFileRoute("/dashboard/$publicationId/_pub/series")({
 
 function RouteComponent() {
   return (
-    <div className="relative font-inter">
+    <div className="relative">
       <div className="mx-auto px-4 py-10 w-full max-w-4xl min-h-screen">
         <div className="pb-6">
           <h1 className="font-semibold text-slate-800 dark:text-slate-100 text-3xl">

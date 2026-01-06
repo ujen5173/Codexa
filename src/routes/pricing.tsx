@@ -141,7 +141,7 @@ const comparisonFeatures = [
 
 function PricingPage() {
   return (
-    <div className="bg-background min-h-screen font-inter">
+    <div className="bg-background min-h-screen">
       <section className="bg-gradient-to-b from-background to-muted sm:px-6 lg:px-8 pt-16 pb-12 border-border border-b">
         <div className="flex items-end gap-20 mx-auto px-4 max-w-300">
           <div className="flex flex-5">
@@ -208,11 +208,10 @@ function PricingPage() {
                     )}
                     <div className="mb-6">
                       <div
-                        className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
-                          tier.popular
+                        className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${tier.popular
                             ? "bg-purple-100 dark:bg-purple-950/50"
                             : "bg-card"
-                        }`}
+                          }`}
                       >
                         <Icon
                           className={
@@ -251,11 +250,10 @@ function PricingPage() {
                     </div>
 
                     <Button
-                      className={`w-full rounded-xl py-6 font-medium text-base group ${
-                        tier.popular
+                      className={`w-full rounded-xl py-6 font-medium text-base group ${tier.popular
                           ? "bg-blue-600 hover:bg-blue-700 text-white"
                           : "bg-blue-600 hover:bg-blue-700 text-white"
-                      }`}
+                        }`}
                     >
                       {tier.cta}
                       <ArrowRight

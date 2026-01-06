@@ -22,7 +22,7 @@ const DashboardHeader = () => {
           <Link to="/">
             <Img
               className={cn("object-cover select-none")}
-              src="/logo-white.svg"
+              src={theme === "dark" ? "/logo-white.svg" : "/logo.svg"}
               alt="Codexa logo"
               draggable={false}
               width={24}

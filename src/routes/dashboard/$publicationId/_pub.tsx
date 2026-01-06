@@ -1,3 +1,4 @@
+import DashboardFooter from "@/components/layout/footer/dashboard-footer";
 import DashboardHeader from "@/components/layout/header/dashboard-header";
 import { SettingsSidebar } from "@/components/layout/settings-sidebar/side-bar";
 import {
@@ -32,7 +33,7 @@ function RouteComponent() {
     <>
       <DashboardHeader />
 
-      <main className="flex bg-white dark:bg-slate-950 min-h-screen font-inter">
+      <main className="flex bg-white dark:bg-slate-950 min-h-screen">
         <SettingsSidebar />
 
         <section className="flex-1 p-4">
@@ -55,6 +56,7 @@ function RouteComponent() {
           <Outlet />
         </section>
       </main>
+      <DashboardFooter />
     </>
   );
 }

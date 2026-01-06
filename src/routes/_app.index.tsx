@@ -11,7 +11,7 @@ export const Route = createFileRoute("/_app/")({
 
 function RouteComponent() {
   return (
-    <main className="flex-8 space-y-5 rounded-sm font-inter">
+    <main className="flex-8 space-y-5 rounded-sm">
       <div className="flex gap-1">
         <Button
           className="bg-blue-300/20 hover:bg-blue-300/20 hover:border-transparent font-medium text-primary hover:text-primary"

@@ -14,7 +14,7 @@ export const Route = createFileRoute("/onboard/")({
 
 function RouteComponent() {
   return (
-    <main className="bg-slate-50 dark:bg-slate-950 w-full font-inter">
+    <main className="bg-slate-50 dark:bg-slate-950 w-full">
       <section className="mx-auto px-12 py-12 max-w-385 min-h-[calc(100vh-65px)]">
         <div className="flex flex-1 items-center gap-16 pt-28">
           <section className="flex flex-col flex-1 justify-center items-start">

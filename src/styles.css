@@ -1,14 +1,23 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 body {
   @apply m-0;
 
-  font-family: "Geom", sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-optical-sizing: auto;
+}
+
+.font-title {
+  font-family: "Cabinet Grotesk", sans-serif;
+}
+
+.font-content {
+  font-family: "General Sans", sans-serif;
 }
 
 .font-logo {
@@ -24,7 +33,7 @@ body {
 }
 
 .font-boogaloo {
-    font-family: "Stoke", serif; 
+  font-family: "Stoke", serif;
 }
 
 .font-arimo {
@@ -39,9 +48,13 @@ body {
   font-optical-sizing: auto;
 }
 
+.font-satoshi {
+  font-family: "Satoshi" sans-serif;
+}
+
 code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 :root {
@@ -82,7 +95,7 @@ code {
   --chart-1: oklch(0.535 0.235 264.5);
   --chart-2: oklch(0.68 0.19 192);
   --chart-3: oklch(0.72 0.14 142);
-  --chart-4: oklch(0.65 0.20 295);
+  --chart-4: oklch(0.65 0.2 295);
   --chart-5: oklch(0.62 0.19 45);
 
   --radius: 0.75rem;
@@ -136,7 +149,7 @@ code {
   --chart-1: oklch(0.65 0.22 264.5);
   --chart-2: oklch(0.68 0.19 192);
   --chart-3: oklch(0.72 0.14 142);
-  --chart-4: oklch(0.70 0.20 295);
+  --chart-4: oklch(0.7 0.2 295);
   --chart-5: oklch(0.68 0.19 45);
 
   /* Sidebar colors - Dark mode */

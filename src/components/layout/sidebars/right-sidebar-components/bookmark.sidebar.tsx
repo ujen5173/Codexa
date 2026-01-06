@@ -7,7 +7,7 @@ const BookmarkSidebar = () => {
         </h4>
       </div>
       <div className="flex justify-center items-center h-32">
-        <p className="font-inter font-medium text-slate-600 dark:text-slate-300 text-sm">
+        <p className="font-medium text-slate-600 dark:text-slate-300 text-sm">
           Save something. You’ll want it later.
         </p>
       </div>

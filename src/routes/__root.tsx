@@ -64,6 +64,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901&f[]=cabinet-grotesk@100,200,300,400,500,700,800,900&f[]=general-sans@200,201,300,301,400,401,500,501,600,601,700,701&f[]=khand@300,400,500,600,700&display=swap" rel="stylesheet"/>
         <HeadContent />
       </head>
       <body>

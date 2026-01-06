@@ -8,7 +8,7 @@ import { TrendingUp } from "lucide-react";
 const LeftSidebar = () => {
   return (
     <section className="top-4 left-0 sticky flex-2 bg-white dark:bg-slate-900 shadow-sm py-2 border border-border dark:border-slate-800 rounded-2xl min-w-[192px] h-min overflow-hidden">
-      <ul className="pb-3 font-inter">
+      <ul className="pb-3">
         {linkItems.leftSidebar.map((item) => (
           <Link key={item.id} to={item.href}>
             <li

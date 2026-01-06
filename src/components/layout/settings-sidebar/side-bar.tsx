@@ -4,9 +4,9 @@ import { Link } from "@tanstack/react-router";
 
 export function SettingsSidebar() {
   return (
-    <div className="py-4 border-border border-r w-60">
+    <div className="top-0 left-0 sticky py-4 border-border border-r w-60">
       <div className="mb-2 px-2">
-        <span className="text-slate-700 dark:text-slate-300 text-sm">
+        <span className="font-semibold text-slate-600 dark:text-slate-300 text-sm">
           BLOG DASHBOARD
         </span>
       </div>
@@ -20,13 +20,16 @@ export function SettingsSidebar() {
         } else {
           return (
             <Link
-              to={`/dashboard/123${ddItem.default ? "" : ddItem.href}`}
+              to={`/dashboard/$publicationId${(ddItem.default ? "" : ddItem.href) as "/analytics" | "/posts" | "/series" | ""}`}
+              params={{
+                publicationId: `66591b32d988544d623ad7ce`
+              }}
               key={ddItem.id}
               disabled={ddItem.disabled}
             >
               <div className={cn(
-                !ddItem.disabled ? "hover:bg-slate-800 cursor-pointer" : "opacity-50 cursor-default",
-                "flex items-center gap-2 px-3 py-1.5")}
+                !ddItem.disabled ? "hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer" : "opacity-50 cursor-default",
+                "flex items-center gap-2 px-3 py-1.5 font-medium")}
               >
                 {ddItem.icon}
                 <span>{ddItem.label}</span>

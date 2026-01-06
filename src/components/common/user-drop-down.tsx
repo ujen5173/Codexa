@@ -31,7 +31,7 @@ const UserDropDown = () => {
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="font-inter font-normal text-slate-700 dark:text-slate-200"
+            className="font-normal text-slate-700 dark:text-slate-200"
             align="end"
           >
             <DropdownMenuLabel>

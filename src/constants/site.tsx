@@ -8,19 +8,15 @@ import {
   Configuration02Icon,
   CreditCardIcon,
   DashboardSquare02Icon,
-  DocumentCodeIcon,
-  FileEditIcon,
-  GlobalIcon,
+  DocumentCodeIcon, GlobalIcon,
   Home12Icon,
   Mail02Icon,
-  MailAtSign02Icon,
-  Navigation04Icon,
-  NoteIcon,
-  PaintBrush01Icon,
-  SearchList01Icon,
+  MailAtSign02Icon, NoteEditIcon,
+  NoteIcon, SearchList01Icon,
   Settings02Icon,
+  SidebarTopIcon,
   UserGroupIcon,
-  UserShield01Icon,
+  UserShield01Icon
 } from "hugeicons-react";
 import { AtSign, GitBranch } from "lucide-react";
 
@@ -34,17 +30,6 @@ export const linkItems = {
       href: "/",
       icon: (
         <Home12Icon
-          className="text-inherit"
-          style={{ width: "17px", height: "17px" }}
-        />
-      ),
-    },
-    {
-      id: uuid(),
-      label: "Explore",
-      href: "/explore",
-      icon: (
-        <Navigation04Icon
           className="text-inherit"
           style={{ width: "17px", height: "17px" }}
         />
@@ -220,7 +205,7 @@ export const linkItems = {
       label: "Appearance",
       href: "/appearance",
       default: false,
-      icon: <PaintBrush01Icon size={17} className="text-inherit" />,
+      icon: <SidebarTopIcon size={17} className="text-inherit" />,
       description: "Customize your blog's theme and visual style",
       separator: false,
       disabled: false,
@@ -230,7 +215,7 @@ export const linkItems = {
       label: "Articles and drafts",
       href: "/posts",
       default: false,
-      icon: <FileEditIcon size={17} className="text-inherit" />,
+      icon: <NoteEditIcon size={17} className="text-inherit" />,
       description: "Create and manage your blog posts",
       separator: false,
       disabled: false,
@@ -256,42 +241,13 @@ export const linkItems = {
     },
     {
       id: uuid(),
-      label: "Members",
-      href: "/members",
-      default: false,
-      icon: <UserGroupIcon size={17} className="text-inherit" />,
-      description: "Manage subscribers and team members",
-      separator: false,
-      disabled: true,
-    },
-    {
-      id: uuid(),
-      label: "Newsletter",
-      href: "/newsletter",
-      default: false,
-      icon: <Mail02Icon size={17} className="text-inherit" />,
-      description: "Send emails and manage campaigns",
-      separator: false,
-      disabled: true,
-    },
-    {
-      id: uuid(),
-      label: "",
-      href: "#",
-      default: false,
-      icon: <DropdownMenuSeparator />,
-      separator: true,
-      disabled: true,
-    },
-    {
-      id: uuid(),
       label: "Analytics",
       href: "/analytics",
       default: false,
       icon: <ChartBreakoutSquareIcon size={17} className="text-inherit" />,
       description: "Track your blog's performance and growth",
       separator: false,
-      disabled: true,
+      disabled: false,
     },
     {
       id: uuid(),
@@ -313,6 +269,37 @@ export const linkItems = {
       separator: false,
       disabled: true,
     },
+    {
+      id: uuid(),
+      label: "",
+      href: "#",
+      default: false,
+      icon: <DropdownMenuSeparator />,
+      separator: true,
+      disabled: true,
+    },
+
+    {
+      id: uuid(),
+      label: "Members",
+      href: "/members",
+      default: false,
+      icon: <UserGroupIcon size={17} className="text-inherit" />,
+      description: "Manage subscribers and team members",
+      separator: false,
+      disabled: true,
+    },
+    {
+      id: uuid(),
+      label: "Newsletter",
+      href: "/newsletter",
+      default: false,
+      icon: <Mail02Icon size={17} className="text-inherit" />,
+      description: "Send emails and manage campaigns",
+      separator: false,
+      disabled: true,
+    },
+
   ],
   userSettings: [
     {
