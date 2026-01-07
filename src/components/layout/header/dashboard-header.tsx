@@ -16,9 +16,9 @@ const DashboardHeader = () => {
   const pathname = router.latestLocation.pathname;
 
   return (
-    <header className="relative bg-white dark:bg-slate-950 shadow-sm border-border border-b w-full">
-      <nav className="flex justify-between items-center gap-4 mx-auto px-4 py-4">
-        <div className="flex items-center gap-5">
+    <header className="top-0 z-50 sticky bg-white dark:bg-slate-950 shadow-sm border-border border-b w-full">
+      <nav className="flex justify-between items-center gap-2 sm:gap-4 mx-auto px-2 sm:px-4 py-3 sm:py-4">
+        <div className="flex items-center gap-2 sm:gap-5 min-w-0">
           <Link to="/">
             <Img
               className={cn("object-cover select-none")}
@@ -33,13 +33,13 @@ const DashboardHeader = () => {
             <UserPublication />
           )}
         </div>
-        <div className="flex flex-1 items-center gap-2">
+        <div className="flex flex-1 items-center gap-1 sm:gap-2 min-w-0">
           <div className="relative flex-1"></div>
           <Link to="/new">
-            <Button icon={PencilEdit01Icon}>Write</Button>
+            <Button icon={PencilEdit01Icon} size="sm" className="rounded-full text-xs sm:text-sm">Write</Button>
           </Link>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <div className="flex items-center">
             <Link to="/changelog">
               <Button

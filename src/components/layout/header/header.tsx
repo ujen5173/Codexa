@@ -2,13 +2,16 @@ import { TextLoop } from "@/components/motion-primitives/text-loop";
 import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Moon02Icon, PencilEdit01Icon, Sun03Icon } from "hugeicons-react";
-import { Bell, GitBranch, Search, Sparkles } from "lucide-react";
+import { Bell, GitBranch, Menu, Search, Sparkles } from "lucide-react";
 import { useState } from "react";
 import Logo from "../../common/logo";
 import UserDropDown from "../../common/user-drop-down";
 import { Button } from "../../ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../../ui/dialog";
 import { Input } from "../../ui/input";
 import { Kbd } from "../../ui/kbd";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../../ui/sheet";
+import { LeftSidebarContent } from "../sidebars/left-sidebar";
 import { useTheme } from "../theme-provider";
 
 const SEARCH_PLACEHOLDERS = [
@@ -30,6 +33,8 @@ const DONT_SHOW_HEADER = [
 
 const Header = () => {
   const [blur, setBlur] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const router = useRouter();
   const [q, setQ] = useState("");
   const navigate = useNavigate();
@@ -46,22 +51,81 @@ const Header = () => {
     navigate({
       to: `/search?query=${encodeURIComponent(q)}`,
     });
+    setMobileSearchOpen(false);
+    setQ("");
   };
 
+
   return (
-    <header className="relative bg-white dark:bg-slate-900 shadow-sm px-4 py-4 border-border border-b w-full">
-      <nav className="flex justify-between items-center gap-4 mx-auto max-w-385">
-        <div className="flex items-center gap-4">
+    <header className="relative bg-white dark:bg-slate-900 shadow-sm px-2 sm:px-4 py-3 sm:py-4 border-border border-b w-full">
+      <nav className="flex justify-between items-center gap-2 sm:gap-4 mx-auto max-w-385">
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="lg:hidden"
+                aria-label="Open menu"
+              >
+                <Menu className="w-5 h-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="p-0 w-[280px] sm:w-[300px]">
+              <SheetHeader className="sr-only">
+                <SheetTitle>Navigation Menu</SheetTitle>
+              </SheetHeader>
+              <div className="bg-white dark:bg-slate-900 py-2 h-full overflow-y-auto">
+                <LeftSidebarContent />
+              </div>
+            </SheetContent>
+          </Sheet>
           <Logo />
-          <div className="flex items-center gap-2">
-            <Button variant={"outline"}>My Feed</Button>
-            <Button iconPlacement="right" variant={"link"} icon={Sparkles}>
+          <div className="hidden lg:flex items-center gap-2">
+            <Button variant={"outline"} size="sm" className="rounded-full">My Feed</Button>
+            <Button iconPlacement="right" variant={"link"} icon={Sparkles} size="sm" className="rounded-full">
               Rix
             </Button>
           </div>
         </div>
-        <div className="flex flex-1 items-center gap-2">
-          <div className="relative flex-1">
+        <div className="flex flex-1 justify-end items-center gap-1 md:gap-2 min-w-0">
+          <Dialog open={mobileSearchOpen} onOpenChange={setMobileSearchOpen}>
+            <DialogTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden shrink-0"
+                aria-label="Search"
+              >
+                <Search className="w-5 h-5" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="md:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Search</DialogTitle>
+              </DialogHeader>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input
+                  icon={Search}
+                  onChange={(e) => {
+                    const txt = e.target.value;
+                    setQ(txt);
+                  }}
+                  iconPlacement="left"
+                  className="w-full"
+                  iconStyle="size-4 text-muted-foreground"
+                  placeholder="Search..."
+                  value={q}
+                  autoFocus
+                />
+                <Button type="submit" className="w-full">
+                  Search
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
+
+          <div className="hidden md:block relative flex-1 overflow-hidden">
             <form onSubmit={handleSubmit}>
               <Input
                 icon={Search}
@@ -77,8 +141,8 @@ const Header = () => {
               />
             </form>
             {!blur && (
-              <div className="top-2.5 left-[2.55rem] z-0 absolute text-slate-500 dark:text-white text-sm">
-                <div className="inline-flex text-sm whitespace-pre-wrap">
+              <div className="top-2.5 left-[2.55rem] z-0 absolute w-full text-slate-500 dark:text-white text-xs sm:text-sm">
+                <div className="inline-flex text-xs sm:text-sm line-clamp-1 whitespace-pre-wrap">
                   Search for{' "'}
                   <TextLoop
                     className="overflow-y-clip"
@@ -121,18 +185,18 @@ const Header = () => {
               </div>
             )}
             <div className="top-1.5 right-4 absolute">
-              <Kbd className="dark:bg-slate-700 px-2 border border-border h-7 dark:text-slate-200 uppercase">
+              <Kbd className="dark:bg-slate-700 px-1.5 sm:px-2 border border-border h-6 sm:h-7 text-[10px] dark:text-slate-200 sm:text-xs uppercase">
                 Ctrl + K
               </Kbd>
             </div>
           </div>
           <Link to="/new">
-            <Button icon={PencilEdit01Icon}>Write</Button>
+            <Button icon={PencilEdit01Icon} size="sm" className="rounded-full text-xs sm:text-sm">Write</Button>
           </Link>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <div className="flex items-center">
-            <Link to="/changelog">
+            <Link to="/changelog" className="hidden lg:block">
               <Button
                 size={"icon"}
                 variant={"ghost"}

@@ -1,10 +1,9 @@
-import { createEnv } from '@t3-oss/env-core'
-import { config } from 'dotenv'
-import { z } from 'zod'
+import { createEnv } from "@t3-oss/env-core";
+import { config } from "dotenv";
+import { z } from "zod";
 
-config()
+config();
 
- 
 export const env = createEnv({
   server: {
     DATABASE_URL: z.string(),
@@ -12,22 +11,33 @@ export const env = createEnv({
     OAUTH_GOOGLE_CLIENT_ID: z.string(),
     OAUTH_GOOGLE_CLIENT_SECRET: z.string(),
     GITHUB_TOKEN: z.string(),
+    BETTER_AUTH_URL: z.string(),
   },
 
-  clientPrefix: 'VITE_',
+  clientPrefix: "VITE_",
 
   client: {
-    VITE_APP_TITLE: z.string().min(1).optional(),
+    VITE_APPLICATION_URL: z.string().url(),
+
+    VITE_ENVIRONMENT: z
+      .enum(["development", "production"])
+      .default("development"),
   },
- 
+
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     SERVER_URL: process.env.SERVER_URL,
     OAUTH_GOOGLE_CLIENT_ID: process.env.OAUTH_GOOGLE_CLIENT_ID,
     OAUTH_GOOGLE_CLIENT_SECRET: process.env.OAUTH_GOOGLE_CLIENT_SECRET,
     GITHUB_TOKEN: process.env.GITHUB_TOKEN,
+    BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
 
+    // Client vars - use import.meta.env
+    VITE_ENVIRONMENT: import.meta.env.VITE_ENVIRONMENT,
+    VITE_APPLICATION_URL: import.meta.env.VITE_APPLICATION_URL,
   },
 
+  skipValidation: typeof window !== "undefined",
+
   emptyStringAsUndefined: true,
-})
+});

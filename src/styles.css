@@ -251,3 +251,45 @@ code {
   --tw-border-opacity: 1;
   border-color: rgb(147 197 253 / var(--tw-border-opacity));
 }
+
+/* Custom scrollbar for right sidebar in mobile viewports */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.7 0.01 264) oklch(0.95 0.005 264);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: oklch(0.95 0.005 264);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: oklch(0.7 0.01 264);
+  border-radius: 10px;
+  border: 1px solid oklch(0.95 0.005 264);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.6 0.015 264);
+}
+
+.dark .custom-scrollbar {
+  scrollbar-color: oklch(0.4 0.015 264) oklch(0.2 0.012 264);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: oklch(0.2 0.012 264);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: oklch(0.4 0.015 264);
+  border: 1px solid oklch(0.2 0.012 264);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.5 0.02 264);
+}

@@ -17,7 +17,7 @@ function RouteComponent() {
   const articlesCount = "5.9K"
 
   return <main className="flex-8 space-y-8 rounded-sm">
-    <div className="relative flex md:flex-row flex-col justify-between items-center gap-8 bg-slate-50 dark:bg-slate-900 p-6 border border-border-light dark:border-white/5 rounded-xl overflow-hidden">
+    <div className="relative flex md:flex-row flex-col justify-between items-start md:items-center gap-8 bg-slate-50 dark:bg-slate-900 p-6 border border-border-light dark:border-white/5 rounded-xl overflow-hidden">
       <div className="z-10 relative flex flex-col gap-6">
         <div className="space-y-2">
           <h1 className="font-bold text-slate-900 dark:text-white text-3xl capitalize tracking-tight">

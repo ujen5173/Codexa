@@ -87,26 +87,26 @@ const PostContent = () => {
           />
         </div>
 
-        <div className="flex sm:flex-row flex-col sm:justify-between sm:items-center gap-6 mb-12 pb-8 border-slate-200 dark:border-slate-800 border-b">
-          <div className="flex items-center gap-4">
+        <div className="flex sm:flex-row flex-col sm:justify-between sm:items-center gap-4 sm:gap-6 mb-8 sm:mb-12 pb-6 sm:pb-8 border-slate-200 dark:border-slate-800 border-b">
+          <div className="flex items-center gap-3 sm:gap-4">
             <Img
               src={"https://cdn.hashnode.com/res/hashnode/image/upload/v1767564224474/8c42e6a9-fc8c-4345-96f9-1bb4215376d5.jpeg?w=500&h=500&fit=crop&crop=faces&w=500&h=500&fit=crop&crop=entropy&auto=compress,format&format=webp&auto=compress,format&format=webp"}
               alt="Aleksandra Dudkina"
               width={56}
               height={56}
-              className="rounded-full ring-2 ring-white dark:ring-slate-900 w-14 h-14 object-cover"
+              className="rounded-full ring-2 ring-white dark:ring-slate-900 w-12 h-12 sm:w-14 sm:h-14 object-cover shrink-0"
             />
-            <div className="text-left">
-              <div className="font-bold text-slate-900 dark:text-white text-lg hover:underline cursor-pointer">
+            <div className="text-left min-w-0">
+              <div className="font-bold text-slate-900 dark:text-white text-base sm:text-lg hover:underline cursor-pointer truncate">
                 Aleksandra Dudkina
               </div>
-              <div className="text-slate-500 dark:text-slate-400 text-sm">
+              <div className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm truncate">
                 Software Engineer & Writer
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-6 text-slate-500 dark:text-slate-400 text-sm">
+          <div className="flex items-center gap-3 sm:gap-6 text-slate-500 dark:text-slate-400 text-xs sm:text-sm flex-wrap">
             <div className="flex items-center gap-2">
               <span className="bg-slate-100 dark:bg-slate-800 p-2 rounded-full">
                 <span className="sr-only">Date</span>
@@ -120,7 +120,7 @@ const PostContent = () => {
               </div>
             </div>
 
-            <div className="bg-slate-200 dark:bg-slate-800 w-px h-8" />
+            <div className="bg-slate-200 dark:bg-slate-800 w-px h-6 sm:h-8" />
 
             <div className="flex items-center gap-2">
               <span className="bg-slate-100 dark:bg-slate-800 p-2 rounded-full">
@@ -136,7 +136,7 @@ const PostContent = () => {
 
         <div className="relative flex lg:flex-row flex-col gap-12">
 
-          <div className="hidden top-32 sticky lg:flex flex-col gap-6 w-12 h-fit shrink-0">
+          <div className="hidden top-32 sticky lg:flex flex-col gap-4 sm:gap-6 w-12 h-fit shrink-0">
             <div className="flex flex-col gap-1">
               <Button size="icon" variant="ghost" className="hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-[#1DA1F2]">
                 <svg viewBox="0 0 24 24" className="fill-current w-5 h-5"><g><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path></g></svg>

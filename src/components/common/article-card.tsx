@@ -48,56 +48,56 @@ const ArticleCard = ({ article }: { article: Article }) => {
       }}
       key={article.id}>
       <div
-        className="bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800/70 p-5 border border-border dark:border-slate-800 rounded-2xl"
+        className="bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800/70 p-4 sm:p-5 border border-border dark:border-slate-800 rounded-xl sm:rounded-2xl"
       >
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-center gap-2 sm:gap-3 mb-3">
           <Img
             src={article.author.image}
-            className="rounded-full size-10 object-cover"
+            className="rounded-full size-8 sm:size-10 object-cover shrink-0"
           />
-          <div className="">
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <p className="font-semibold text-slate-700 dark:text-slate-200 text-base">
+              <p className="font-semibold text-slate-700 dark:text-slate-200 text-sm sm:text-base truncate">
                 {article.author.name}
               </p>
-              <CheckmarkBadge02Icon className="fill-primary size-5 text-slate-200 dark:text-slate-900" />
+              <CheckmarkBadge02Icon className="fill-primary size-4 sm:size-5 text-slate-200 dark:text-slate-900 shrink-0" />
             </div>
-            <div className="flex items-center">
-              <p className="font-medium text-slate-700 dark:text-slate-200 text-sm tracking-wider">
+            <div className="flex items-center gap-1 min-w-0">
+              <p className="font-medium text-slate-700 dark:text-slate-200 text-xs sm:text-sm tracking-wider truncate">
                 {article.author.blog}
               </p>
-              <Dot className="text-slate-700 dark:text-slate-200" />
-              <span className="text-slate-700 dark:text-slate-300 text-sm">
+              <Dot className="text-slate-700 dark:text-slate-200 shrink-0" />
+              <span className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm whitespace-nowrap">
                 {formatDate(article.createdAt, "MMM dd, yyyy")}
               </span>
             </div>
           </div>
         </div>
         <div>
-          <div className="flex items-start gap-5">
-            <div className="flex-1">
-              <p className="mb-2 font-title font-bold text-slate-800 dark:text-slate-200 text-2xl line-clamp-2">
+          <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-5">
+            <div className="flex-1 min-w-0 w-full">
+              <p className="mb-2 font-title font-bold text-slate-800 dark:text-slate-200 text-xl sm:text-2xl line-clamp-2">
                 {article.title}
               </p>
-              <p className="mb-6 font-content text-slate-600 dark:text-slate-300 text-lg line-clamp-3">
+              <p className="mb-4 sm:mb-6 font-content text-slate-600 dark:text-slate-300 text-base sm:text-lg line-clamp-3">
                 {article.excerpt}
               </p>
             </div>
             {
               article.likes > 1_000 && (
-                <div className="w-56">
+                <div className="w-full sm:w-56 shrink-0">
                   <Img
                     src="https://cdn.hashnode.com/res/hashnode/image/upload/v1766924449488/90b4d3b9-cf7e-4a80-91f7-698e5dcf03a0.jpeg?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp"
                     width={800}
                     height={512}
-                    className="rounded-md w-56 h-32 object-cover"
+                    className="rounded-md w-full sm:w-56 h-60 sm:h-32 object-cover"
                   />
                 </div>
               )
             }
           </div>
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-4">
+          <div className="mt-4 sm:mt-0 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <div className="flex items-center gap-2">
                 <FavouriteIcon
                   className="text-slate-800 dark:text-slate-400"
@@ -132,12 +132,12 @@ const ArticleCard = ({ article }: { article: Article }) => {
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 flex-1 sm:flex-initial">
                 {article.tags.map((tag) => (
                   <Link key={tag.slug} to={`/tag/$slug`} params={{ slug: tag.slug }}>
                     <Badge
-                      className="bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 px-2.5 py-1 border-transparent text-slate-700 dark:text-slate-300"
+                      className="bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 px-2 sm:px-2.5 py-0.5 sm:py-1 border-transparent text-slate-700 dark:text-slate-300 text-xs sm:text-sm"
                       variant={"outline"}
                     >
                       {tag.title}
@@ -145,10 +145,10 @@ const ArticleCard = ({ article }: { article: Article }) => {
                   </Link>
                 ))}
               </div>
-              <Separator className="h-[17px!important]" orientation="vertical" />
+              <Separator className="hidden sm:block h-[17px!important]" orientation="vertical" />
               <Bookmark02Icon
-                className="stroke-1 text-slate-700 dark:text-slate-300"
-                size={20}
+                className="stroke-1 text-slate-700 dark:text-slate-300 shrink-0"
+                size={18}
               />
             </div>
           </div>

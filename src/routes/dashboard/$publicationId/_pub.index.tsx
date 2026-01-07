@@ -23,10 +23,10 @@ export const Route = createFileRoute("/dashboard/$publicationId/_pub/")({
 
 function RouteComponent() {
   return (
-    <main className="mx-auto px-4 py-10 w-full max-w-4xl">
-      <div className="pb-6">
-        <div className="flex items-center gap-4 mb-2">
-          <h1 className="font-semibold text-slate-800 dark:text-slate-100 text-4xl">
+    <main className="mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full max-w-4xl">
+      <div className="pb-4 sm:pb-6">
+        <div className="flex sm:flex-row flex-col items-start sm:items-center gap-2 sm:gap-4 mb-2">
+          <h1 className="font-semibold text-slate-800 dark:text-slate-100 text-2xl sm:text-3xl lg:text-4xl">
             Overview
           </h1>
           <span className="flex items-center gap-1.5 bg-pink-700/10 dark:bg-pink-700/30 px-3 py-2 rounded-md font-semibold text-pink-500 text-xs">
@@ -53,12 +53,12 @@ function RouteComponent() {
             Go to analytics
           </Button>
         </div>
-        <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
-          <div className="space-y-1 p-4 border border-border dark:border-slate-600/30 rounded-md">
-            <h5 className="font-semibold text-slate-700 dark:text-slate-100 text-lg">
+        <div className="gap-4 sm:gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="space-y-1 p-3 sm:p-4 border border-border dark:border-slate-600/30 rounded-md">
+            <h5 className="font-semibold text-slate-700 dark:text-slate-100 text-base sm:text-lg">
               2
             </h5>
-            <p className="text-slate-600 dark:text-slate-300 text-sm">
+            <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm">
               7-day page view
             </p>
           </div>
@@ -86,8 +86,8 @@ function RouteComponent() {
             Quick Links
           </p>
         </div>
-        <div className="gap-6 grid grid-cols-1 md:grid-cols-3">
-          <div className="flex items-start gap-4 p-4 border border-border dark:border-slate-600/30 rounded-md">
+        <div className="gap-4 sm:gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 border border-border dark:border-slate-600/30 rounded-md">
             <div className="bg-purple-600/20 p-2.5 rounded-full">
               <PenLineIcon className="size-4 text-purple-700" />
             </div>
@@ -134,8 +134,8 @@ function RouteComponent() {
             Publication info
           </p>
         </div>
-        <div className="flex md:flex-row flex-col gap-6">
-          <div className="md:flex-2 space-y-4 p-4 border border-border dark:border-slate-600/30 rounded-md w-full">
+        <div className="flex lg:flex-row flex-col gap-4 sm:gap-6">
+          <div className="lg:flex-2 space-y-4 p-4 sm:p-6 border border-border dark:border-slate-600/30 rounded-md w-full">
             <div className="bg-purple-600/20 p-2.5 rounded-full w-max">
               <Building03Icon className="size-4 text-purple-700" />
             </div>
@@ -156,8 +156,8 @@ function RouteComponent() {
               Edit blog info
             </Button>
           </div>
-          <div className="md:flex-5 p-4 border border-border dark:border-slate-600/30 rounded-md w-full">
-            <Empty className="md:p-8">
+          <div className="lg:flex-5 p-4 sm:p-6 border border-border dark:border-slate-600/30 rounded-md w-full">
+            <Empty className="sm:p-6 lg:p-8">
               <EmptyHeader>
                 <EmptyMedia variant="icon">
                   <Building03Icon />

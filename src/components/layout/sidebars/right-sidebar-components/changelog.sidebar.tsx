@@ -84,8 +84,8 @@ const ChangelogSidebar = () => {
 
             {isLoading ? (
               <div className="mb-2">
-                <Skeleton className="mb-1 h-5 w-full" />
-                <Skeleton className="h-5 w-3/4" />
+                <Skeleton className="mb-1 w-full h-5" />
+                <Skeleton className="w-3/4 h-5" />
               </div>
             ) : (
               <Link to="/changelog">
@@ -97,7 +97,7 @@ const ChangelogSidebar = () => {
 
             <div className="flex items-center mb-4">
               {isLoading ? (
-                <Skeleton className="h-4 w-24" />
+                <Skeleton className="w-24 h-4" />
               ) : (
                 <>
                   <span className="text-slate-600 dark:text-slate-300 text-xs">

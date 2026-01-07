@@ -9,11 +9,11 @@ export const Route = createFileRoute("/_app")({
 function AuthLayout() {
   return (
     <>
-      <main className="bg-sky-50/50 dark:bg-slate-950 px-4 py-6 w-full">
-        <section className="flex gap-6 mx-auto max-w-385">
+      <main className="bg-sky-50/50 dark:bg-slate-950 px-2 sm:px-4 py-4 sm:py-6 w-full">
+        <section className="flex flex-col lg:flex-row gap-4 lg:gap-6 mx-auto max-w-385">
           <LeftSidebar />
           <Outlet />
-          <RightSidebar />
+          <RightSidebar className="hidden xl:block" />
         </section>
       </main>
     </>

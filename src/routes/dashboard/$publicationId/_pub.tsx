@@ -1,20 +1,11 @@
 import DashboardFooter from "@/components/layout/footer/dashboard-footer";
 import DashboardHeader from "@/components/layout/header/dashboard-header";
+import DashboardNavigation from "@/components/layout/settings-sidebar/dashboard-navigation";
 import { SettingsSidebar } from "@/components/layout/settings-sidebar/side-bar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { linkItems } from "@/constants/site";
-import {
-  createFileRoute,
-  Link,
-  Outlet,
-  useLocation,
+  createFileRoute, Outlet
 } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/dashboard/$publicationId/_pub")({
@@ -22,41 +13,35 @@ export const Route = createFileRoute("/dashboard/$publicationId/_pub")({
 });
 
 function RouteComponent() {
-  const d = useLocation();
-
-  const pathname =
-    linkItems.blog_dashboard.find(
-      (e) => e.href === `/${d.pathname.split("/").slice(3)[0] ?? ""}`
-    )?.label ?? "Overview";
 
   return (
     <>
-      <DashboardHeader />
+      <div className="[--header-height:calc(theme(spacing.14))]">
+        <SidebarProvider className="flex flex-col">
+          <DashboardHeader />
 
-      <main className="flex bg-white dark:bg-slate-950 min-h-screen">
-        <SettingsSidebar />
+          <div className="flex flex-1">
+            <SettingsSidebar />
+            <SidebarInset
+              className={cn(
+                'w-full',
 
-        <section className="flex-1 p-4">
-          <div>
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink asChild>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>{pathname}</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+                'peer-data-[state=collapsed]:max-w-[calc(100vw-var(--sidebar-width-icon)-1rem)]',
+                'peer-data-[state=expanded]:max-w-[calc(100vw-var(--sidebar-width)-1rem)]',
+
+                'transition-[width] duration-200 ease-linear'
+              )}
+            >
+              <section className="flex-1 bg-white dark:bg-slate-950 p-4">
+                <DashboardNavigation />
+
+                <Outlet />
+              </section>
+            </SidebarInset>
           </div>
-
-          <Outlet />
-        </section>
-      </main>
-      <DashboardFooter />
+        </SidebarProvider>
+        <DashboardFooter />
+      </div>
     </>
   );
 }

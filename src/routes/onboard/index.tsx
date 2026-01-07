@@ -15,9 +15,9 @@ export const Route = createFileRoute("/onboard/")({
 function RouteComponent() {
   return (
     <main className="bg-slate-50 dark:bg-slate-950 w-full">
-      <section className="mx-auto px-12 py-12 max-w-385 min-h-[calc(100vh-65px)]">
-        <div className="flex flex-1 items-center gap-16 pt-28">
-          <section className="flex flex-col flex-1 justify-center items-start">
+      <section className="mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-12 max-w-7xl min-h-[calc(100vh-65px)]">
+        <div className="flex flex-col lg:flex-row flex-1 items-center gap-8 lg:gap-16 pt-12 sm:pt-20 lg:pt-28">
+          <section className="flex flex-col flex-1 justify-center items-start w-full">
             <div className="space-y-4">
               <div>
                 <h1 className="mb-2 font-bold text-primary text-4xl decoration-dotted underline">
@@ -28,7 +28,7 @@ function RouteComponent() {
                   developers, and join real conversations.
                 </p>
 
-                <div className="gap-4 grid grid-cols-2 w-full">
+                <div className="gap-3 sm:gap-4 grid grid-cols-1 sm:grid-cols-2 w-full">
                   <div className="relative">
                     <Button
                       className="shadow-sm rounded-full w-full"
@@ -123,7 +123,7 @@ function RouteComponent() {
               </div>
             </div>
           </section>
-          <section className="flex flex-col flex-1 justify-center items-start space-y-12">
+          <section className="hidden lg:flex flex-col flex-1 justify-center items-start space-y-8 lg:space-y-12 w-full">
             <div>
               <p className="mb-4 px-3 py-2 border-primary/70 border-l-4 font-handwritting font-medium text-slate-800 dark:text-slate-300 text-lg">
                 “We built this because writing about tech shouldn’t feel like

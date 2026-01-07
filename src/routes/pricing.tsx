@@ -142,15 +142,15 @@ const comparisonFeatures = [
 function PricingPage() {
   return (
     <div className="bg-background min-h-screen">
-      <section className="bg-gradient-to-b from-background to-muted sm:px-6 lg:px-8 pt-16 pb-12 border-border border-b">
-        <div className="flex items-end gap-20 mx-auto px-4 max-w-300">
-          <div className="flex flex-5">
-            <div className="mx-auto mb-8 max-w-3xl">
-              <div className="flex items-center gap-1 mb-4">
+      <section className="bg-gradient-to-b from-background to-muted sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-8 sm:pb-12 border-border border-b">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end gap-8 lg:gap-20 mx-auto px-4 max-w-7xl">
+          <div className="flex flex-1 lg:flex-5 w-full">
+            <div className="mx-auto mb-6 sm:mb-8 max-w-3xl w-full">
+              <div className="flex items-center gap-1 mb-3 sm:mb-4">
                 <BadgeDollarSign className="size-4 text-muted-foreground" />
-                <span className="text-muted-foreground text-sm">Pricing</span>
+                <span className="text-muted-foreground text-xs sm:text-sm">Pricing</span>
               </div>
-              <h1 className="mb-8 max-w-md font-bold text-foreground text-5xl">
+              <h1 className="mb-6 sm:mb-8 max-w-md font-bold text-foreground text-3xl sm:text-4xl lg:text-5xl">
                 Find the plan that suits your needs.
               </h1>
               <div className="flex items-center mb-8">
@@ -177,12 +177,12 @@ function PricingPage() {
               </p>
             </div>
           </div>
-          <div className="flex-6">
+          <div className="flex-1 lg:flex-6 w-full">
             <Img
               src="/pricing.webp"
               width={1200}
               height={720}
-              className="w-full object-cover"
+              className="w-full h-auto object-cover rounded-lg"
             />
           </div>
         </div>
@@ -190,7 +190,7 @@ function PricingPage() {
 
       <section className="px-4 sm:px-6 lg:px-8 py-12">
         <div className="mx-auto max-w-6xl">
-          <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="gap-4 sm:gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {pricingTiers.map((tier, idx) => {
               const Icon = tier.icon;
               return (
@@ -301,8 +301,8 @@ function PricingPage() {
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="border border-border rounded-xl w-full border-collapse">
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <table className="border border-border rounded-xl w-full min-w-[600px] border-collapse">
               <thead>
                 <tr className="border-border border-b">
                   <th className="px-6 py-4 font-semibold text-foreground text-left"></th>

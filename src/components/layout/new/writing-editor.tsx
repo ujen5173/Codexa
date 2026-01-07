@@ -32,28 +32,28 @@ const WritingEditor = () => {
 
   return (
     <div className="relative flex flex-col w-full h-full min-h-screen animate-in duration-500 fade-in">
-      <header className="top-0 z-40 sticky flex justify-between items-center backdrop-blur-md px-4 py-3 border-border dark:border-slate-600/60 border-b">
-        <div className="flex items-center gap-2">
+      <header className="top-0 z-40 sticky flex justify-between items-center backdrop-blur-md px-2 sm:px-4 py-2 sm:py-3 border-border dark:border-slate-600/60 border-b">
+        <div className="flex items-center gap-1 sm:gap-2 min-w-0">
           <Button
             variant="ghost"
             size="icon-sm"
-            className="mr-2 w-8 h-8 text-slate-700 dark:text-slate-100"
+            className="mr-1 sm:mr-2 w-7 h-7 sm:w-8 sm:h-8 text-slate-700 dark:text-slate-100 shrink-0"
             onClick={toggleSidebar}
             icon={open ? SidebarRight01Icon : SidebarLeft01Icon}
           />
-          <span className="mr-2 font-medium text-muted-foreground text-sm">
+          <span className="mr-1 sm:mr-2 font-medium text-muted-foreground text-xs sm:text-sm truncate">
             <span className="hidden sm:inline-block">
-              Drafts <span className="mx-2">/</span>
+              Drafts <span className="mx-1 sm:mx-2">/</span>
             </span>
-            <span className="text-foreground">{title || "Untitled Story"}</span>
+            <span className="text-foreground truncate">{title || "Untitled Story"}</span>
           </span>
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:block shrink-0">
           <Logo />
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 sm:gap-2 lg:gap-3 shrink-0">
           <Button
             size="icon"
             variant="ghost"
@@ -75,29 +75,30 @@ const WritingEditor = () => {
             </motion.span>
           </Button>
 
-          <span className="hidden md:inline lg:inline 2xl:inline 3xl:inline xl:inline text-muted-foreground text-xs">Saved</span>
+          <span className="hidden lg:inline text-muted-foreground text-xs">Saved</span>
 
           <Button
             variant="ghost"
             size="sm"
-            className="hidden sm:flex rounded-full text-muted-foreground hover:text-foreground"
+            className="hidden md:flex rounded-full text-muted-foreground hover:text-foreground text-xs sm:text-sm"
             icon={ViewIcon}
           >
-            Preview
+            <span className="hidden sm:inline">Preview</span>
           </Button>
 
           <Button
             size="sm"
-            className="bg-primary hover:bg-primary/90 px-4 rounded-full font-semibold text-primary-foreground transition-all"
+            className="bg-primary hover:bg-primary/90 px-3 sm:px-4 rounded-full font-semibold text-primary-foreground transition-all text-xs sm:text-sm"
           >
-            Publish
+            <span className="hidden sm:inline">Publish</span>
+            <span className="sm:hidden">Pub</span>
           </Button>
         </div>
       </header>
 
       <div className="flex-1 overflow-y-auto">
-        <div className="mx-auto px-6 py-12 max-w-6xl">
-          <div className="space-y-8">
+        <div className="mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-12 max-w-6xl">
+          <div className="space-y-6 sm:space-y-8">
             <div className="group relative transition-all duration-300 ease-in-out">
               {coverImage ? (
                 <div className="relative shadow-sm group-hover:shadow-md rounded-xl w-full aspect-[21/10] overflow-hidden transition-all">
@@ -110,7 +111,7 @@ const WritingEditor = () => {
                     <Button
                       variant="secondary"
                       size="sm"
-                      className="bg-background/80 hover:bg-background shadow-sm backdrop-blur text-foreground"
+                      className="bg-background/80 hover:bg-background shadow-sm backdrop-blur text-foreground rounded-full"
                       onClick={() => setIsCoverModalOpen(true)}
                     >
                       Change
@@ -130,7 +131,7 @@ const WritingEditor = () => {
                     variant="ghost"
                     size="sm"
                     onClick={() => setIsCoverModalOpen(true)}
-                    className="-ml-3 text-muted-foreground hover:text-foreground transition-colors"
+                    className="-ml-3 text-muted-foreground hover:text-foreground transition-colors rounded-full"
                     icon={ImageAdd01Icon}
                   >
                     Add Cover
@@ -141,7 +142,7 @@ const WritingEditor = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() => setShowSubtitle(true)}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-muted-foreground hover:text-foreground transition-colors rounded-full"
                       icon={TextIcon}
                     >
                       Add Subtitle
@@ -155,7 +156,7 @@ const WritingEditor = () => {
                   variant="ghost"
                   size="sm"
                   onClick={() => setShowSubtitle(true)}
-                  className="mt-2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="mt-2 text-muted-foreground hover:text-foreground transition-colors rounded-full"
                   icon={TextIcon}
                 >
                   Add Subtitle
@@ -169,7 +170,7 @@ const WritingEditor = () => {
                 placeholder="Article Title..."
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="bg-transparent dark:bg-transparent shadow-none p-0 border-0 rounded-none focus-visible:ring-0 w-full h-auto font-extrabold text-slate-900 dark:text-slate-100 text-4xl md:text-5xl leading-[1.15] tracking-tight"
+                className="bg-transparent dark:bg-transparent shadow-none p-0 border-0 rounded-none focus-visible:ring-0 w-full h-auto font-extrabold text-slate-900 dark:text-slate-100 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight"
 
               />
 
@@ -200,7 +201,7 @@ const WritingEditor = () => {
               <AdvancedEditor
                 initialValue={content ? content : undefined}
                 onChange={setContent}
-                className="w-full min-h-[500px]"
+                className="w-full min-h-[400px] sm:min-h-[500px]"
               />
             </div>
           </div>

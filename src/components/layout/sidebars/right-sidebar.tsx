@@ -5,9 +5,9 @@ import RecentReadsSidebar from "./right-sidebar-components/recent-reads.sidebar"
 import TopContributorSidebar from "./right-sidebar-components/topcontributor.sidebar";
 import TrendingSidebar from "./right-sidebar-components/trending.sidebar";
 
-const RightSidebar = () => {
+const RightSidebar = ({ className }: { className?: string }) => {
   return (
-    <section className="flex-3 space-y-5 min-w-[250px]">
+    <section className={`flex-3 space-y-5 min-w-[250px] py-4 ${className || ""}`}>
       <ChangelogSidebar />
 
       <PremiumSidebar />
