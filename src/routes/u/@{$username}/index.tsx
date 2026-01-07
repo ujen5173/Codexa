@@ -129,23 +129,23 @@ function RouteComponent() {
     <main className="bg-slate-50 dark:bg-slate-950 p-4 w-full">
       <div className="bg-white dark:bg-slate-900 mx-auto px-4 py-4 border border-border rounded-xl max-w-5xl">
         <div className="space-y-4">
-          <div className="flex items-center gap-8">
-            <div className="flex flex-1 items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+            <div className="flex flex-col sm:flex-row flex-1 items-start sm:items-center gap-4 sm:gap-6 w-full">
               <Img
                 src="https://api.dicebear.com/9.x/adventurer/svg?seed=Brian&flip=true"
                 width={300}
                 height={300}
-                className="rounded-full size-36 object-cover"
+                className="rounded-full size-24 sm:size-36 object-cover shrink-0"
               />
 
-              <div className="">
-                <h1 className="mb-1 font-semibold text-slate-700 dark:text-slate-50 text-3xl">
+              <div className="w-full sm:w-auto">
+                <h1 className="mb-1 font-semibold text-slate-700 dark:text-slate-50 text-xl sm:text-3xl">
                   Akash Desarda
                 </h1>
-                <p className="mb-4 text-slate-700 dark:text-slate-200 text-base">
+                <p className="mb-4 text-slate-700 dark:text-slate-200 text-sm sm:text-base">
                   Building Data product powered by Machine learning
                 </p>
-                <div className="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-slate-700 dark:text-slate-300">
                   <Dialog>
                     <DialogTrigger><p className="hover:underline underline-offset-2 cursor-pointer">
                       <span className="font-semibold text-slate-800 dark:text-slate-50">
@@ -153,38 +153,38 @@ function RouteComponent() {
                       </span>{" "}
                       Followers
                     </p></DialogTrigger>
-                    <DialogContent className="max-w-2xl">
+                    <DialogContent className="max-w-2xl mx-4">
                       <DialogHeader className="mb-4">
                         <DialogTitle>Followers</DialogTitle>
                       </DialogHeader>
-                      <div className="gap-6 grid grid-cols-2">
-                        <div className="flex">
-                          <div className="flex flex-1 gap-2">
+                      <div className="gap-4 sm:gap-6 grid grid-cols-1 sm:grid-cols-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex flex-1 gap-2 min-w-0">
                             <Img
                               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
                               width={100}
                               height={100}
-                              className="rounded-full size-10 object-cover" />
-                            <div>
-                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-base">Ujen Basi</p>
-                              <p className="text-slate-600 dark:text-slate-300 text-base">Full stack developer</p>
+                              className="rounded-full size-10 object-cover shrink-0" />
+                            <div className="min-w-0">
+                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-sm sm:text-base truncate">Ujen Basi</p>
+                              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base truncate">Full stack developer</p>
                             </div>
                           </div>
-                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" className="shrink-0" />
                         </div>
-                        <div className="flex">
-                          <div className="flex flex-1 gap-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex flex-1 gap-2 min-w-0">
                             <Img
                               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
                               width={100}
                               height={100}
-                              className="rounded-full size-10 object-cover" />
-                            <div>
-                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-base">Ujen Basi</p>
-                              <p className="text-slate-600 dark:text-slate-300 text-base">Full stack developer</p>
+                              className="rounded-full size-10 object-cover shrink-0" />
+                            <div className="min-w-0">
+                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-sm sm:text-base truncate">Ujen Basi</p>
+                              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base truncate">Full stack developer</p>
                             </div>
                           </div>
-                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" className="shrink-0" />
                         </div>
                         <div className="flex">
                           <div className="flex flex-1 gap-2">
@@ -226,38 +226,38 @@ function RouteComponent() {
                         Following
                       </p>
                     </DialogTrigger>
-                    <DialogContent className="max-w-2xl">
+                    <DialogContent className="max-w-2xl mx-4">
                       <DialogHeader className="mb-4">
                         <DialogTitle>Following</DialogTitle>
                       </DialogHeader>
-                      <div className="gap-6 grid grid-cols-2">
-                        <div className="flex">
-                          <div className="flex flex-1 gap-2">
+                      <div className="gap-4 sm:gap-6 grid grid-cols-1 sm:grid-cols-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex flex-1 gap-2 min-w-0">
                             <Img
                               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
                               width={100}
                               height={100}
-                              className="rounded-full size-10 object-cover" />
-                            <div>
-                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-base">Ujen Basi</p>
-                              <p className="text-slate-600 dark:text-slate-300 text-base">Full stack developer</p>
+                              className="rounded-full size-10 object-cover shrink-0" />
+                            <div className="min-w-0">
+                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-sm sm:text-base truncate">Ujen Basi</p>
+                              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base truncate">Full stack developer</p>
                             </div>
                           </div>
-                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" className="shrink-0" />
                         </div>
-                        <div className="flex">
-                          <div className="flex flex-1 gap-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex flex-1 gap-2 min-w-0">
                             <Img
                               src="https://cdn.hashnode.com/res/hashnode/image/upload/v1688460597480/046ceef3-cf05-4c6d-8136-1f681f254d1a.png?w=500&h=500&fit=crop&crop=faces&auto=compress,format&format=webp"
                               width={100}
                               height={100}
-                              className="rounded-full size-10 object-cover" />
-                            <div>
-                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-base">Ujen Basi</p>
-                              <p className="text-slate-600 dark:text-slate-300 text-base">Full stack developer</p>
+                              className="rounded-full size-10 object-cover shrink-0" />
+                            <div className="min-w-0">
+                              <p className="font-semibold text-slate-700 dark:text-slate-100 text-sm sm:text-base truncate">Ujen Basi</p>
+                              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base truncate">Full stack developer</p>
                             </div>
                           </div>
-                          <Button icon={Plus} variant={"outline"} size="icon-sm" />
+                          <Button icon={Plus} variant={"outline"} size="icon-sm" className="shrink-0" />
                         </div>
                         <div className="flex">
                           <div className="flex flex-1 gap-2">
@@ -293,7 +293,7 @@ function RouteComponent() {
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-end sm:justify-start">
               <Button
                 size="icon"
                 icon={ExternalLink}
@@ -304,10 +304,10 @@ function RouteComponent() {
                 icon={ChevronDown}
                 variant={"outline"}
               ></Button>
-              <Button icon={Plus}>Follow</Button>
+              <Button icon={Plus} className="flex-1 sm:flex-initial">Follow</Button>
             </div>
           </div>
-          <div className="flex justify-center items-center gap-6 p-6 border border-border rounded-sm">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 p-4 sm:p-6 border border-border rounded-sm">
             <div className="flex items-center">
               <Button
                 size="icon-sm"
@@ -328,22 +328,22 @@ function RouteComponent() {
                 icon={Globe02Icon}
               />
             </div>
-            <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200 text-base">
+            <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200 text-sm sm:text-base">
               <MapPinpoint01Icon size={18} />
               <p>Sanepa, Lalitpur</p>
             </div>
-            <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200 text-base">
+            <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200 text-sm sm:text-base">
               <Calendar02Icon size={18} />
-              <p>Member since Jan 1, 2026</p>
+              <p className="whitespace-nowrap">Member since Jan 1, 2026</p>
             </div>
           </div>
-          <div className="px-6 py-4 border border-border rounded-sm">
+          <div className="px-4 sm:px-6 py-4 border border-border rounded-sm">
             <div className="pb-4 border-border border-b">
-              <h1 className="font-semibold text-slate-700 dark:text-slate-200 text-2xl">
+              <h1 className="font-semibold text-slate-700 dark:text-slate-200 text-xl sm:text-2xl">
                 Writes at
               </h1>
             </div>
-            <div className="flex justify-between items-center py-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 py-4">
               <div className="flex items-center gap-4">
                 <Img
                   src={
@@ -351,78 +351,78 @@ function RouteComponent() {
                   }
                   width={200}
                   height={200}
-                  className="size-14 object-cover"
+                  className="size-14 object-cover shrink-0"
                 />
                 <div className="">
-                  <h4 className="font-medium text-lg">import idea</h4>
-                  <p className="font-medium text-sm">importidea.dev</p>
+                  <h4 className="font-medium text-base sm:text-lg">import idea</h4>
+                  <p className="font-medium text-xs sm:text-sm">importidea.dev</p>
                 </div>
               </div>
-              <Button icon={ExternalLink} variant="outline">
+              <Button icon={ExternalLink} variant="outline" className="w-full sm:w-auto">
                 Read the blog
               </Button>
             </div>
           </div>
-          <div className="gap-4 grid grid-cols-3">
+          <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             <div className="p-4 border border-border rounded-md">
-              <h1 className="mb-4 font-semibold text-slate-700 dark:text-slate-200 text-xl">
+              <h1 className="mb-4 font-semibold text-slate-700 dark:text-slate-200 text-lg sm:text-xl">
                 About Me
               </h1>
-              <div className="flex justify-center items-center h-32">
-                <p className="text-slate-600 dark:text-slate-300 text-base text-center">
+              <div className="flex justify-center items-center min-h-32">
+                <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base text-center">
                   No bio to display
                 </p>
               </div>
             </div>
             <div className="p-4 border border-border rounded-md">
-              <h1 className="mb-4 font-semibold text-slate-700 dark:text-slate-200 text-xl">
+              <h1 className="mb-4 font-semibold text-slate-700 dark:text-slate-200 text-lg sm:text-xl">
                 My Tech Stack
               </h1>
-              <div className="flex justify-center items-center h-32">
-                <p className="text-slate-600 dark:text-slate-300 text-base text-center">
+              <div className="flex justify-center items-center min-h-32">
+                <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base text-center">
                   Tech stack yet to be written
                 </p>
               </div>
             </div>
             <div className="p-4 border border-border rounded-md">
-              <h1 className="mb-4 font-semibold text-slate-700 dark:text-slate-200 text-xl">
+              <h1 className="mb-4 font-semibold text-slate-700 dark:text-slate-200 text-lg sm:text-xl">
                 I am available for
               </h1>
-              <div className="flex justify-center items-center h-32">
-                <p className="text-slate-600 dark:text-slate-300 text-base text-center">
+              <div className="flex justify-center items-center min-h-32">
+                <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base text-center">
                   Nothing to show
                 </p>
               </div>
             </div>
           </div>
           <div className="px-4 py-4 border border-border rounded-sm">
-            <h1 className="mb-4 font-semibold text-2xl">Badges</h1>
-            <div className="gap-2 grid grid-cols-2">
-              <p className="p-6 border border-border rounded-md h-20">
+            <h1 className="mb-4 font-semibold text-xl sm:text-2xl">Badges</h1>
+            <div className="gap-2 grid grid-cols-1 sm:grid-cols-2">
+              <p className="p-4 sm:p-6 border border-border rounded-md min-h-20 flex items-center justify-center text-sm sm:text-base">
                 Talk of the Town
               </p>
-              <p className="p-6 border border-border rounded-md h-20">
+              <p className="p-4 sm:p-6 border border-border rounded-md min-h-20 flex items-center justify-center text-sm sm:text-base">
                 Featured On Hashnode
               </p>
-              <p className="p-6 border border-border rounded-md h-20">
+              <p className="p-4 sm:p-6 border border-border rounded-md min-h-20 flex items-center justify-center text-sm sm:text-base">
                 Word Warrior
               </p>
-              <p className="p-6 border border-border rounded-md h-20">
+              <p className="p-4 sm:p-6 border border-border rounded-md min-h-20 flex items-center justify-center text-sm sm:text-base">
                 Self Starter
               </p>
             </div>
           </div>
           <div className="px-4 py-4 border border-border rounded-sm">
-            <h1 className="mb-4 font-semibold text-2xl">Recent Activity</h1>
+            <h1 className="mb-4 font-semibold text-xl sm:text-2xl">Recent Activity</h1>
 
             <div>
               {refactoredActivity?.map((activity, index) => (
                 <div
-                  className="flex gap-2 lg:gap-6 w-full"
+                  className="flex gap-2 sm:gap-4 lg:gap-6 w-full"
                   key={index}
                 >
-                  <div className="activity_date">
-                    <span className="font-medium text-gray-700 dark:text-slate-200 text-sm text-center">
+                  <div className="activity_date shrink-0">
+                    <span className="font-medium text-gray-700 dark:text-slate-200 text-xs sm:text-sm text-center whitespace-nowrap">
                       {activity[0]}
                     </span>
                     {activity[1][0]?.activity_type !== "JOINED" && (

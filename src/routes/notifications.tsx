@@ -1,3 +1,4 @@
+import PostFooter from "@/components/layout/single-article/post-footer";
 import { WelcomeNotification } from "@/components/notifications/welcome-notification";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -130,124 +131,128 @@ function RouteComponent() {
   });
 
   return (
-    <main className="bg-white dark:bg-slate-950 py-16 w-full">
-      <div className="mx-auto max-w-[900px]">
-        <div className="flex justify-between items-center gap-4 mb-6 px-4">
-          <h1 className="font-semibold text-4xl">Notifications</h1>
-          <Button icon={CircleCheckBig} variant={"ghost"}>
-            Mark all as read
-          </Button>
-        </div>
+    <>
+      <main className="bg-white dark:bg-slate-950 py-8 sm:py-16 w-full">
+        <div className="mx-auto max-w-[900px]">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 px-4">
+            <h1 className="font-semibold text-2xl sm:text-4xl">Notifications</h1>
+            <Button icon={CircleCheckBig} variant={"ghost"} className="text-xs sm:text-sm">
+              <span className="hidden sm:inline">Mark all as read</span>
+              <span className="sm:hidden">Mark read</span>
+            </Button>
+          </div>
 
-        <div className="flex gap-1 mb-8 pb-2 overflow-x-auto">
-          <Button
-            className={`hover:border-transparent ${filter === "all" ? "bg-blue-300/20 text-primary" : ""
-              } font-medium`}
-            variant={"ghost"}
-            onClick={() => setFilter("all")}
-          >
-            All
-          </Button>
-          <Button
-            className={`hover:border-transparent ${filter === "likes" ? "bg-blue-300/20 text-primary" : ""
-              } font-medium`}
-            variant={"ghost"}
-            icon={FavouriteIcon}
-            onClick={() => setFilter("likes")}
-          >
-            Likes
-          </Button>
-          <Button
-            className={`hover:border-transparent ${filter === "comments" ? "bg-blue-300/20 text-primary" : ""
-              } font-medium`}
-            variant={"ghost"}
-            icon={MessageCircleMore}
-            onClick={() => setFilter("comments")}
-          >
-            Comments
-          </Button>
-          <Button
-            className={`hover:border-transparent ${filter === "mentions" ? "bg-blue-300/20 text-primary" : ""
-              } font-medium`}
-            variant={"ghost"}
-            icon={AtSign}
-            onClick={() => setFilter("mentions")}
-          >
-            Mentions
-          </Button>
-        </div>
+          <div className="flex gap-1 mb-6 sm:mb-8 pb-2 overflow-x-auto px-4">
+            <Button
+              className={`hover:border-transparent ${filter === "all" ? "bg-blue-300/20 text-primary" : ""
+                } font-medium`}
+              variant={"ghost"}
+              onClick={() => setFilter("all")}
+            >
+              All
+            </Button>
+            <Button
+              className={`hover:border-transparent ${filter === "likes" ? "bg-blue-300/20 text-primary" : ""
+                } font-medium`}
+              variant={"ghost"}
+              icon={FavouriteIcon}
+              onClick={() => setFilter("likes")}
+            >
+              Likes
+            </Button>
+            <Button
+              className={`hover:border-transparent ${filter === "comments" ? "bg-blue-300/20 text-primary" : ""
+                } font-medium`}
+              variant={"ghost"}
+              icon={MessageCircleMore}
+              onClick={() => setFilter("comments")}
+            >
+              Comments
+            </Button>
+            <Button
+              className={`hover:border-transparent ${filter === "mentions" ? "bg-blue-300/20 text-primary" : ""
+                } font-medium`}
+              variant={"ghost"}
+              icon={AtSign}
+              onClick={() => setFilter("mentions")}
+            >
+              Mentions
+            </Button>
+          </div>
 
-        <div className="flex flex-col">
-          {filteredNotifications.map((notification) => {
-            const getContent = (context: ContentContext) => {
-              const config =
-                notificationConfig[notification.type as NotificationType];
+          <div className="flex flex-col">
+            {filteredNotifications.map((notification) => {
+              const getContent = (context: ContentContext) => {
+                const config =
+                  notificationConfig[notification.type as NotificationType];
 
-              if (!config) {
-                throw new Error(
-                  `Unknown notification type: ${notification.type}`
-                );
-              }
-
-              switch (context) {
-                case "ICON":
-                  return config.icon;
-                case "TITLE":
-                  return config.title(
-                    notification.user.name,
-                    notification.content
+                if (!config) {
+                  throw new Error(
+                    `Unknown notification type: ${notification.type}`
                   );
-                case "CONTENT":
-                  return config.content(notification.user.name);
-              }
-            };
+                }
 
-            return (
-              <div className="flex gap-4 hover:bg-slate-300/50 dark:hover:bg-slate-800/40 px-4 py-6 border-border dark:border-slate-600/60 last:border-0 border-b transition-colors">
-                <div className="mt-1 shrink-0">{getContent("ICON")}</div>
-                <div className="flex flex-col gap-2">
-                  <div className="space-y-2">
-                    <Avatar className="bg-purple-600 border border-slate-100 dark:border-slate-600/60 w-10 h-10">
-                      <AvatarImage
-                        src={notification.user.avatarUrl}
-                        alt={notification.user.name}
-                      />
-                      <AvatarFallback className="bg-purple-600 font-medium text-white dark:text-slate-800">
-                        {notification.user.name.charAt(0).toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-[15px] text-slate-700 dark:text-slate-200">
-                      {getContent("TITLE")}
+                switch (context) {
+                  case "ICON":
+                    return config.icon;
+                  case "TITLE":
+                    return config.title(
+                      notification.user.name,
+                      notification.content
+                    );
+                  case "CONTENT":
+                    return config.content(notification.user.name);
+                }
+              };
+
+              return (
+                <div className="flex gap-3 sm:gap-4 hover:bg-slate-300/50 dark:hover:bg-slate-800/40 px-4 py-4 sm:py-6 border-border dark:border-slate-600/60 last:border-0 border-b transition-colors">
+                  <div className="mt-1 shrink-0">{getContent("ICON")}</div>
+                  <div className="flex flex-col gap-2 min-w-0 flex-1">
+                    <div className="space-y-2">
+                      <Avatar className="bg-purple-600 border border-slate-100 dark:border-slate-600/60 w-8 h-8 sm:w-10 sm:h-10 shrink-0">
+                        <AvatarImage
+                          src={notification.user.avatarUrl}
+                          alt={notification.user.name}
+                        />
+                        <AvatarFallback className="bg-purple-600 font-medium text-white dark:text-slate-800 text-xs sm:text-sm">
+                          {notification.user.name.charAt(0).toUpperCase()}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="text-sm sm:text-[15px] text-slate-700 dark:text-slate-200 break-words">
+                        {getContent("TITLE")}
+                      </div>
                     </div>
+                    {notification.type === "comment" && (
+                      <div className="bg-slate-100 dark:bg-slate-900 p-3 sm:p-4 border border-slate-200 dark:border-slate-600/60 rounded-lg text-sm sm:text-[15px] text-slate-600 dark:text-slate-200">
+                        {getContent("CONTENT")}
+                      </div>
+                    )}
+                    <span className="text-xs sm:text-[13px] text-slate-500 dark:text-slate-300">
+                      {notification.date}
+                    </span>
                   </div>
-                  {notification.type === "comment" && (
-                    <div className="bg-slate-100 dark:bg-slate-900 p-4 border border-slate-200 dark:border-slate-600/60 rounded-lg text-[15px] text-slate-600 dark:text-slate-200">
-                      {getContent("CONTENT")}
-                    </div>
-                  )}
-                  <span className="text-[13px] text-slate-500 dark:text-slate-300">
-                    {notification.date}
-                  </span>
                 </div>
+              );
+            })}
+
+            {filteredNotifications.length === 0 && (
+              <div className="py-12 text-slate-500 text-center">
+                No notifications found.
               </div>
-            );
-          })}
+            )}
+          </div>
 
-          {filteredNotifications.length === 0 && (
-            <div className="py-12 text-slate-500 text-center">
-              No notifications found.
-            </div>
-          )}
-        </div>
+          <div className="mt-8">
+            <Separator />
+          </div>
 
-        <div className="mt-8">
-          <Separator />
+          <div className="mt-8 px-4">
+            <WelcomeNotification />
+          </div>
         </div>
-
-        <div className="mt-8">
-          <WelcomeNotification />
-        </div>
-      </div>
-    </main>
+      </main>
+      <PostFooter />
+    </>
   );
 }

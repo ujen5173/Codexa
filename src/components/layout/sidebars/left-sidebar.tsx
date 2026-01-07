@@ -6,7 +6,7 @@ import { Link } from "@tanstack/react-router";
 import { TrendingUp } from "lucide-react";
 import Logo from "../../common/logo";
 
-export const LeftSidebarContent = () => {
+export const LeftSidebarContent = ({ onLinkClick }: { onLinkClick?: () => void }) => {
   return (
     <>
       <div className="block sm:hidden pb-2 px-4 py-3 border-b border-border dark:border-slate-800">
@@ -14,7 +14,7 @@ export const LeftSidebarContent = () => {
       </div>
       <ul className="pb-3">
         {linkItems.leftSidebar.map((item) => (
-          <Link key={item.id} to={item.href}>
+          <Link key={item.id} to={item.href} onClick={onLinkClick}>
             <li
               className={cn(
                 "flex items-center gap-2 hover:bg-slate-100 hover:dark:bg-slate-800 px-4 py-2 text-slate-800 dark:text-slate-100 cursor-pointer"
@@ -42,7 +42,7 @@ export const LeftSidebarContent = () => {
           />
         </div>
         <ul className="">
-          <Link to="/">
+          <Link to="/" onClick={onLinkClick}>
             <li className="flex justify-between items-center hover:bg-slate-100 hover:dark:bg-slate-800 px-2 py-1 border border-transparent hover:border-slate-200 hover:dark:border-slate-700 rounded-sm">
               <span className="text-slate-800 dark:text-zinc-100 text-sm">
                 Javascript
@@ -52,7 +52,7 @@ export const LeftSidebarContent = () => {
               </span>
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/" onClick={onLinkClick}>
             <li className="flex justify-between items-center hover:bg-slate-100 hover:dark:bg-slate-800 px-2 py-1 border border-transparent hover:border-slate-200 hover:dark:border-slate-700 rounded-sm">
               <span className="text-slate-800 dark:text-zinc-100 text-sm">
                 CI/CD
@@ -62,7 +62,7 @@ export const LeftSidebarContent = () => {
               </span>
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/" onClick={onLinkClick}>
             <li className="flex justify-between items-center hover:bg-slate-100 hover:dark:bg-slate-800 px-2 py-1 border border-transparent hover:border-slate-200 hover:dark:border-slate-700 rounded-sm">
               <span className="text-slate-800 dark:text-zinc-100 text-sm">
                 Cloudflare
@@ -72,7 +72,7 @@ export const LeftSidebarContent = () => {
               </span>
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/" onClick={onLinkClick}>
             <li className="flex justify-between items-center hover:bg-slate-100 hover:dark:bg-slate-800 px-2 py-1 border border-transparent hover:border-slate-200 hover:dark:border-slate-700 rounded-sm">
               <span className="text-slate-800 dark:text-zinc-100 text-sm">
                 Tanstack start
@@ -82,7 +82,7 @@ export const LeftSidebarContent = () => {
               </span>
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/" onClick={onLinkClick}>
             <li className="flex justify-between items-center hover:bg-slate-100 hover:dark:bg-slate-800 px-2 py-1 border border-transparent hover:border-slate-200 hover:dark:border-slate-700 rounded-sm">
               <span className="text-slate-800 dark:text-zinc-100 text-sm">
                 Next.js

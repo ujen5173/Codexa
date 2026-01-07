@@ -57,7 +57,7 @@ const Header = () => {
 
 
   return (
-    <header className="relative bg-white dark:bg-slate-900 shadow-sm px-2 sm:px-4 py-3 sm:py-4 border-border border-b w-full">
+    <header className="relative bg-white dark:bg-slate-900 shadow-sm px-4 py-3 sm:py-4 border-border border-b w-full">
       <nav className="flex justify-between items-center gap-2 sm:gap-4 mx-auto max-w-385">
         <div className="flex items-center gap-2 sm:gap-4 min-w-0">
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -76,7 +76,7 @@ const Header = () => {
                 <SheetTitle>Navigation Menu</SheetTitle>
               </SheetHeader>
               <div className="bg-white dark:bg-slate-900 py-2 h-full overflow-y-auto">
-                <LeftSidebarContent />
+                <LeftSidebarContent onLinkClick={() => setMobileMenuOpen(false)} />
               </div>
             </SheetContent>
           </Sheet>
@@ -190,7 +190,7 @@ const Header = () => {
               </Kbd>
             </div>
           </div>
-          <Link to="/new">
+          <Link to="/new" className="hidden md:block">
             <Button icon={PencilEdit01Icon} size="sm" className="rounded-full text-xs sm:text-sm">Write</Button>
           </Link>
         </div>

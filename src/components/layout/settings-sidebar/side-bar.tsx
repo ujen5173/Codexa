@@ -1,10 +1,22 @@
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail } from "@/components/ui/sidebar";
+import Logo from "@/components/common/logo";
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail, useSidebar } from "@/components/ui/sidebar";
 import { linkItems } from "@/constants/site";
 import { Link } from "@tanstack/react-router";
 
 export function SettingsSidebar() {
+  const { setOpenMobile, isMobile } = useSidebar();
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
+
   return (
-    <Sidebar collapsible="icon" className="top-[72px] !h-[calc(100svh-72px)]">
+    <Sidebar collapsible="icon" className="top-[72px] h-[calc(100svh-72px)]!">
+      <SidebarHeader className='border-b border-border dark:border-slate-600/60 pt-4 block md:hidden bg-white dark:bg-slate-950'>
+        <Logo />
+      </SidebarHeader>
       <SidebarContent className="bg-white dark:bg-slate-950">
         <SidebarGroup>
           <SidebarGroupLabel>BLOG DASHBOARD</SidebarGroupLabel>
@@ -25,6 +37,7 @@ export function SettingsSidebar() {
                         params={{
                           publicationId: `66591b32d988544d623ad7ce`
                         }}
+                        onClick={handleLinkClick}
                       >
                         {ddItem.icon}
                         <span>{ddItem.label}</span>

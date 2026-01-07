@@ -23,7 +23,7 @@ export const Route = createFileRoute("/dashboard/$publicationId/_pub/")({
 
 function RouteComponent() {
   return (
-    <main className="mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full max-w-4xl">
+    <main className="mx-auto sm:px-6 py-6 sm:py-10 w-full max-w-4xl">
       <div className="pb-4 sm:pb-6">
         <div className="flex sm:flex-row flex-col items-start sm:items-center gap-2 sm:gap-4 mb-2">
           <h1 className="font-semibold text-slate-800 dark:text-slate-100 text-2xl sm:text-3xl lg:text-4xl">

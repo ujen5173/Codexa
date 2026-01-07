@@ -13,18 +13,18 @@ const PublicationHeader = () => {
 
   return (
     <header className="w-full">
-      <div className="flex justify-between items-center mx-auto px-4 py-3 max-w-6xl">
-        <div className="flex items-center gap-2">
+      <div className="flex justify-between items-center mx-auto px-4 py-3 max-w-6xl gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 min-w-0">
           <Logo onlyIcon />
-          <Separator className="dark:bg-600/60 bg-border h-[17px!important]" orientation="vertical" />
-          <h2 className="font-semibold text-xl">
+          <Separator className="dark:bg-600/60 bg-border h-[17px!important] hidden sm:block" orientation="vertical" />
+          <h2 className="font-semibold text-base sm:text-xl truncate">
             JS Topic
           </h2>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center">
 
-            <Button variant={"ghost"} size="icon" icon={Search} />
+            <Button variant={"ghost"} size="icon" icon={Search} className="hidden md:flex" />
             <Button
               size="icon"
               variant="ghost"

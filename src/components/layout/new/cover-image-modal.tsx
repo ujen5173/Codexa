@@ -75,16 +75,16 @@ export function CoverImageModal({ open, onOpenChange, onSelect }: CoverImageModa
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="gap-0 bg-background p-0 sm:max-w-2xl overflow-hidden">
-        <DialogHeader className="p-4 border-b">
-          <DialogTitle className="font-medium text-lg">Add a cover image</DialogTitle>
+      <DialogContent className="gap-0 bg-background p-0 sm:max-w-2xl overflow-hidden max-h-[90vh] flex flex-col">
+        <DialogHeader className="p-4 border-b shrink-0">
+          <DialogTitle className="font-medium text-base sm:text-lg">Add a cover image</DialogTitle>
         </DialogHeader>
 
-        <div className="flex flex-col h-[500px]">
-          <div className="flex px-4 border-b">
+        <div className="flex flex-col flex-1 min-h-0 overflow-hidden">
+          <div className="flex px-4 border-b shrink-0">
             <button
               onClick={() => setActiveTab("upload")}
-              className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${activeTab === "upload"
+              className={`px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium border-b-2 transition-colors ${activeTab === "upload"
                 ? "border-primary text-primary"
                 : "border-transparent text-muted-foreground hover:text-foreground"
                 }`}
@@ -93,7 +93,7 @@ export function CoverImageModal({ open, onOpenChange, onSelect }: CoverImageModa
             </button>
             <button
               onClick={() => setActiveTab("unsplash")}
-              className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${activeTab === "unsplash"
+              className={`px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium border-b-2 transition-colors ${activeTab === "unsplash"
                 ? "border-primary text-primary"
                 : "border-transparent text-muted-foreground hover:text-foreground"
                 }`}
@@ -102,15 +102,15 @@ export function CoverImageModal({ open, onOpenChange, onSelect }: CoverImageModa
             </button>
           </div>
 
-          <div className="relative flex-1 overflow-hidden">
+          <div className="relative flex-1 min-h-0 overflow-hidden">
             {activeTab === "upload" ? (
-              <div className="flex flex-col justify-center items-center p-8 h-full text-center animate-in duration-200 fade-in zoom-in-95">
-                <div className="flex flex-col justify-center items-center bg-muted/5 hover:bg-muted/10 p-10 border-2 border-muted-foreground/25 hover:border-primary/50 border-dashed rounded-xl w-full max-w-sm transition-colors">
-                  <div className="bg-background shadow-sm mb-4 p-4 rounded-full">
-                    <CloudUploadIcon className="size-8 text-muted-foreground" />
+              <div className="flex flex-col justify-center items-center p-4 sm:p-8 h-full text-center animate-in duration-200 fade-in zoom-in-95 overflow-y-auto">
+                <div className="flex flex-col justify-center items-center bg-muted/5 hover:bg-muted/10 p-6 sm:p-10 border-2 border-muted-foreground/25 hover:border-primary/50 border-dashed rounded-xl w-full max-w-sm transition-colors">
+                  <div className="bg-background shadow-sm mb-4 p-3 sm:p-4 rounded-full">
+                    <CloudUploadIcon className="size-6 sm:size-8 text-muted-foreground" />
                   </div>
-                  <h3 className="mb-1 font-medium text-lg">Click to upload</h3>
-                  <p className="mb-6 text-muted-foreground text-sm">SVG, PNG, JPG or GIF (max. 5MB)</p>
+                  <h3 className="mb-1 font-medium text-base sm:text-lg">Click to upload</h3>
+                  <p className="mb-4 sm:mb-6 text-muted-foreground text-xs sm:text-sm">SVG, PNG, JPG or GIF (max. 5MB)</p>
 
                   <div className="relative">
                     <Button variant="outline">
@@ -126,13 +126,13 @@ export function CoverImageModal({ open, onOpenChange, onSelect }: CoverImageModa
                 </div>
               </div>
             ) : (
-              <div className="slide-in-from-right-4 flex flex-col h-full animate-in duration-200 fade-in">
-                <div className="z-10 bg-background p-4 border-b">
+              <div className="slide-in-from-right-4 flex flex-col h-full animate-in duration-200 fade-in min-h-0">
+                <div className="z-10 bg-background p-3 sm:p-4 border-b shrink-0">
                   <div className="relative">
                     <Search01Icon className="top-1/2 left-3 absolute size-4 text-muted-foreground -translate-y-1/2" />
                     <Input
                       placeholder="Search Unsplash..."
-                      className="pl-9"
+                      className="pl-9 text-sm sm:text-base"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       autoFocus
@@ -140,7 +140,7 @@ export function CoverImageModal({ open, onOpenChange, onSelect }: CoverImageModa
                   </div>
                 </div>
 
-                <ScrollArea className="flex-1 p-4">
+                <ScrollArea className="flex-1 p-3 sm:p-4 min-h-0">
                   {isSearching ? (
                     <div className="gap-4 grid grid-cols-2 md:grid-cols-3 pb-4">
                       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (

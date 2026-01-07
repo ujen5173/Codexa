@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 import { Link, useRouter } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Moon02Icon, PencilEdit01Icon, Sun03Icon } from "hugeicons-react";
-import { Bell, GitBranch } from "lucide-react";
+import { Moon02Icon, Sun03Icon } from "hugeicons-react";
+import { Bell } from "lucide-react";
 import { Img } from "react-image";
 import UserDropDown from "../../common/user-drop-down";
 import { Button } from "../../ui/button";
@@ -17,7 +17,7 @@ const DashboardHeader = () => {
 
   return (
     <header className="top-0 z-50 sticky bg-white dark:bg-slate-950 shadow-sm border-border border-b w-full">
-      <nav className="flex justify-between items-center gap-2 sm:gap-4 mx-auto px-2 sm:px-4 py-3 sm:py-4">
+      <nav className="flex justify-between items-center gap-2 sm:gap-4 mx-auto px-4 py-3 sm:py-4">
         <div className="flex items-center gap-2 sm:gap-5 min-w-0">
           <Link to="/">
             <Img
@@ -35,20 +35,9 @@ const DashboardHeader = () => {
         </div>
         <div className="flex flex-1 items-center gap-1 sm:gap-2 min-w-0">
           <div className="relative flex-1"></div>
-          <Link to="/new">
-            <Button icon={PencilEdit01Icon} size="sm" className="rounded-full text-xs sm:text-sm">Write</Button>
-          </Link>
         </div>
         <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <div className="flex items-center">
-            <Link to="/changelog">
-              <Button
-                size={"icon"}
-                variant={"ghost"}
-                icon={GitBranch}
-                className="text-slate-800 dark:text-slate-200"
-              />
-            </Link>
             <Button
               size="icon"
               variant="ghost"

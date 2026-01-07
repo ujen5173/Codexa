@@ -69,11 +69,13 @@ const PublicationFooter = () => {
         <Separator className="bg-white/5 mb-8" />
 
         <div className="flex md:flex-row flex-col justify-between items-center gap-4 text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} {platformName} LLC. All rights reserved.</p>
-          <div className="flex items-center gap-8">
-            <Link to="/" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/" className="hover:text-white transition-colors">Terms of Service</Link>
-            <div className="flex items-center gap-2 pl-4 border-white/5 border-l">
+          <p className="text-center md:text-left">© {new Date().getFullYear()} {platformName} LLC. All rights reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-4 sm:gap-8">
+              <Link to="/" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/" className="hover:text-white transition-colors">Terms of Service</Link>
+            </div>
+            <div className="flex items-center gap-2 pl-0 sm:pl-4 border-0 sm:border-l border-white/5">
               <span className="text-xs">Powered by</span>
               <Logo onlyIcon size="sm" />
               <span className="font-semibold text-slate-300">{platformName}</span>

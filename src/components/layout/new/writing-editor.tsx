@@ -32,7 +32,7 @@ const WritingEditor = () => {
 
   return (
     <div className="relative flex flex-col w-full h-full min-h-screen animate-in duration-500 fade-in">
-      <header className="top-0 z-40 sticky flex justify-between items-center backdrop-blur-md px-2 sm:px-4 py-2 sm:py-3 border-border dark:border-slate-600/60 border-b">
+      <header className="top-0 z-40 sticky flex justify-between items-center backdrop-blur-md px-4 py-2 sm:py-3 border-border dark:border-slate-600/60 border-b">
         <div className="flex items-center gap-1 sm:gap-2 min-w-0">
           <Button
             variant="ghost"
@@ -90,14 +90,13 @@ const WritingEditor = () => {
             size="sm"
             className="bg-primary hover:bg-primary/90 px-3 sm:px-4 rounded-full font-semibold text-primary-foreground transition-all text-xs sm:text-sm"
           >
-            <span className="hidden sm:inline">Publish</span>
-            <span className="sm:hidden">Pub</span>
+            <span className="inline">Publish</span>
           </Button>
         </div>
       </header>
 
       <div className="flex-1 overflow-y-auto">
-        <div className="mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-12 max-w-6xl">
+        <div className="mx-auto px-4 lg:px-6 py-6 sm:py-8 lg:py-12 max-w-6xl">
           <div className="space-y-6 sm:space-y-8">
             <div className="group relative transition-all duration-300 ease-in-out">
               {coverImage ? (
